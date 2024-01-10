@@ -1,9 +1,12 @@
 # Frug
 
 ### Kort om appen
-- Hovedfokus er å få appen på Appstore.
 - Super enkel og liten spørsmål applikasjon.
 - Her man man opprette og bli med i spill og legge til spørsmpål
+
+### Fokus
+- Få appen på Appstore
+- Håndtere race conditions
 
 ### Hva har jeg lært
 - **Fyll ut når ferdig**
