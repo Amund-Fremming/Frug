@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
@@ -8,7 +10,10 @@ builder.Services.AddControllers();
 // TODO
 
 // Connects to database
-// TODO
+builder.Services.AddDbContext<Data.AppDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConstructor"));
+});
 
 var app = builder.Build();
 
