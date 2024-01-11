@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualBasic;
+using Model;
+using Repository;
 
 namespace backend;
 
@@ -7,15 +8,47 @@ namespace backend;
 [ApiController]
 public class Controller : ControllerBase
 {
-    [HttpGet]
-    public async Task<ActionResult> GetAllQuestions()
+    public readonly QuestionRepo _repo;
+
+    public Controller(QuestionRepo repo)
     {
-        return Ok("All questions");
+        _repo = repo;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult> GetGameQuestions([FromQuery] string gameId)
+    {
+        int gameIdAsInteger;
+        try
+        {
+            gameIdAsInteger = int.Parse(gameId);
+        }
+        catch(Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+
+        var questions = await _repo.GetGameQuestionsAsync(gameIdAsInteger);
+        return Ok(questions);
     }
 
     [HttpPost]
     public async Task<ActionResult> AddQuestion([FromQuery] string question, [FromQuery] string gameId)
     {
-        return Ok($"Added question: {question} , to gamme: {gameId}");
+        int gameIdAsInteger;
+        try
+        {
+            gameIdAsInteger = int.Parse(gameId);
+            // VALIDATE THE STRING!!!
+        }
+        catch(Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+
+        Question Question = new Question(gameIdAsInteger, question);
+        await _repo.AddQuestionAsync(Question);
+
+        return Ok("Question added!");
     }
 }

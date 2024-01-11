@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddScoped<QuestionRepo>();
 
 // Addds repository and service
 // TODO
@@ -12,7 +14,7 @@ builder.Services.AddControllers();
 // Connects to database
 builder.Services.AddDbContext<Data.AppDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConstructor"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 var app = builder.Build();
