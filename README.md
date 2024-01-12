@@ -1,5 +1,7 @@
 # Frug
 
+[Figma](https://www.figma.com/file/oBgpl8HkiowbkUFe6HchFL/Untitled?node-id=0%3A1&mode=dev)
+
 ### Kort om appen
 - Super enkel og liten spørsmål applikasjon.
 - Her man man opprette og bli med i spill og legge til spørsmpål
