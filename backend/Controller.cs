@@ -1,3 +1,4 @@
+using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 using Repository;
@@ -36,17 +37,18 @@ public class Controller : ControllerBase
     public async Task<ActionResult> AddQuestion([FromQuery] string question, [FromQuery] string gameId)
     {
         int gameIdAsInteger;
+        string validatedString;
         try
         {
             gameIdAsInteger = int.Parse(gameId);
-            // VALIDATE THE STRING!!!
+            validatedString = HttpUtility.HtmlEncode(question);
         }
         catch(Exception e)
         {
             return BadRequest(e.Message);
         }
 
-        Question Question = new Question(gameIdAsInteger, question);
+        Question Question = new Question(gameIdAsInteger, validatedString);
         await _repo.AddQuestionAsync(Question);
 
         return Ok("Question added!");
