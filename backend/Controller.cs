@@ -49,7 +49,7 @@ public class Controller : ControllerBase
         }
 
         Question Question = new Question(gameIdAsInteger, validatedString);
-        await _repo.AddQuestionAsync(Question);
+        await _repo.AddQuestionAsyncTransaction(Question);
 
         return Ok("Question added!");
     }

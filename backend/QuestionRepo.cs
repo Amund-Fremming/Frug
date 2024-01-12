@@ -18,8 +18,24 @@ public class QuestionRepo
         return await _context.Questions.Where(q => q.GameId == gameId).ToListAsync();
     }   
 
-    public async Task AddQuestionAsync(Question question)
+    public async Task AddQuestionAsyncTransaction(Question question)
     {
+        using(var transaction = _context.Database.BeginTransaction())
+        {
+            try
+            {
+                _context.Add(question);
+                await _context.SaveChangesAsync();
+
+                transaction.Commit();
+            }
+            catch(Exception)
+            {
+                transaction.Rollback();
+                throw;
+            }
+        }
+
         _context.Add(question);
         await _context.SaveChangesAsync();
     }
