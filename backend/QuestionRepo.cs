@@ -35,8 +35,5 @@ public class QuestionRepo
                 throw;
             }
         }
-
-        _context.Add(question);
-        await _context.SaveChangesAsync();
     }
 }
