@@ -208,6 +208,54 @@ const imageStyle = StyleSheet.create({
     top: 340,
     right: 35,
   },
+
+  starSeven: {
+    position: "absolute",
+    width: 15,
+    height: 10,
+    top: 20,
+    right: 30,
+  },
+
+  starEight: {
+    position: "absolute",
+    width: 15,
+    height: 10,
+    top: 45,
+    right: 120,
+  },
+
+  starNine: {
+    position: "absolute",
+    width: 15,
+    height: 10,
+    top: 70,
+    right: 80,
+  },
+
+  starTen: {
+    position: "absolute",
+    width: 12,
+    height: 8,
+    top: 100,
+    left: 30,
+  },
+
+  starEleven: {
+    position: "absolute",
+    width: 9,
+    height: 9,
+    top: 125,
+    left: 120,
+  },
+
+  starTwelve: {
+    position: "absolute",
+    width: 15,
+    height: 10,
+    top: 170,
+    left: 80,
+  },
 });
 
 export { styles, imageStyle };

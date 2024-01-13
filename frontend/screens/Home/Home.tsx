@@ -13,31 +13,6 @@ export default function Home() {
 
   const mascot = require("../../assets/images/mascot.png");
 
-  const generateStars = (stars: number) => {
-    let starArray = [];
-    for (let i = 0; i < stars; i++) {
-      const topPosition = Math.random() * 50;
-      const leftPosition = Math.random() * 100;
-      const width = Math.random() * 15;
-      const height = (width / 15) * 10;
-
-      starArray.push(
-        <Image
-          key={i}
-          source={star}
-          style={{
-            top: `${topPosition}%`,
-            left: `${leftPosition}%`,
-            width: width,
-            height: height,
-            zIndex: 0,
-          }}
-        />
-      );
-    }
-    return starArray;
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.layerOneCircle}>
@@ -86,8 +61,6 @@ export default function Home() {
 
       {/* Absolute stars */}
       <View style={styles.stars}>
-        {generateStars(30)}
-
         <Image source={star} style={imageStyle.starOne} />
         <Image source={star} style={imageStyle.starTwo} />
         <Image source={star} style={imageStyle.starThree} />
@@ -95,6 +68,14 @@ export default function Home() {
         <Image source={star} style={imageStyle.starFour} />
         <Image source={star} style={imageStyle.starFive} />
         <Image source={star} style={imageStyle.starSix} />
+
+        <Image source={star} style={imageStyle.starSeven} />
+        <Image source={star} style={imageStyle.starEight} />
+        <Image source={star} style={imageStyle.starNine} />
+
+        <Image source={star} style={imageStyle.starTen} />
+        <Image source={star} style={imageStyle.starEleven} />
+        <Image source={star} style={imageStyle.starTwelve} />
       </View>
     </View>
   );
