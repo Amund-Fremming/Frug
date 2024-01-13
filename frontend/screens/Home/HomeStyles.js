@@ -65,6 +65,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: "3000%",
     backgroundColor: "#A66444",
+    borderWidth: 4,
+    borderColor: "black",
   },
 
   // Planet View Containers
@@ -106,6 +108,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontFamily: "italic",
     color: /*"#07BF7B"*/ "white",
+  },
+
+  // Stars
+  stars: {
+    position: "absolute",
+    top: 0,
+    width: "100%",
+    height: "20%",
   },
 });
 
@@ -149,6 +159,54 @@ const imageStyle = StyleSheet.create({
   mascot: {
     width: 330,
     height: 330,
+  },
+
+  starOne: {
+    position: "absolute",
+    width: 15,
+    height: 10,
+    top: 300,
+    left: 30,
+  },
+
+  starTwo: {
+    position: "absolute",
+    width: 10,
+    height: 5,
+    top: 320,
+    left: 45,
+  },
+
+  starThree: {
+    position: "absolute",
+    width: 12,
+    height: 8,
+    top: 340,
+    left: 25,
+  },
+
+  starFour: {
+    position: "absolute",
+    width: 15,
+    height: 15,
+    top: 270,
+    right: 30,
+  },
+
+  starFive: {
+    position: "absolute",
+    width: 15,
+    height: 10,
+    top: 320,
+    right: 65,
+  },
+
+  starSix: {
+    position: "absolute",
+    width: 8,
+    height: 5,
+    top: 340,
+    right: 35,
   },
 });
 

@@ -9,7 +9,34 @@ export default function Home() {
   const planetTwo = require("../../assets/images/planets/planetTwo.png");
   const planetThree = require("../../assets/images/planets/planetThree.png");
 
+  const star = require("../../assets/images/star.png");
+
   const mascot = require("../../assets/images/mascot.png");
+
+  const generateStars = (stars: number) => {
+    let starArray = [];
+    for (let i = 0; i < stars; i++) {
+      const topPosition = Math.random() * 50;
+      const leftPosition = Math.random() * 100;
+      const width = Math.random() * 15;
+      const height = (width / 15) * 10;
+
+      starArray.push(
+        <Image
+          key={i}
+          source={star}
+          style={{
+            top: `${topPosition}%`,
+            left: `${leftPosition}%`,
+            width: width,
+            height: height,
+            zIndex: 0,
+          }}
+        />
+      );
+    }
+    return starArray;
+  };
 
   return (
     <View style={styles.container}>
@@ -55,6 +82,19 @@ export default function Home() {
       {/* Absolute pos mascot */}
       <View style={styles.mascotContainer}>
         <Image source={mascot} style={imageStyle.mascot} />
+      </View>
+
+      {/* Absolute stars */}
+      <View style={styles.stars}>
+        {generateStars(30)}
+
+        <Image source={star} style={imageStyle.starOne} />
+        <Image source={star} style={imageStyle.starTwo} />
+        <Image source={star} style={imageStyle.starThree} />
+
+        <Image source={star} style={imageStyle.starFour} />
+        <Image source={star} style={imageStyle.starFive} />
+        <Image source={star} style={imageStyle.starSix} />
       </View>
     </View>
   );
