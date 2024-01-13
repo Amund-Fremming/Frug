@@ -1,20 +1,45 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  // Containers
   container: {
     width: "100%",
     height: "100%",
     backgroundColor: "#342359",
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
 
+  imageContainer: {
+    width: "100%",
+    position: "absolute",
+    top: 40,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+  },
+
+  mascotContainer: {
+    position: "absolute",
+    top: 200,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  buttonContainer: {
+    width: "100%",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 20,
+  },
+
+  // Background Circles
   layerOneCircle: {
     width: 850,
     height: 800,
     top: 100,
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "3000%",
@@ -25,7 +50,6 @@ const styles = StyleSheet.create({
     width: 850,
     height: 800,
     top: 120,
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "3000%",
@@ -36,27 +60,17 @@ const styles = StyleSheet.create({
     width: 850,
     height: 800,
     top: 150,
-    display: "flex",
-    justifyContent: "center",
+    paddingTop: 100,
+    justifyContent: "flex-start",
     alignItems: "center",
     borderRadius: "3000%",
     backgroundColor: "#A66444",
   },
 
-  imageContainer: {
-    width: "100%",
-    position: "absolute",
-    top: 50,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
+  // Planet View Containers
   planetOne: {
     width: 150,
     height: 150,
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -64,8 +78,7 @@ const styles = StyleSheet.create({
   planetTwo: {
     width: 150,
     height: 150,
-    marginBottom: 60,
-    display: "flex",
+    marginBottom: 50,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -73,35 +86,64 @@ const styles = StyleSheet.create({
   planetThree: {
     width: 150,
     height: 150,
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
 
-  mascotContainer: {
-    position: "absolute",
-    top: 200,
-    width: "100%",
+  // Text
+  textShadow: {
+    width: "25%",
+    height: "19%",
+    backgroundColor: "black",
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "start",
     alignItems: "center",
+    borderRadius: 10,
+  },
+
+  text: {
+    fontSize: 26,
+    fontWeight: "bold",
+    fontFamily: "italic",
+    color: /*"#07BF7B"*/ "white",
   },
 });
 
 const imageStyle = StyleSheet.create({
   planetOne: {
-    width: 110,
-    height: 110,
+    width: 120,
+    height: 120,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 6,
+      height: 4,
+    },
+    shadowOpacity: 0.6,
+    shadowRadius: 4.65,
   },
 
   planetTwo: {
     width: 100,
     height: 100,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 6,
+      height: 4,
+    },
+    shadowOpacity: 0.6,
+    shadowRadius: 4.65,
   },
 
   planetThree: {
     width: 80,
     height: 80,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 6,
+      height: 4,
+    },
+    shadowOpacity: 0.6,
+    shadowRadius: 4.65,
   },
 
   mascot: {
