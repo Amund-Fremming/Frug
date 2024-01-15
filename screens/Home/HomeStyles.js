@@ -27,14 +27,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  buttonContainer: {
-    width: "100%",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 20,
-  },
-
   // Background Circles
   layerOneCircle: {
     width: 850,
