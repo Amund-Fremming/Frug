@@ -1,4 +1,4 @@
-# Frug
+# Spike
 
 [Figma](https://www.figma.com/file/oBgpl8HkiowbkUFe6HchFL/Untitled?node-id=0%3A1&mode=dev)
 
