@@ -4,11 +4,12 @@ import { styles } from "./HostOptionsStyles";
 
 interface HostProps {
   setView: Dispatch<SetStateAction<string>>;
+  view: string;
 }
 
-export default function HostOptions({ setView }: HostProps) {
+export default function GameOptions({ view, setView }: HostProps) {
   const [value, setValue] = useState("");
-  const [hostPressed, setHostPressed] = useState(false);
+  const [buttonPressed, setButtonPressed] = useState(false);
   const [backPressed, setBackPressed] = useState(false);
 
   const getButtonStyles = (isPressed: boolean) => ({
@@ -29,9 +30,9 @@ export default function HostOptions({ setView }: HostProps) {
     shadowOpacity: isPressed ? 0.7 : 1,
   });
 
-  const onHost = () => {
+  const handleClick = () => {
     localStorage.setItem("gameId", value);
-    setView("HOST_LOBBY");
+    setView(view === "HOST" ? "HOST_LOBBY" : "LOBBY");
   };
 
   return (
@@ -42,12 +43,12 @@ export default function HostOptions({ setView }: HostProps) {
         onChangeText={(text) => setValue(text)}
       />
       <Pressable
-        onPress={onHost}
-        onPressIn={() => setHostPressed(true)}
-        onPressOut={() => setHostPressed(false)}
-        style={() => getButtonStyles(hostPressed)}
+        onPress={handleClick}
+        onPressIn={() => setButtonPressed(true)}
+        onPressOut={() => setButtonPressed(false)}
+        style={() => getButtonStyles(buttonPressed)}
       >
-        <Text style={styles.text}>Host</Text>
+        <Text style={styles.text}>{view === "HOST" ? "Host" : "Join"}</Text>
       </Pressable>
       <Pressable
         onPress={() => setView("HOME")}

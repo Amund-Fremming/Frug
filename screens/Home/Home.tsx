@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { View, Image } from "react-native";
 import { styles, imageStyle } from "./HomeStyles";
 import HomeOptions from "./components/HomeOptions/HomeOptions";
-import HostOptions from "./components/HostOptions.jsx/HostOptions";
-import JoinOptions from "./components/JoinOptions.jsx/JoinOptions";
+import GameOptions from "./components/HostOptions.jsx/GameOptions";
 import Lobby from "../Lobby/Lobby";
 import Error404 from "../Error/Error404";
 
@@ -26,9 +25,9 @@ export default function Home() {
             {view === "HOME" ? (
               <HomeOptions setView={setView} />
             ) : view === "HOST" ? (
-              <HostOptions setView={setView} />
+              <GameOptions view={view} setView={setView} />
             ) : view === "JOIN" ? (
-              <JoinOptions setView={setView} />
+              <GameOptions view={view} setView={setView} />
             ) : view === "LOBBY" ? (
               <Lobby />
             ) : (
