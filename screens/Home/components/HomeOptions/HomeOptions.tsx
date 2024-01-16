@@ -23,7 +23,7 @@ export default function HomeOptions({ setView }: HomeProps) {
     <>
       <View style={styles.buttonContainer}>
         <Pressable
-          onPress={() => setView("HOME")}
+          onPress={() => setView("HOST")}
           onPressIn={() => setHostPressed(true)}
           onPressOut={() => setHostPressed(false)}
           style={() => getButtonStyles(hostPressed)}
@@ -31,7 +31,7 @@ export default function HomeOptions({ setView }: HomeProps) {
           <Text style={styles.text}>Host</Text>
         </Pressable>
         <Pressable
-          onPress={() => setView("HOME")}
+          onPress={() => setView("JOIN")}
           onPressIn={() => setJoinPressed(true)}
           onPressOut={() => setJoinPressed(false)}
           style={() => getButtonStyles(joinPressed)}

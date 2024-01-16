@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: 30,
+    top: 60,
   },
 
   text: {
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
 
   button: {
     width: "35%",
-    height: "22%",
+    height: 70,
     backgroundColor: "#808080",
     display: "flex",
     justifyContent: "center",
