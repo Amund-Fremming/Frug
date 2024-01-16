@@ -1,6 +1,6 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
-import { Text, View, Pressable, TextInput } from "react-native";
-import { styles } from "./LobbyStyles";
+import React, { useState, Dispatch, SetStateAction } from "react";
+import { Text, View, Pressable, TextInput, Image } from "react-native";
+import { styles, imageStyles } from "./LobbyStyles";
 
 interface LobbyProps {
   setGameId: Dispatch<SetStateAction<string>>;
@@ -18,6 +18,8 @@ export default function Lobby({
   const [addPressed, setAddPressed] = useState(false);
   const [leavePressed, setLeavePressed] = useState(false);
   const [question, setQuestion] = useState("");
+
+  const rover = require("../../assets/images/rover.png");
 
   const getButtonStyles = (isPressed: boolean) => ({
     ...styles.button,
@@ -49,10 +51,13 @@ export default function Lobby({
 
   return (
     <View style={styles.buttonContainer}>
-      <TextInput
-        onChangeText={(text: string) => setQuestion(text)}
-        style={styles.input}
-      />
+      <View style={styles.inputContainer}>
+        <Image source={rover} style={imageStyles.rover} />
+        <TextInput
+          onChangeText={(text: string) => setQuestion(text)}
+          style={styles.input}
+        />
+      </View>
       <Pressable
         onPress={handleAddQuestion}
         onPressIn={() => setAddPressed(true)}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Image } from "react-native";
+import { View, Image, Text } from "react-native";
 import { styles, imageStyle } from "./AppStyles.js";
 import HomeOptions from "./components/HomeOptions/HomeOptions";
 import GameOptions from "./components/GameOptions.jsx/GameOptions";
@@ -39,7 +39,11 @@ export default function App() {
         </View>
       </View>
 
+      {/* Loads Mascot and planets for every view, but not lobby */}
       {["HOME", "JOIN", "HOST"].includes(view) && <Mascot />}
+      {["LOBBY", "GAME_LOBBY"].includes(view) && (
+        <Text style={styles.numQuestions}>32</Text>
+      )}
 
       {/* Absolute stars */}
       <View style={styles.stars}>

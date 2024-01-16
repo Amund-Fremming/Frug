@@ -25,5 +25,7 @@
 
 # GJØRE NÅÅÅ!!!!
 
+- Importere 2p fonten
 - Sjekk i frontend for valid data
-- ikke tilate games med mellomrom i navnet sitt
+- Ikke tilate games med mellomrom i navnet sitt
+- Hvordan triggere at spm legges til så antallet kan oppdateres

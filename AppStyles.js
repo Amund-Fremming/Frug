@@ -101,6 +101,14 @@ const styles = StyleSheet.create({
     color: /*"#07BF7B"*/ "white",
   },
 
+  numQuestions: {
+    position: "absolute",
+    fontSize: 300,
+    fontWeight: "600",
+    opacity: 0.4,
+    top: 70,
+  },
+
   // Stars
   stars: {
     position: "absolute",

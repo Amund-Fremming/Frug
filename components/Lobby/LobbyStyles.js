@@ -1,13 +1,25 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  roverContainer: {
+    width: 20,
+    height: 100,
+  },
+
   buttonContainer: {
     width: "100%",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "start",
     alignItems: "center",
     gap: 30,
-    top: 40,
+    bottom: 100,
+  },
+
+  inputContainer: {
+    width: "100%",
+    flexDirection: "column",
+    justifyContent: "start",
+    alignItems: "center",
   },
 
   button: {
@@ -93,4 +105,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export { styles };
+const imageStyles = StyleSheet.create({
+  rover: {
+    width: 100,
+    height: 100,
+    margin: 0,
+    top: 20,
+  },
+});
+
+export { styles, imageStyles };
