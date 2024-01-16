@@ -25,6 +25,5 @@
 
 # GJØRE NÅÅÅ!!!!
 
-- Fikse databasen med string kontra int for id
-- Lagre gameId i lokal lagring
-- Refaktorere HostOptions og JoinOptions til samme komponent
+- Sjekk i frontend for valid data
+- ikke tilate games med mellomrom i navnet sitt

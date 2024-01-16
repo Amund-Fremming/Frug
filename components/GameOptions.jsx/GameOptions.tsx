@@ -1,13 +1,14 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { Text, View, Pressable, TextInput } from "react-native";
-import { styles } from "./HostOptionsStyles";
+import { styles } from "./GameOptionsStyles";
 
 interface HostProps {
   setView: Dispatch<SetStateAction<string>>;
   view: string;
+  setGameId: Dispatch<SetStateAction<string>>;
 }
 
-export default function GameOptions({ view, setView }: HostProps) {
+export default function GameOptions({ view, setView, setGameId }: HostProps) {
   const [value, setValue] = useState("");
   const [buttonPressed, setButtonPressed] = useState(false);
   const [backPressed, setBackPressed] = useState(false);
@@ -31,7 +32,7 @@ export default function GameOptions({ view, setView }: HostProps) {
   });
 
   const handleClick = () => {
-    localStorage.setItem("gameId", value);
+    setGameId(value);
     setView(view === "HOST" ? "HOST_LOBBY" : "LOBBY");
   };
 
