@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: "100%",
     position: "absolute",
-    top: 40,
+    top: 60,
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
@@ -202,17 +202,17 @@ const imageStyle = StyleSheet.create({
 
   starSeven: {
     position: "absolute",
-    width: 15,
-    height: 10,
-    top: 20,
+    width: 10,
+    height: 9,
+    top: 60,
     right: 30,
   },
 
   starEight: {
     position: "absolute",
-    width: 15,
-    height: 10,
-    top: 45,
+    width: 11,
+    height: 8,
+    top: 75,
     right: 120,
   },
 
@@ -220,7 +220,7 @@ const imageStyle = StyleSheet.create({
     position: "absolute",
     width: 15,
     height: 10,
-    top: 70,
+    top: 90,
     right: 80,
   },
 
@@ -228,7 +228,7 @@ const imageStyle = StyleSheet.create({
     position: "absolute",
     width: 12,
     height: 8,
-    top: 100,
+    top: 120,
     left: 30,
   },
 
@@ -236,7 +236,7 @@ const imageStyle = StyleSheet.create({
     position: "absolute",
     width: 9,
     height: 9,
-    top: 125,
+    top: 145,
     left: 120,
   },
 
@@ -244,8 +244,56 @@ const imageStyle = StyleSheet.create({
     position: "absolute",
     width: 15,
     height: 10,
-    top: 170,
+    top: 200,
     left: 80,
+  },
+
+  starThirteen: {
+    position: "absolute",
+    width: 15,
+    height: 10,
+    top: 70,
+    left: 60,
+  },
+
+  starFourteen: {
+    position: "absolute",
+    width: 10,
+    height: 7,
+    top: 90,
+    left: 120,
+  },
+
+  starFifteen: {
+    position: "absolute",
+    width: 10,
+    height: 5,
+    top: 100,
+    left: 20,
+  },
+
+  starSixteen: {
+    position: "absolute",
+    width: 15,
+    height: 10,
+    top: 200,
+    left: 150,
+  },
+
+  starSeventeen: {
+    position: "absolute",
+    width: 11,
+    height: 7,
+    top: 180,
+    left: 250,
+  },
+
+  starEighteen: {
+    position: "absolute",
+    width: 8,
+    height: 10,
+    top: 210,
+    left: 180,
   },
 });
 

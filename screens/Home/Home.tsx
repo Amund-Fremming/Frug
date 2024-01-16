@@ -73,6 +73,14 @@ export default function Home() {
         <Image source={star} style={imageStyle.starTen} />
         <Image source={star} style={imageStyle.starEleven} />
         <Image source={star} style={imageStyle.starTwelve} />
+
+        <Image source={star} style={imageStyle.starThirteen} />
+        <Image source={star} style={imageStyle.starFourteen} />
+        <Image source={star} style={imageStyle.starFifteen} />
+
+        <Image source={star} style={imageStyle.starSixteen} />
+        <Image source={star} style={imageStyle.starSeventeen} />
+        <Image source={star} style={imageStyle.starEighteen} />
       </View>
     </View>
   );

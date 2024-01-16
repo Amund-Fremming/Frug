@@ -14,3 +14,10 @@
 # Features
 
     - When hitting next question, the mascot appears and types
+
+# TODO
+
+1. Finsih gameflow
+2. Create animations
+3. Upload to appstore
+4. Expant the app

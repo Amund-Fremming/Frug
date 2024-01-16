@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    gap: 20,
+    gap: 30,
   },
 
   text: {
@@ -15,27 +15,9 @@ const styles = StyleSheet.create({
     color: /*"#07BF7B"*/ "white",
   },
 
-  hostButton: {
-    width: "30%",
-    height: "20%",
-    backgroundColor: "#808080",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 7,
-      height: 8,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    borderRadius: 10,
-    borderWidth: 3,
-  },
-
-  joinButton: {
-    width: "30%",
-    height: "20%",
+  button: {
+    width: "35%",
+    height: "22%",
     backgroundColor: "#808080",
     display: "flex",
     justifyContent: "center",
