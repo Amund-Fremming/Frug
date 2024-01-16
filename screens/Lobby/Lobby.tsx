@@ -4,7 +4,7 @@ import { Text, View, Image, Pressable, StyleSheet } from "react-native";
 export default function Lobby() {
   return (
     <>
-      <Text>Lobby</Text>
+      <Text>{localStorage.getItem("gameId")}</Text>
     </>
   );
 }

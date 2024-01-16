@@ -8,9 +8,8 @@ interface HostProps {
 
 export default function HostOptions({ setView }: HostProps) {
   const [value, setValue] = useState("");
-
   const [hostPressed, setHostPressed] = useState(false);
-  const [joinPressed, setJoinPressed] = useState(false);
+  const [backPressed, setBackPressed] = useState(false);
 
   const getButtonStyles = (isPressed: boolean) => ({
     ...styles.button,
@@ -30,6 +29,11 @@ export default function HostOptions({ setView }: HostProps) {
     shadowOpacity: isPressed ? 0.7 : 1,
   });
 
+  const onHost = () => {
+    localStorage.setItem("gameId", value);
+    setView("HOST_LOBBY");
+  };
+
   return (
     <View style={styles.buttonContainer}>
       <TextInput
@@ -37,14 +41,19 @@ export default function HostOptions({ setView }: HostProps) {
         value={value}
         onChangeText={(text) => setValue(text)}
       />
-      <Pressable style={styles.button}>
+      <Pressable
+        onPress={onHost}
+        onPressIn={() => setHostPressed(true)}
+        onPressOut={() => setHostPressed(false)}
+        style={() => getButtonStyles(hostPressed)}
+      >
         <Text style={styles.text}>Host</Text>
       </Pressable>
       <Pressable
         onPress={() => setView("HOME")}
-        onPressIn={() => setHostPressed(true)}
-        onPressOut={() => setHostPressed(false)}
-        style={() => getBackButtonStyles(hostPressed)}
+        onPressIn={() => setBackPressed(true)}
+        onPressOut={() => setBackPressed(false)}
+        style={() => getBackButtonStyles(backPressed)}
       >
         <Text style={styles.text}>Back</Text>
       </Pressable>

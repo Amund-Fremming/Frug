@@ -19,5 +19,12 @@
 
 1. Finsih gameflow
 2. Create animations
-3. Upload to appstore
-4. Expant the app
+3. Refactor HOST and JOIN options
+4. Upload to appstore
+5. Expant the app
+
+# GJØRE NÅÅÅ!!!!
+
+- Fikse databasen med string kontra int for id
+- Lagre gameId i lokal lagring
+- Refaktorere HostOptions og JoinOptions til samme komponent
