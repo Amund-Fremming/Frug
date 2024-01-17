@@ -1,12 +1,9 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
-import { Text, View, Pressable, TextInput, Image } from "react-native";
+import { Text, View, Pressable, TextInput, Image, Alert } from "react-native";
 import { styles, imageStyles } from "./LobbyStyles";
 
-import {
-  Question,
-  postQuestionToGame,
-  fetchQuestionsForGame,
-} from "../../ApiManager";
+import { Question, postQuestionToGame } from "../../util/ApiManager";
+import { validateInput } from "../../util/InputValidator";
 
 interface LobbyProps {
   setGameId: Dispatch<SetStateAction<string>>;
@@ -51,12 +48,21 @@ export default function Lobby({
   };
 
   const handleAddQuestion = async () => {
+    if (!validateInput(question)) {
+      Alert.alert(
+        "Invalid Input",
+        "Some characters are not allowed, try again"
+      );
+      return;
+    }
+
     const newQuestion: Question = {
       gameId: gameId,
       questionStr: question,
     };
 
     await postQuestionToGame(newQuestion);
+    setQuestion("");
   };
 
   return (
@@ -64,6 +70,8 @@ export default function Lobby({
       <View style={styles.inputContainer}>
         <Image source={rover} style={imageStyles.rover} />
         <TextInput
+          placeholder="Write a question ..."
+          value={question}
           onChangeText={(text: string) => setQuestion(text)}
           style={styles.input}
         />

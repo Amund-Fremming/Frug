@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   roverContainer: {
-    width: 20,
+    width: 50,
     height: 100,
   },
 
@@ -108,10 +108,10 @@ const styles = StyleSheet.create({
 
 const imageStyles = StyleSheet.create({
   rover: {
-    width: 100,
+    width: 125,
     height: 100,
     margin: 0,
-    top: 20,
+    top: 10,
   },
 });
 

@@ -27,8 +27,8 @@
 
 - BUG: frontend klarer ikke parse data fra backend i GET metoden
 
-- Fikse loading til 2P fonten
-- Sjekk i frontend for valid data
+- Mer detaljer på planeten
+- Animasjon for planeter og rover
 - Validere data i backend før lagring
-- Ikke tilate games med mellomrom i navnet sitt, kanskje toUpperCase() for å unngå case sensitivity
 - Hvordan triggere at spm legges til så antallet kan oppdateres
+- Skalere ned bilder og finpusse de

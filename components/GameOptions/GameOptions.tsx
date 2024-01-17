@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { Text, View, Pressable, TextInput } from "react-native";
+import { Text, View, Pressable, TextInput, Alert } from "react-native";
 import { styles } from "./GameOptionsStyles";
+import { validateInput } from "../../util/InputValidator";
 
 interface HostProps {
   setView: Dispatch<SetStateAction<string>>;
@@ -32,6 +33,14 @@ export default function GameOptions({ view, setView, setGameId }: HostProps) {
   });
 
   const handleClick = () => {
+    if (!validateInput(value)) {
+      Alert.alert(
+        "Invalid Input",
+        "Some characters are not allowed, try again"
+      );
+      return;
+    }
+
     setGameId(value);
     setView(view === "HOST" ? "HOST_LOBBY" : "LOBBY");
   };
@@ -42,7 +51,7 @@ export default function GameOptions({ view, setView, setGameId }: HostProps) {
         placeholder="Game id"
         style={styles.input}
         value={value}
-        onChangeText={(text) => setValue(text)}
+        onChangeText={(text) => setValue(text.toUpperCase())}
       />
       <Pressable
         onPress={handleClick}

@@ -15,6 +15,9 @@ export default function App() {
   const [fontLoaded, setFontsLoaded] = useState(false);
 
   const star = require("./assets/images/star.png");
+  const blobOne = require("./assets/images/blobs/blob1.png");
+  const blobTwo = require("./assets/images/blobs/blob2.png");
+  const blobThree = require("./assets/images/blobs/blob3.png");
 
   const loadFonts = async () => {
     await Font.loadAsync({
@@ -27,6 +30,15 @@ export default function App() {
   useEffect(() => {
     loadFonts();
   }, []);
+
+  if (!fontLoaded) {
+    return (
+      <Image
+        style={imageStyle.loadingImage}
+        source={require("./assets/splash.png")}
+      />
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -86,6 +98,18 @@ export default function App() {
         <Image source={star} style={imageStyle.starSixteen} />
         <Image source={star} style={imageStyle.starSeventeen} />
         <Image source={star} style={imageStyle.starEighteen} />
+      </View>
+
+      <View style={styles.dots}>
+        {/* Absolute dots */}
+        <View style={imageStyle.dotOne} />
+        <View style={imageStyle.dotTwo} />
+        <View style={imageStyle.dotThree} />
+
+        {/* Asolute shape */}
+        <Image source={blobOne} style={imageStyle.blobOne} />
+        <Image source={blobTwo} style={imageStyle.blobTwo} />
+        <Image source={blobThree} style={imageStyle.blobThree} />
       </View>
     </View>
   );

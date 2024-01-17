@@ -116,9 +116,23 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "20%",
   },
+
+  // Dots
+  dots: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    height: "50%",
+  },
 });
 
 const imageStyle = StyleSheet.create({
+  loadingImage: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  },
+
   planetOne: {
     width: 120,
     height: 120,
@@ -302,6 +316,62 @@ const imageStyle = StyleSheet.create({
     height: 10,
     top: 210,
     left: 180,
+  },
+
+  dotOne: {
+    position: "absolute",
+    width: 18,
+    height: 18,
+    bottom: 370,
+    left: 50,
+    backgroundColor: "#2F1B12",
+    borderRadius: 425,
+  },
+
+  dotTwo: {
+    position: "absolute",
+    width: 14,
+    height: 14,
+    bottom: 350,
+    left: 20,
+    backgroundColor: "#2F1B12",
+    borderRadius: 425,
+  },
+
+  dotThree: {
+    position: "absolute",
+    width: 10,
+    height: 10,
+    bottom: 390,
+    left: 15,
+    backgroundColor: "#2F1B12",
+    borderRadius: 425,
+  },
+
+  blobOne: {
+    position: "absolute",
+    width: 100,
+    height: 100,
+    bottom: 10,
+    left: 15,
+  },
+
+  blobTwo: {
+    position: "absolute",
+    width: 60,
+    height: 60,
+    bottom: 310,
+    right: 10,
+    opacity: 0.6,
+  },
+
+  blobThree: {
+    position: "absolute",
+    width: 100,
+    height: 100,
+    bottom: -20,
+    right: -50,
+    opacity: 0.3,
   },
 });
 
