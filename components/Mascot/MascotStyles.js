@@ -96,9 +96,10 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 26,
+    fontSize: 23,
     fontWeight: "bold",
     color: /*"#07BF7B"*/ "white",
+    fontFamily: "PressStart2P",
   },
 
   // Stars

@@ -39,6 +39,7 @@ export default function GameOptions({ view, setView, setGameId }: HostProps) {
   return (
     <View style={styles.buttonContainer}>
       <TextInput
+        placeholder="Game id"
         style={styles.input}
         value={value}
         onChangeText={(text) => setValue(text)}

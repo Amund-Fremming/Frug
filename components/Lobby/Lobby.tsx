@@ -2,6 +2,12 @@ import React, { useState, Dispatch, SetStateAction } from "react";
 import { Text, View, Pressable, TextInput, Image } from "react-native";
 import { styles, imageStyles } from "./LobbyStyles";
 
+import {
+  Question,
+  postQuestionToGame,
+  fetchQuestionsForGame,
+} from "../../ApiManager";
+
 interface LobbyProps {
   setGameId: Dispatch<SetStateAction<string>>;
   gameId: string;
@@ -44,9 +50,13 @@ export default function Lobby({
     setView("HOME");
   };
 
-  const handleAddQuestion = () => {
-    // Add question to database with ApiManager util class
-    // Reset the value to null
+  const handleAddQuestion = async () => {
+    const newQuestion: Question = {
+      gameId: gameId,
+      questionStr: question,
+    };
+
+    await postQuestionToGame(newQuestion);
   };
 
   return (

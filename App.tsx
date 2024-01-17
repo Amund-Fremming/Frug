@@ -1,16 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Image, Text } from "react-native";
 import { styles, imageStyle } from "./AppStyles.js";
+
 import HomeOptions from "./components/HomeOptions/HomeOptions";
-import GameOptions from "./components/GameOptions.jsx/GameOptions";
+import GameOptions from "./components/GameOptions/GameOptions";
 import Lobby from "./components/Lobby/Lobby";
 import Mascot from "./components/Mascot/Mascot";
+
+import * as Font from "expo-font";
 
 export default function App() {
   const [view, setView] = useState("HOME");
   const [gameId, setGameId] = useState("");
+  const [fontLoaded, setFontsLoaded] = useState(false);
 
   const star = require("./assets/images/star.png");
+
+  const loadFonts = async () => {
+    await Font.loadAsync({
+      PressStart2P: require("./assets/fonts/PressStart2P-Regular.ttf"),
+    });
+
+    setFontsLoaded(true);
+  };
+
+  useEffect(() => {
+    loadFonts();
+  }, []);
 
   return (
     <View style={styles.container}>
