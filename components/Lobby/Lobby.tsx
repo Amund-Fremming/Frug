@@ -20,6 +20,8 @@ export default function Lobby({
 }: LobbyProps) {
   const [addPressed, setAddPressed] = useState(false);
   const [leavePressed, setLeavePressed] = useState(false);
+  const [startPressed, setStartPressed] = useState(false);
+
   const [question, setQuestion] = useState("");
 
   const rover = require("../../assets/images/rover.png");
@@ -65,10 +67,19 @@ export default function Lobby({
     setQuestion("");
   };
 
+  const handleStart = () => {
+    setView("GAME");
+  };
+
   return (
     <View style={styles.buttonContainer}>
       <View style={styles.inputContainer}>
-        <Image source={rover} style={imageStyles.rover} />
+        {view === "LOBBY" ? (
+          <Image source={rover} style={imageStyles.rover} />
+        ) : (
+          <Text style={styles.gameIdDisplay}>{gameId}</Text>
+        )}
+
         <TextInput
           placeholder="Write a question ..."
           value={question}
@@ -84,6 +95,18 @@ export default function Lobby({
       >
         <Text style={styles.text}>Add</Text>
       </Pressable>
+
+      {view === "HOST_LOBBY" && (
+        <Pressable
+          onPress={handleStart}
+          onPressIn={() => setStartPressed(true)}
+          onPressOut={() => setStartPressed(false)}
+          style={() => getBackButtonStyles(startPressed)}
+        >
+          <Text style={styles.text}>Start</Text>
+        </Pressable>
+      )}
+
       <Pressable
         onPress={handleLeave}
         onPressIn={() => setLeavePressed(true)}

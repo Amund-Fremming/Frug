@@ -104,6 +104,18 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 22,
   },
+
+  gameIdDisplay: {
+    width: 220,
+    height: 100,
+    margin: 0,
+    top: 30,
+    fontSize: 23,
+    fontWeight: "bold",
+    color: /*"#07BF7B"*/ "white",
+    fontFamily: "PressStart2P",
+    textAlign: "center",
+  },
 });
 
 const imageStyles = StyleSheet.create({

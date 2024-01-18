@@ -15,20 +15,28 @@
 
     - When hitting next question, the mascot appears and types
 
-# TODO
+# Må fikses nå
 
-1. Finsih gameflow
-2. Create animations
-3. Refactor HOST and JOIN options
-4. Upload to appstore
-5. Expant the app
-
-# GJØRE NÅÅÅ!!!!
-
-- BUG: frontend klarer ikke parse data fra backend i GET metoden
-
-- Mer detaljer på planeten
-- Animasjon for planeter og rover
-- Validere data i backend før lagring
+- Design for vise spm
+- Implementere siden
+- Håndtere når spillet er slutt
 - Hvordan triggere at spm legges til så antallet kan oppdateres
+
+# Bør fikses
+
+- Hvis host leaver eller er inaktiv burde andre få melding?
+- Hvis host faller ut, finn ny host?
+
+# Ekstra fiks
+
+- Mer detaljer på planeten??
+- Animasjon for planeter
+- Animasjon for rover
 - Skalere ned bilder og finpusse de
+
+# Til slutt
+
+- Refaktorer
+- Les over apple sine kriterier
+- Fjern alle warnings
+- Publiser

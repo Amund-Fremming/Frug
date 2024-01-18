@@ -8,6 +8,7 @@ import Lobby from "./components/Lobby/Lobby";
 import Mascot from "./components/Mascot/Mascot";
 
 import * as Font from "expo-font";
+import Game from "./components/Game/Game";
 
 export default function App() {
   const [view, setView] = useState("HOME");
@@ -53,7 +54,7 @@ export default function App() {
                 setView={setView}
                 setGameId={setGameId}
               />
-            ) : view === "LOBBY" ? (
+            ) : view === "LOBBY" || view == "HOST_LOBBY" ? (
               <Lobby
                 setGameId={setGameId}
                 view={view}
@@ -61,15 +62,15 @@ export default function App() {
                 gameId={gameId}
               />
             ) : (
-              <></>
+              <Game />
             )}
           </View>
         </View>
       </View>
 
       {/* Loads Mascot and planets for every view, but not lobby */}
-      {["HOME", "JOIN", "HOST"].includes(view) && <Mascot />}
-      {["LOBBY", "GAME_LOBBY"].includes(view) && (
+      {["HOME", "JOIN", "HOST", "GAME"].includes(view) && <Mascot />}
+      {["LOBBY", "HOST_LOBBY"].includes(view) && (
         <Text style={styles.numQuestions}>32</Text>
       )}
 
@@ -100,17 +101,15 @@ export default function App() {
         <Image source={star} style={imageStyle.starEighteen} />
       </View>
 
-      <View style={styles.dots}>
-        {/* Absolute dots */}
-        <View style={imageStyle.dotOne} />
-        <View style={imageStyle.dotTwo} />
-        <View style={imageStyle.dotThree} />
+      {/* Absolute dots */}
+      <View style={imageStyle.dotOne} />
+      <View style={imageStyle.dotTwo} />
+      <View style={imageStyle.dotThree} />
 
-        {/* Asolute shape */}
-        <Image source={blobOne} style={imageStyle.blobOne} />
-        <Image source={blobTwo} style={imageStyle.blobTwo} />
-        <Image source={blobThree} style={imageStyle.blobThree} />
-      </View>
+      {/* Asolute shape */}
+      <Image source={blobOne} style={imageStyle.blobOne} />
+      <Image source={blobTwo} style={imageStyle.blobTwo} />
+      <Image source={blobThree} style={imageStyle.blobThree} />
     </View>
   );
 }

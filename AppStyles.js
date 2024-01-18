@@ -103,10 +103,11 @@ const styles = StyleSheet.create({
 
   numQuestions: {
     position: "absolute",
-    fontSize: 300,
+    fontSize: 130,
     fontWeight: "600",
     opacity: 0.4,
-    top: 70,
+    top: 170,
+    fontFamily: "PressStart2P",
   },
 
   // Stars
@@ -352,16 +353,16 @@ const imageStyle = StyleSheet.create({
     position: "absolute",
     width: 100,
     height: 100,
-    bottom: 10,
-    left: 15,
+    bottom: 120,
+    left: -60,
   },
 
   blobTwo: {
     position: "absolute",
     width: 60,
     height: 60,
-    bottom: 310,
-    right: 10,
+    bottom: 320,
+    right: -20,
     opacity: 0.6,
   },
 
