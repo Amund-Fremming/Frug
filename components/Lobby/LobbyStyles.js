@@ -1,9 +1,41 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  roverContainer: {
-    width: 50,
-    height: 100,
+  hostLobbyContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10,
+    width: "100%",
+    gap: 20,
+  },
+
+  hostLobbyLeaveAndStart: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: "16%",
+    height: 70,
+    backgroundColor: "#808080",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 7,
+      height: 8,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 0,
+    borderRadius: 10,
+    borderWidth: 3,
+  },
+
+  hostText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: /*"#07BF7B"*/ "white",
+    fontFamily: "PressStart2P",
   },
 
   buttonContainer: {
@@ -111,6 +143,7 @@ const styles = StyleSheet.create({
     margin: 0,
     top: 30,
     fontSize: 23,
+    lineHeight: 27,
     fontWeight: "bold",
     color: /*"#07BF7B"*/ "white",
     fontFamily: "PressStart2P",

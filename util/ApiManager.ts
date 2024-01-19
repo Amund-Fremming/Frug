@@ -43,7 +43,6 @@ const postQuestionToGame = async (question: Question) => {
     }
 
     const data = await response.text();
-    console.log(data);
     return data;
   } catch (error) {
     console.error(`Error: ${error}`);

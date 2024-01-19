@@ -44,6 +44,15 @@ export default function Lobby({
     shadowOpacity: isPressed ? 0.7 : 1,
   });
 
+  const getHostButtonStyles = (isPressed: boolean) => ({
+    ...styles.hostLobbyLeaveAndStart,
+    transform: isPressed
+      ? [{ translateX: 7 }, { translateY: 8 }]
+      : [{ translateX: 0 }, { translateY: 0 }],
+    shadowOffset: isPressed ? { width: 2, height: 3 } : { width: 7, height: 8 },
+    shadowOpacity: isPressed ? 0.7 : 1,
+  });
+
   const handleLeave = () => {
     setGameId("");
     setView("HOME");
@@ -63,8 +72,8 @@ export default function Lobby({
       questionStr: question,
     };
 
-    await postQuestionToGame(newQuestion);
     setQuestion("");
+    await postQuestionToGame(newQuestion);
   };
 
   const handleStart = () => {
@@ -96,25 +105,37 @@ export default function Lobby({
         <Text style={styles.text}>Add</Text>
       </Pressable>
 
-      {view === "HOST_LOBBY" && (
-        <Pressable
-          onPress={handleStart}
-          onPressIn={() => setStartPressed(true)}
-          onPressOut={() => setStartPressed(false)}
-          style={() => getBackButtonStyles(startPressed)}
-        >
-          <Text style={styles.text}>Start</Text>
-        </Pressable>
+      {view === "HOST_LOBBY" ? (
+        <View style={styles.hostLobbyContainer}>
+          <Pressable
+            onPress={handleLeave}
+            onPressIn={() => setLeavePressed(true)}
+            onPressOut={() => setLeavePressed(false)}
+            style={() => getHostButtonStyles(leavePressed)}
+          >
+            <Text style={styles.hostText}>Leave</Text>
+          </Pressable>
+          <Pressable
+            onPress={handleStart}
+            onPressIn={() => setStartPressed(true)}
+            onPressOut={() => setStartPressed(false)}
+            style={() => getHostButtonStyles(startPressed)}
+          >
+            <Text style={styles.hostText}>Start</Text>
+          </Pressable>
+        </View>
+      ) : (
+        <>
+          <Pressable
+            onPress={handleLeave}
+            onPressIn={() => setLeavePressed(true)}
+            onPressOut={() => setLeavePressed(false)}
+            style={() => getBackButtonStyles(leavePressed)}
+          >
+            <Text style={styles.text}>Leave</Text>
+          </Pressable>
+        </>
       )}
-
-      <Pressable
-        onPress={handleLeave}
-        onPressIn={() => setLeavePressed(true)}
-        onPressOut={() => setLeavePressed(false)}
-        style={() => getBackButtonStyles(leavePressed)}
-      >
-        <Text style={styles.text}>Leave</Text>
-      </Pressable>
     </View>
   );
 }

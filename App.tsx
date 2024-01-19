@@ -62,14 +62,14 @@ export default function App() {
                 gameId={gameId}
               />
             ) : (
-              <Game />
+              <Game setGameId={setGameId} setView={setView} />
             )}
           </View>
         </View>
       </View>
 
       {/* Loads Mascot and planets for every view, but not lobby */}
-      {["HOME", "JOIN", "HOST", "GAME"].includes(view) && <Mascot />}
+      {["HOME", "JOIN", "HOST"].includes(view) && <Mascot />}
       {["LOBBY", "HOST_LOBBY"].includes(view) && (
         <Text style={styles.numQuestions}>32</Text>
       )}
@@ -102,9 +102,13 @@ export default function App() {
       </View>
 
       {/* Absolute dots */}
-      <View style={imageStyle.dotOne} />
-      <View style={imageStyle.dotTwo} />
-      <View style={imageStyle.dotThree} />
+      {view !== "GAME" && (
+        <>
+          <View style={imageStyle.dotOne} />
+          <View style={imageStyle.dotTwo} />
+          <View style={imageStyle.dotThree} />
+        </>
+      )}
 
       {/* Asolute shape */}
       <Image source={blobOne} style={imageStyle.blobOne} />

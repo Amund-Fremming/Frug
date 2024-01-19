@@ -38,6 +38,13 @@ export default function GameOptions({ view, setView, setGameId }: HostProps) {
         "Invalid Input",
         "Some characters are not allowed, try again"
       );
+      setValue("");
+      return;
+    }
+
+    if (value.length > 10) {
+      Alert.alert("Invalid Input", "Game ID can is too long, try again");
+      setValue("");
       return;
     }
 
