@@ -8,7 +8,7 @@ interface GameProps {
 }
 
 export default function Game({ setGameId, setView }: GameProps) {
-  const [initPress, setInitPress] = useState(false);
+  const [nextButtonText, setNextButtonText] = useState("Start Game");
   const [nextPressed, setNextPressed] = useState(false);
   const [leavePressed, setLeavePressed] = useState(false);
 
@@ -24,6 +24,7 @@ export default function Game({ setGameId, setView }: GameProps) {
   });
 
   const handleNext = () => {
+    setNextButtonText("Next");
     // Play animation
     // remove current questionb ?
     // take out a new question and display
@@ -44,7 +45,7 @@ export default function Game({ setGameId, setView }: GameProps) {
             onPressIn={() => setNextPressed(true)}
             onPressOut={() => setNextPressed(false)}
           >
-            <Text style={styles.text}>Next</Text>
+            <Text style={styles.text}>{nextButtonText}</Text>
           </Pressable>
           <Pressable
             style={() => getButtonStyles(leavePressed)}

@@ -11,6 +11,15 @@ const styles = StyleSheet.create({
     gap: 20,
   },
 
+  numQuestions: {
+    position: "absolute",
+    fontSize: 130,
+    fontWeight: "600",
+    opacity: 0.4,
+    top: -230,
+    fontFamily: "PressStart2P",
+  },
+
   hostLobbyLeaveAndStart: {
     justifyContent: "center",
     alignItems: "center",
