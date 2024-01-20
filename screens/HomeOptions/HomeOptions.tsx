@@ -2,9 +2,9 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { View } from "react-native";
 import { styles } from "./HomeOptionsStyles";
 
-import Mascot from "../Mascot/Mascot";
-import Planets from "../planets/Planets";
-import BigButton from "../BigButton/BigButton";
+import Mascot from "../../components/Mascot/Mascot";
+import Planets from "../../components/Planets/Planets";
+import BigButton from "../../components/BigButton/BigButton";
 
 interface HomeProps {
   setView: Dispatch<SetStateAction<string>>;

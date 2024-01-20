@@ -3,10 +3,11 @@ import { View, TextInput, Alert } from "react-native";
 import { styles } from "./GameOptionsStyles";
 import { validateInput } from "../../util/InputValidator";
 
-import Mascot from "../Mascot/Mascot";
-import Planets from "../planets/Planets";
-import BigButton from "../BigButton/BigButton";
-import MediumButton from "../MediumButton/MediumButton";
+import Mascot from "../../components/Mascot/Mascot";
+import Planets from "../../components/Planets/Planets";
+import BigButton from "../../components/BigButton/BigButton";
+import MediumButton from "../../components/MediumButton/MediumButton";
+import BigInput from "../../components/BigInput/BigInput";
 
 interface HostProps {
   setView: Dispatch<SetStateAction<string>>;
@@ -27,8 +28,8 @@ export default function GameOptions({ view, setView, setGameId }: HostProps) {
       return;
     }
 
-    if (value.length > 10) {
-      Alert.alert("Invalid Input", "Game ID can is too long, try again");
+    if (value.length > 9) {
+      Alert.alert("Invalid Input", "Game ID can is too long(9), try again");
       setValue("");
       return;
     }
@@ -43,11 +44,10 @@ export default function GameOptions({ view, setView, setGameId }: HostProps) {
       <Planets />
 
       <View style={styles.buttonContainer}>
-        <TextInput
-          placeholder="Game id"
-          style={styles.input}
+        <BigInput
           value={value}
-          onChangeText={(text) => setValue(text.toUpperCase())}
+          placeholder="Game ID"
+          handleChange={(text) => setValue(text.toUpperCase())}
         />
         <BigButton
           text={view === "HOST" ? "Host" : "Join"}

@@ -1,12 +1,9 @@
 import { View, Image } from "react-native";
 import { styles, imageStyle } from "./PlanetStyles.js";
-
 export default function Planets() {
   const planetOne = require("../../assets/images/planets/planetOne.png");
   const planetTwo = require("../../assets/images/planets/planetTwo.png");
   const planetThree = require("../../assets/images/planets/planetThree.png");
-
-  const mascot = require("../../assets/images/mascot.png");
 
   return (
     <View style={styles.planetContainer}>

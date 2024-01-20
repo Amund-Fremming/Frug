@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Pressable, Text } from "react-native";
-import { styles } from "./MediumButtonStyles.js";
+import { styles } from "./SmallButtonStyles.js";
 
-interface MediumButtonProps {
+interface SmallButtonProps {
   text: string;
   handlePress: () => void;
 }
 
-export default function MediumButton({ text, handlePress }: MediumButtonProps) {
+export default function SmallButton({ text, handlePress }: SmallButtonProps) {
   const [buttonPressed, setButtonPressed] = useState(false);
 
   const getButtonStyles = (isPressed: boolean) => ({

@@ -2,7 +2,9 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   button: {
-    width: 290,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 130,
     height: 70,
     backgroundColor: "#808080",
     display: "flex",
@@ -20,7 +22,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 23,
+    fontSize: 18,
     fontWeight: "bold",
     color: /*"#07BF7B"*/ "white",
     fontFamily: "PressStart2P",

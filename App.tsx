@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { View, Image, Text } from "react-native";
+import { View, Image } from "react-native";
 import { styles, imageStyle } from "./AppStyles.js";
 
-import HomeOptions from "./components/HomeOptions/HomeOptions";
-import GameOptions from "./components/GameOptions/GameOptions";
-import Lobby from "./components/Lobby/Lobby";
-import Mascot from "./components/Mascot/Mascot";
+import HomeOptions from "./screens/HomeOptions/HomeOptions";
+import GameOptions from "./screens/GameOptions/GameOptions";
+import Lobby from "./screens/Lobby/Lobby";
 
 import * as Font from "expo-font";
-import Game from "./components/Game/Game";
+import Game from "./screens/Game/Game";
 
 export default function App() {
   const [view, setView] = useState("HOME");

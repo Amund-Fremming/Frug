@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  button: {
-    width: 290,
+  input: {
+    width: "35%",
     height: 70,
-    backgroundColor: "#808080",
+    backgroundColor: "#ffffff",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -17,6 +17,8 @@ const styles = StyleSheet.create({
     shadowRadius: 0,
     borderRadius: 10,
     borderWidth: 3,
+    padding: 15,
+    fontSize: 22,
   },
 
   text: {
