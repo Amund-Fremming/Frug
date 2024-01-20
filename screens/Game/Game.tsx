@@ -1,33 +1,58 @@
 import { Text, View, Image, Pressable } from "react-native";
 import { styles, imageStyle } from "./GameStyles";
-import { useState, SetStateAction, Dispatch } from "react";
+import { useState, useEffect, SetStateAction, Dispatch } from "react";
+
+import { fetchQuestionsForGame } from "../../util/ApiManager";
+import { Question } from "../../util/ApiManager";
+
+import BigButton from "../../components/BigButton/BigButton";
 
 interface GameProps {
+  gameId: string;
   setGameId: Dispatch<SetStateAction<string>>;
   setView: Dispatch<SetStateAction<string>>;
 }
 
-export default function Game({ setGameId, setView }: GameProps) {
+export default function Game({ setGameId, setView, gameId }: GameProps) {
   const [nextButtonText, setNextButtonText] = useState("Start Game");
-  const [nextPressed, setNextPressed] = useState(false);
-  const [leavePressed, setLeavePressed] = useState(false);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [question, setQuestion] = useState("");
 
   const mascot = require("../../assets/images/raptorrune.png");
 
-  const getButtonStyles = (isPressed: boolean) => ({
-    ...styles.button,
-    transform: isPressed
-      ? [{ translateX: 7 }, { translateY: 8 }]
-      : [{ translateX: 0 }, { translateY: 0 }],
-    shadowOffset: isPressed ? { width: 2, height: 3 } : { width: 7, height: 8 },
-    shadowOpacity: isPressed ? 0.7 : 1,
-  });
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
 
-  const handleNext = () => {
+  const fetchQuestions = async () => {
+    const fetchedQuestions = await fetchQuestionsForGame(gameId);
+    setQuestions(fetchedQuestions);
+  };
+
+  const handleNextQuestion = () => {
     setNextButtonText("Next");
-    // Play animation
-    // remove current questionb ?
-    // take out a new question and display
+    /* Play animation */
+    /*
+        First use a function to set all four
+        elements opacity too 0% then wait 2 seconds,
+        or maybe take them down in reverse order for
+        a smoother transition?
+
+        Use setTimeout to delay four operations
+        each operation should come after the one before
+        the operation sets the opacity for the element to 100%.
+        Then use typewriter effect to write out the question.
+    */
+    const randomIndex = Math.random() * questions.length;
+    const randomQuestion = questions.at(randomIndex);
+
+    setQuestion(
+      randomQuestion === undefined
+        ? "Game finished"
+        : randomQuestion.questionStr
+    );
+
+    setQuestions(questions.filter((q) => q !== randomQuestion));
   };
 
   const handleLeave = () => {
@@ -39,22 +64,8 @@ export default function Game({ setGameId, setView }: GameProps) {
     <>
       <View style={styles.gameContainer}>
         <View style={styles.buttonContainer}>
-          <Pressable
-            style={() => getButtonStyles(nextPressed)}
-            onPress={handleNext}
-            onPressIn={() => setNextPressed(true)}
-            onPressOut={() => setNextPressed(false)}
-          >
-            <Text style={styles.text}>{nextButtonText}</Text>
-          </Pressable>
-          <Pressable
-            style={() => getButtonStyles(leavePressed)}
-            onPress={handleLeave}
-            onPressIn={() => setLeavePressed(true)}
-            onPressOut={() => setLeavePressed(false)}
-          >
-            <Text style={styles.text}>Leave</Text>
-          </Pressable>
+          <BigButton text={nextButtonText} handlePress={handleNextQuestion} />
+          <BigButton text="Leave" handlePress={handleLeave} />
         </View>
       </View>
 

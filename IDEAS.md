@@ -17,9 +17,7 @@
 
 # Må fikses nå
 
-- Design for vise spm
-- Implementere siden
-- Håndtere når spillet er slutt
+- Mulig å legge inn æøå i alle input bokser
 - Hvordan triggere at spm legges til så antallet kan oppdateres
 
 # Bør fikses

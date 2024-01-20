@@ -61,7 +61,7 @@ export default function App() {
                 gameId={gameId}
               />
             ) : (
-              <Game setGameId={setGameId} setView={setView} />
+              <Game gameId={gameId} setGameId={setGameId} setView={setView} />
             )}
           </View>
         </View>
