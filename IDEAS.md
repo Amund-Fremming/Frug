@@ -17,19 +17,17 @@
 
 # Må fikses nå
 
-- Mulig å legge inn æøå i alle input bokser
+- Legge til ÆØÅ i regex
 - Hvordan triggere at spm legges til så antallet kan oppdateres
 
 # Bør fikses
 
-- Hvis host leaver eller er inaktiv burde andre få melding?
 - Hvis host faller ut, finn ny host?
 
 # Ekstra fiks
 
 - Mer detaljer på planeten??
 - Animasjon for planeter
-- Animasjon for rover
 - Skalere ned bilder og finpusse de
 
 # Til slutt
