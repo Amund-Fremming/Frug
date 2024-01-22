@@ -1,4 +1,4 @@
-import { Text, View, Image, Pressable } from "react-native";
+import { Text, View, Image, ViewStyle } from "react-native";
 import { styles, imageStyle } from "./GameStyles";
 import { useState, useEffect, SetStateAction, Dispatch } from "react";
 
@@ -18,6 +18,11 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [question, setQuestion] = useState("");
 
+  const [dotOne, setDotOne] = useState(false);
+  const [dotTwo, setDotTwo] = useState(false);
+  const [dotThree, setDotThree] = useState(false);
+  const [textbox, setTextbox] = useState(false);
+
   const mascot = require("../../assets/images/raptorrune.png");
 
   useEffect(() => {
@@ -28,6 +33,26 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
     const fetchedQuestions = await fetchQuestionsForGame(gameId);
     setQuestions(fetchedQuestions);
   };
+
+  const toggleDotThree = (activated: boolean): ViewStyle => ({
+    ...styles.questionAnimationDotOne,
+    display: activated ? "flex" : "none",
+  });
+
+  const toggleDotTwo = (activated: boolean): ViewStyle => ({
+    ...styles.questionAnimationDotTwo,
+    display: activated ? "flex" : "none",
+  });
+
+  const toggleDotOne = (activated: boolean): ViewStyle => ({
+    ...styles.questionAnimationDotThree,
+    display: activated ? "flex" : "none",
+  });
+
+  const toggleTextbox = (activated: boolean): ViewStyle => ({
+    ...styles.questionAnimationTextbox,
+    display: activated ? "flex" : "none",
+  });
 
   const handleNextQuestion = () => {
     setNextButtonText("Next");
@@ -43,6 +68,24 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
         the operation sets the opacity for the element to 100%.
         Then use typewriter effect to write out the question.
     */
+    setTextbox(false);
+    setDotThree(false);
+    setDotTwo(false);
+    setDotOne(false);
+
+    setTimeout(() => {
+      setDotOne(true);
+    }, 300);
+    setTimeout(() => {
+      setDotTwo(true);
+    }, 600);
+    setTimeout(() => {
+      setDotThree(true);
+    }, 900);
+    setTimeout(() => {
+      setTextbox(true);
+    }, 1200);
+
     const randomIndex = Math.random() * questions.length;
     const randomQuestion = questions.at(randomIndex);
 
@@ -67,6 +110,16 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
           <BigButton text={nextButtonText} handlePress={handleNextQuestion} />
           <BigButton text="Leave" handlePress={handleLeave} />
         </View>
+      </View>
+
+      {/* Game Animation */}
+      <View style={styles.questionAnimationContainer}>
+        <View style={toggleTextbox(textbox)}>
+          <Text style={styles.text}>{question}</Text>
+        </View>
+        <View style={toggleDotOne(dotOne)}></View>
+        <View style={toggleDotTwo(dotTwo)}></View>
+        <View style={toggleDotThree(dotThree)}></View>
       </View>
 
       {/* Absolute Mascot*/}

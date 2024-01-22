@@ -14,24 +14,6 @@ const styles = StyleSheet.create({
     width: "100%",
   },
 
-  button: {
-    width: "35%",
-    height: 70,
-    backgroundColor: "#808080",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 7,
-      height: 8,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    borderRadius: 10,
-    borderWidth: 3,
-  },
-
   buttonContainer: {
     width: "100%",
     flexDirection: "column",
@@ -41,11 +23,71 @@ const styles = StyleSheet.create({
     top: 40,
   },
 
+  questionAnimationContainer: {
+    position: "absolute",
+    height: 300,
+    width: "100%",
+    top: -320,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 20,
+  },
+
+  questionAnimationTextbox: {
+    position: "absolute",
+    top: 20,
+    minWidth: 340,
+    minHeight: 90,
+    borderRadius: "30%",
+    borderColor: "#000000",
+    borderWidth: 4,
+    backgroundColor: "#ffffff",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 10,
+  },
+
   text: {
-    fontSize: 23,
-    fontWeight: "bold",
-    color: /*"#07BF7B"*/ "white",
+    fontSize: 16,
+    color: "black",
     fontFamily: "PressStart2P",
+    lineHeight: 20,
+  },
+
+  questionAnimationDotOne: {
+    position: "absolute",
+    left: "56%",
+    top: 145,
+    width: 20,
+    height: 20,
+    borderRadius: 425,
+    backgroundColor: "#ffffff",
+    borderColor: "#000000",
+    borderWidth: 2.4,
+  },
+
+  questionAnimationDotTwo: {
+    position: "absolute",
+    top: 190,
+    left: "52%",
+    width: 18,
+    height: 18,
+    borderRadius: 425,
+    backgroundColor: "#ffffff",
+    borderColor: "#000000",
+    borderWidth: 2.3,
+  },
+
+  questionAnimationDotThree: {
+    position: "absolute",
+    top: 235,
+    width: 15,
+    height: 15,
+    borderRadius: 425,
+    backgroundColor: "#ffffff",
+    borderColor: "#000000",
+    borderWidth: 2.2,
   },
 });
 
