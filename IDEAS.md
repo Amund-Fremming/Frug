@@ -1,38 +1,23 @@
 # Ideas to consider
 
-    - Spaceship moving across the screen far behind
-    - Shooting stars
-    - Leika the dog
-    - Mars rover on the planet
-    - Random thing floating behind in space
-
-# If more time
-
-    - Make the beer tilt from side to side
-    - Make the tail tilt from top to bottom
-
-# Features
-
-    - When hitting next question, the mascot appears and types
+- Make the beer tilt from side to side
+- Make the tail tilt from top to bottom
 
 # Må fikses nå
 
-- Legge til ÆØÅ i regex
 - Hvordan triggere at spm legges til så antallet kan oppdateres
-
-# Bør fikses
-
-- Hvis host faller ut, finn ny host?
+- Spaceship moving across the screen far behind (HOST/JOIN screen)
+- Animation for planets
 
 # Ekstra fiks
 
-- Mer detaljer på planeten??
-- Animasjon for planeter
 - Skalere ned bilder og finpusse de
+- Legge til premade functionality?
 
 # Til slutt
 
 - Refaktorer
-- Les over apple sine kriterier
 - Fjern alle warnings
+
+- Les over apple sine kriterier
 - Publiser

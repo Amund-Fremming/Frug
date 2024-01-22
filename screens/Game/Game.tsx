@@ -56,35 +56,21 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
 
   const handleNextQuestion = () => {
     setNextButtonText("Next");
-    /* Play animation */
-    /*
-        First use a function to set all four
-        elements opacity too 0% then wait 2 seconds,
-        or maybe take them down in reverse order for
-        a smoother transition?
 
-        Use setTimeout to delay four operations
-        each operation should come after the one before
-        the operation sets the opacity for the element to 100%.
-        Then use typewriter effect to write out the question.
-    */
     setTextbox(false);
     setDotThree(false);
     setDotTwo(false);
-    setDotOne(false);
 
-    setTimeout(() => {
-      setDotOne(true);
-    }, 300);
+    setDotOne(true);
     setTimeout(() => {
       setDotTwo(true);
-    }, 600);
+    }, 300);
     setTimeout(() => {
       setDotThree(true);
-    }, 900);
+    }, 600);
     setTimeout(() => {
       setTextbox(true);
-    }, 1200);
+    }, 900);
 
     const randomIndex = Math.random() * questions.length;
     const randomQuestion = questions.at(randomIndex);

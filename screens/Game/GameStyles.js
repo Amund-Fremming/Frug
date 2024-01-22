@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   questionAnimationTextbox: {
     position: "absolute",
     top: 20,
-    minWidth: 340,
+    width: 340,
     minHeight: 90,
     borderRadius: "30%",
     borderColor: "#000000",
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
+    zIndex: 10,
   },
 
   text: {
@@ -58,18 +59,19 @@ const styles = StyleSheet.create({
   questionAnimationDotOne: {
     position: "absolute",
     left: "56%",
-    top: 145,
+    top: 160,
     width: 20,
     height: 20,
     borderRadius: 425,
     backgroundColor: "#ffffff",
     borderColor: "#000000",
     borderWidth: 2.4,
+    zIndex: 0,
   },
 
   questionAnimationDotTwo: {
     position: "absolute",
-    top: 190,
+    top: 200,
     left: "52%",
     width: 18,
     height: 18,
@@ -77,6 +79,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderColor: "#000000",
     borderWidth: 2.3,
+    zIndex: 0,
   },
 
   questionAnimationDotThree: {
@@ -88,6 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderColor: "#000000",
     borderWidth: 2.2,
+    zIndex: 0,
   },
 });
 
