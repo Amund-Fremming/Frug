@@ -7,7 +7,7 @@
 
 - Hvordan triggere at spm legges til så antallet kan oppdateres
 - Spaceship moving across the screen far behind (HOST/JOIN screen)
-- Animation for planets
+- Legge til premade games?
 
 # Ekstra fiks
 

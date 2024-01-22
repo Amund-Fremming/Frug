@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from "react";
+import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { Text, View, Alert } from "react-native";
 import { styles } from "./LobbyStyles";
 
@@ -24,6 +24,17 @@ export default function Lobby({
   view,
 }: LobbyProps) {
   const [question, setQuestion] = useState("");
+  const [numQuestions, setNumQuestions] = useState<number>(0);
+
+  /*
+  useEffect(() => {
+    if (gameId) {
+      initGameSocket(gameId, setNumQuestions);
+    }
+
+    return () => closeGameSocket();
+  }, [gameId]);
+  */
 
   const handleLeave = () => {
     setGameId("");
@@ -54,7 +65,7 @@ export default function Lobby({
 
   return (
     <>
-      <Text style={styles.numberOfQuestionsDisplay}>32</Text>
+      <Text style={styles.numberOfQuestionsDisplay}>{numQuestions}</Text>
 
       <View style={styles.buttonContainer}>
         <Text style={styles.gameIdDisplay}>{gameId}</Text>

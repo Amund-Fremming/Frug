@@ -95,9 +95,13 @@ export default function App() {
       </View>
 
       {/* Absolute dots */}
-      <View style={imageStyle.dotOne} />
-      <View style={imageStyle.dotTwo} />
-      <View style={imageStyle.dotThree} />
+      {view !== "GAME" && (
+        <>
+          <View style={imageStyle.dotOne} />
+          <View style={imageStyle.dotTwo} />
+          <View style={imageStyle.dotThree} />
+        </>
+      )}
 
       {/* Asolute shape */}
       <Image source={blobOne} style={imageStyle.blobOne} />

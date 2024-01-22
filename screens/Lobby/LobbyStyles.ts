@@ -6,9 +6,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    gap: 10,
+    gap: /* KANSKJE 10!!! */ 20,
     width: "100%",
-    gap: 20,
   },
 
   numberOfQuestionsDisplay: {
@@ -23,7 +22,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     width: "100%",
     flexDirection: "column",
-    justifyContent: "start",
+    justifyContent: "flex-start",
     alignItems: "center",
     gap: 30,
     bottom: 100,

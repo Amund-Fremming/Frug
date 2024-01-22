@@ -8,7 +8,7 @@ export default function Planets() {
   const planetThreeAnim = useRef(new Animated.Value(0)).current;
 
   const startAnimation = (animValue: Animated.Value) => {
-    const duration = 1000 + Math.random() * 2000;
+    const duration = 1000 + Math.random() * 1500;
 
     Animated.loop(
       Animated.sequence([
