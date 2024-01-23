@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Image } from "react-native";
 import { styles, imageStyle } from "./AppStyles.js";
+import "react-native-url-polyfill/auto";
 
 import HomeOptions from "./screens/HomeOptions/HomeOptions";
 import GameOptions from "./screens/GameOptions/GameOptions";

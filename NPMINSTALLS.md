@@ -6,3 +6,4 @@ npm install @react-navigation/stack
 npm install @react-navigation/bottom-tabs
 
 npm install @microsoft/signalr
+npm install react-native-url-polyfill --save (FIKSER URL PROBLEMER)

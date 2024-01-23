@@ -1,4 +1,4 @@
-const URL_BASE = "trike.azurewebsites.net/spike";
+const URL_BASE = "http://trike.azurewebsites.net/spike";
 const DEV_URL_BASE = "http://localhost:5088/spike";
 
 interface Question {

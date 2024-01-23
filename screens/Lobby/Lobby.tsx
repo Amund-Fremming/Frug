@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from "react";
+import React, { useState, Dispatch, SetStateAction, useEffect } from "react";
 import { Text, View, Alert } from "react-native";
 import { styles } from "./LobbyStyles";
 
@@ -9,6 +9,12 @@ import BigButton from "../../components/BigButton/BigButton";
 import MediumButton from "../../components/MediumButton/MediumButton";
 import SmallButton from "../../components/SmallButton/SmallButton";
 import BigInput from "../../components/BigInput/BigInput";
+
+import {
+  startConnection,
+  createConnection,
+  stopConnection,
+} from "../../util/GameHub";
 
 interface LobbyProps {
   setGameId: Dispatch<SetStateAction<string>>;
@@ -25,6 +31,19 @@ export default function Lobby({
 }: LobbyProps) {
   const [question, setQuestion] = useState("");
   const [numQuestions, setNumQuestions] = useState<number>(0);
+
+  useEffect(() => {
+    const connection = createConnection();
+
+    startConnection(connection);
+
+    connection.on("ReceiveQuestionCount", (gameId: string, count: number) => {
+      console.log("Question count for game " + gameId + ": " + count);
+      setNumQuestions(count);
+    });
+
+    return () => stopConnection(connection);
+  }, []);
 
   const handleLeave = () => {
     setGameId("");
