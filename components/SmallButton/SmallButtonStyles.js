@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 130,
     height: 70,
-    backgroundColor: "#808080",
+    backgroundColor: "#C4A58A",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     fontWeight: "bold",
-    color: /*"#07BF7B"*/ "white",
+    color: /*"#07BF7B"*/ "black",
     fontFamily: "PressStart2P",
   },
 });

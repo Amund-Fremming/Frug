@@ -10,23 +10,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  imageContainer: {
-    width: "100%",
-    position: "absolute",
-    top: 60,
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-  },
-
-  mascotContainer: {
-    position: "absolute",
-    top: 200,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
   // Background Circles
   layerOneCircle: {
     width: 850,
@@ -56,58 +39,15 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     borderRadius: "3000%",
-    backgroundColor: "#A66444",
+    backgroundColor: "#8AA9C4",
     borderWidth: 4,
     borderColor: "black",
-  },
-
-  // Planet View Containers
-  planetOne: {
-    width: 150,
-    height: 150,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  planetTwo: {
-    width: 150,
-    height: 150,
-    marginBottom: 50,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  planetThree: {
-    width: 150,
-    height: 150,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  // Text
-  textShadow: {
-    width: "25%",
-    height: "19%",
-    backgroundColor: "black",
-    display: "flex",
-    justifyContent: "start",
-    alignItems: "center",
-    borderRadius: 10,
   },
 
   text: {
     fontSize: 26,
     fontWeight: "bold",
     color: /*"#07BF7B"*/ "white",
-  },
-
-  numQuestions: {
-    position: "absolute",
-    fontSize: 130,
-    fontWeight: "600",
-    opacity: 0.4,
-    top: 170,
-    fontFamily: "PressStart2P",
   },
 
   // Stars
@@ -168,11 +108,6 @@ const imageStyle = StyleSheet.create({
     },
     shadowOpacity: 0.6,
     shadowRadius: 4.65,
-  },
-
-  mascot: {
-    width: 330,
-    height: 330,
   },
 
   starOne: {

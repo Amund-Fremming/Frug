@@ -8,6 +8,7 @@ import Lobby from "./screens/Lobby/Lobby";
 
 import * as Font from "expo-font";
 import Game from "./screens/Game/Game";
+import Premade from "./screens/Premade/Premade";
 
 export default function App() {
   const [view, setView] = useState("HOME");
@@ -60,8 +61,12 @@ export default function App() {
                 setView={setView}
                 gameId={gameId}
               />
-            ) : (
+            ) : view === "GAME" ? (
               <Game gameId={gameId} setGameId={setGameId} setView={setView} />
+            ) : view === "PREMADE" ? (
+              <Premade />
+            ) : (
+              <></>
             )}
           </View>
         </View>
@@ -94,7 +99,7 @@ export default function App() {
         <Image source={star} style={imageStyle.starEighteen} />
       </View>
 
-      {/* Absolute dots */}
+      {/*
       {view !== "GAME" && (
         <>
           <View style={imageStyle.dotOne} />
@@ -102,11 +107,11 @@ export default function App() {
           <View style={imageStyle.dotThree} />
         </>
       )}
-
-      {/* Asolute shape */}
+      
       <Image source={blobOne} style={imageStyle.blobOne} />
       <Image source={blobTwo} style={imageStyle.blobTwo} />
       <Image source={blobThree} style={imageStyle.blobThree} />
+    */}
     </View>
   );
 }
