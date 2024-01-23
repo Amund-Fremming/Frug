@@ -63,9 +63,14 @@ export default function App() {
                 gameId={gameId}
               />
             ) : view === "GAME" ? (
-              <Game gameId={gameId} setGameId={setGameId} setView={setView} />
+              <Game
+                gameId={gameId}
+                setGameId={setGameId}
+                view={view}
+                setView={setView}
+              />
             ) : view === "PREMADE" ? (
-              <Premade />
+              <Premade setGameId={setGameId} />
             ) : (
               <></>
             )}

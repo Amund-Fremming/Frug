@@ -2,22 +2,15 @@
 
 - Make the beer tilt from side to side
 - Make the tail tilt from top to bottom
+- Alle games lagres, games må lukkes om de startes, upvotes og feed på premade
 
-# Må fikses nå
+## HA MED ?
 
-- Hvordan triggere at spm legges til så antallet kan oppdateres
 - Spaceship moving across the screen far behind (HOST/JOIN screen)
-- Legge til premade games?
-
-# Ekstra fiks
-
-- Skalere ned bilder og finpusse de
-- Legge til premade functionality?
+- Skalere ned bilder og finpusse de / rendre i App.js
 
 # Til slutt
 
-- Refaktorer
-- Fjern alle warnings
-
+- Fjern warnings i frontend
 - Les over apple sine kriterier
 - Publiser

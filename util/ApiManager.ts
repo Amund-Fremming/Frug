@@ -1,4 +1,4 @@
-const URL_BASE = "http://trike.azurewebsites.net/spike";
+const PROD_URL_BASE = "https://trike.azurewebsites.net/spike";
 const DEV_URL_BASE = "http://localhost:5088/spike";
 
 interface Question {
@@ -9,28 +9,25 @@ interface Question {
 const fetchQuestionsForGame = async (gameId: string) => {
   try {
     const response = await fetch(
-      `${DEV_URL_BASE}?gameId=${encodeURIComponent(gameId)}`,
+      `${PROD_URL_BASE}?gameId=${encodeURIComponent(gameId)}`,
       {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
       }
     );
 
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(`Error: ${response.status}`);
     }
 
     return await response.json();
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error(`GET not working: ${error}`);
   }
 };
 
 const postQuestionToGame = async (question: Question) => {
   try {
-    const response = await fetch(DEV_URL_BASE, {
+    const response = await fetch(PROD_URL_BASE, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,13 +36,13 @@ const postQuestionToGame = async (question: Question) => {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(`Error:  ${response.status}`);
     }
 
     const data = await response.text();
     return data;
   } catch (error) {
-    console.error(`Error: ${error}`);
+    console.error(`POST not working: ${error}`);
   }
 };
 

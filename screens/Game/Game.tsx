@@ -7,13 +7,16 @@ import { Question } from "../../util/ApiManager";
 
 import BigButton from "../../components/BigButton/BigButton";
 
+import { _pmd_001, _pmd_002 } from "../../util/PremadeQuestions";
+
 interface GameProps {
   gameId: string;
   setGameId: Dispatch<SetStateAction<string>>;
+  view: string;
   setView: Dispatch<SetStateAction<string>>;
 }
 
-export default function Game({ setGameId, setView, gameId }: GameProps) {
+export default function Game({ setGameId, setView, gameId, view }: GameProps) {
   const [nextButtonText, setNextButtonText] = useState("Start Game");
   const [questions, setQuestions] = useState<Question[]>([]);
   const [question, setQuestion] = useState("");
@@ -26,6 +29,15 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
   const mascot = require("../../assets/images/raptorrune.png");
 
   useEffect(() => {
+    if (gameId === "_pmd_001") {
+      setQuestions(_pmd_001);
+    }
+
+    if (gameId === "_pmd_002") {
+      setQuestions(_pmd_002);
+      return;
+    }
+
     fetchQuestions();
   }, []);
 

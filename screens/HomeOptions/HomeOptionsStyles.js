@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: 30,
-    top: 60,
+    top: 40,
   },
 });
 

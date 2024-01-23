@@ -2,11 +2,10 @@ import React, { Dispatch, SetStateAction } from "react";
 import { View, Text } from "react-native";
 
 interface PremadeProps {
-  // todo
-  // todo
+  setGameId: Dispatch<SetStateAction<string>>;
 }
 
-export default function Premade() {
+export default function Premade({ setGameId }: PremadeProps) {
   return (
     <>
       <View>
