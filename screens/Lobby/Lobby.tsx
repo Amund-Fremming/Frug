@@ -38,7 +38,6 @@ export default function Lobby({
     startConnection(connection);
 
     connection.on("ReceiveQuestionCount", (gameId: string, count: number) => {
-      console.log("Question count for game " + gameId + ": " + count);
       setNumQuestions(count);
     });
 
@@ -80,18 +79,18 @@ export default function Lobby({
         <Text style={styles.gameIdDisplay}>{gameId}</Text>
         <BigInput
           value={question}
-          placeholder="Add a Question ..."
+          placeholder="Legg til spørsmål ..."
           handleChange={(text: string) => setQuestion(text)}
         />
-        <BigButton text="Add" handlePress={handleAddQuestion} />
+        <BigButton text="Legg til" handlePress={handleAddQuestion} />
 
         {view === "HOST_LOBBY" ? (
           <View style={styles.hostLobbyContainer}>
-            <SmallButton text="Leave" handlePress={handleLeave} />
+            <SmallButton text="Hjem" handlePress={handleLeave} />
             <SmallButton text="Start" handlePress={handleStart} />
           </View>
         ) : (
-          <MediumButton text="Leave" handlePress={handleLeave} />
+          <MediumButton text="Tilbake" handlePress={handleLeave} />
         )}
       </View>
     </>

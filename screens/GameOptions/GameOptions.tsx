@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { View, TextInput, Alert } from "react-native";
+import { View, Alert } from "react-native";
 import { styles } from "./GameOptionsStyles";
 import { validateInput } from "../../util/InputValidator";
 
@@ -53,7 +53,7 @@ export default function GameOptions({ view, setView, setGameId }: HostProps) {
           text={view === "HOST" ? "Host" : "Join"}
           handlePress={handleClick}
         />
-        <MediumButton text="Back" handlePress={() => setView("HOME")} />
+        <MediumButton text="Tilbake" handlePress={() => setView("HOME")} />
       </View>
     </>
   );

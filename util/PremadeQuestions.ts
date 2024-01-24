@@ -310,6 +310,4 @@ const _pmd_003: Question[] = [
   { gameId: "_pmd_003", questionStr: "Hvem ble utestengt under en trekant?" },
 ];
 
-const _pmd_004: Question[] = [];
-
-export { _pmd_001, _pmd_002 };
+export { _pmd_001, _pmd_002, _pmd_003 };

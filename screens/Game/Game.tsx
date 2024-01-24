@@ -7,7 +7,7 @@ import { Question } from "../../util/ApiManager";
 
 import BigButton from "../../components/BigButton/BigButton";
 
-import { _pmd_001, _pmd_002 } from "../../util/PremadeQuestions";
+import { _pmd_001, _pmd_002, _pmd_003 } from "../../util/PremadeQuestions";
 
 interface GameProps {
   gameId: string;
@@ -17,7 +17,7 @@ interface GameProps {
 }
 
 export default function Game({ setGameId, setView, gameId, view }: GameProps) {
-  const [nextButtonText, setNextButtonText] = useState("Start Game");
+  const [nextButtonText, setNextButtonText] = useState("Start Spill");
   const [questions, setQuestions] = useState<Question[]>([]);
   const [question, setQuestion] = useState("");
 
@@ -38,11 +38,16 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
       return;
     }
 
+    if (gameId === "_pmd_003") {
+      setQuestions(_pmd_003);
+      return;
+    }
+
     fetchQuestions();
   }, []);
 
   const fetchQuestions = async () => {
-    const fetchedQuestions = await fetchQuestionsForGame(gameId);
+    const fetchedQuestions: Question[] = await fetchQuestionsForGame(gameId);
     setQuestions(fetchedQuestions);
   };
 
@@ -67,7 +72,7 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
   });
 
   const handleNextQuestion = () => {
-    setNextButtonText("Next");
+    setNextButtonText("Neste");
 
     setTextbox(false);
     setDotThree(false);
@@ -89,7 +94,7 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
 
     setQuestion(
       randomQuestion === undefined
-        ? "Game finished"
+        ? "Spillet er ferdig!"
         : randomQuestion.questionStr
     );
 

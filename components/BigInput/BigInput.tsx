@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { TextInput, Text } from "react-native";
+import React from "react";
+import { TextInput } from "react-native";
 import { styles } from "./BigInputStyles.js";
 
 interface BigInputProps {

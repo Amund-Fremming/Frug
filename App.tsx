@@ -70,7 +70,7 @@ export default function App() {
                 setView={setView}
               />
             ) : view === "PREMADE" ? (
-              <Premade setGameId={setGameId} />
+              <Premade setGameId={setGameId} setView={setView} />
             ) : (
               <></>
             )}
