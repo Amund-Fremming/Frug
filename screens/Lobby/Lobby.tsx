@@ -82,15 +82,15 @@ export default function Lobby({
           placeholder="Legg til spørsmål ..."
           handleChange={(text: string) => setQuestion(text)}
         />
-        <BigButton text="Legg til" handlePress={handleAddQuestion} />
+        <BigButton text="Add" handlePress={handleAddQuestion} />
 
         {view === "HOST_LOBBY" ? (
           <View style={styles.hostLobbyContainer}>
-            <SmallButton text="Hjem" handlePress={handleLeave} />
+            <SmallButton text="Back" handlePress={handleLeave} />
             <SmallButton text="Start" handlePress={handleStart} />
           </View>
         ) : (
-          <MediumButton text="Tilbake" handlePress={handleLeave} />
+          <MediumButton text="Back" handlePress={handleLeave} />
         )}
       </View>
     </>

@@ -53,7 +53,7 @@ export default function GameOptions({ view, setView, setGameId }: HostProps) {
           text={view === "HOST" ? "Host" : "Join"}
           handlePress={handleClick}
         />
-        <MediumButton text="Tilbake" handlePress={() => setView("HOME")} />
+        <MediumButton text="Back" handlePress={() => setView("HOME")} />
       </View>
     </>
   );

@@ -11,9 +11,12 @@
       "resizeMode": "contain",
       "backgroundColor": "#05002B"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "bundleIdentifier": "com.Spike.drikkelek"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,6 +26,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a42c48e4-acf0-45e9-a93f-7804c82dcd97"
+      }
     }
   }
 }

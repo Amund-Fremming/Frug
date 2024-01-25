@@ -3,6 +3,7 @@ import { View, Image } from "react-native";
 import { styles, imageStyle } from "./PremadeStyles";
 
 import BigButton from "../../components/BigButton/BigButton";
+import MediumButton from "../../components/MediumButton/MediumButton";
 
 interface PremadeProps {
   setGameId: Dispatch<SetStateAction<string>>;
@@ -15,6 +16,11 @@ export default function Premade({ setGameId, setView }: PremadeProps) {
   const handleSetQuestionSet = (gameId: string) => {
     setGameId(gameId);
     setView("GAME");
+  };
+
+  const handleLeave = () => {
+    setGameId("");
+    setView("HOME");
   };
 
   return (
@@ -32,6 +38,7 @@ export default function Premade({ setGameId, setView }: PremadeProps) {
           text="DareDevil"
           handlePress={() => handleSetQuestionSet("_pmd_002")}
         />
+        <MediumButton text="Home" handlePress={handleLeave} />
       </View>
 
       {/* Absolute Mascot*/}

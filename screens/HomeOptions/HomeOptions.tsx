@@ -20,7 +20,7 @@ export default function HomeOptions({ setView }: HomeProps) {
       <View style={styles.buttonContainer}>
         <BigButton text="Host" handlePress={() => setView("HOST")} />
         <BigButton text="Join" handlePress={() => setView("JOIN")} />
-        <MediumButton text="100 spm" handlePress={() => setView("PREMADE")} />
+        <MediumButton text="Premade" handlePress={() => setView("PREMADE")} />
       </View>
     </>
   );

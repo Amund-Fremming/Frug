@@ -17,7 +17,7 @@ interface GameProps {
 }
 
 export default function Game({ setGameId, setView, gameId, view }: GameProps) {
-  const [nextButtonText, setNextButtonText] = useState("Start Spill");
+  const [nextButtonText, setNextButtonText] = useState("Start Game");
   const [questions, setQuestions] = useState<Question[]>([]);
   const [question, setQuestion] = useState("");
 
@@ -72,7 +72,7 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
   });
 
   const handleNextQuestion = () => {
-    setNextButtonText("Neste");
+    setNextButtonText("Next");
 
     setTextbox(false);
     setDotThree(false);
@@ -94,7 +94,7 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
 
     setQuestion(
       randomQuestion === undefined
-        ? "Spillet er ferdig!"
+        ? "Game Finished!"
         : randomQuestion.questionStr
     );
 
