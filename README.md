@@ -35,6 +35,8 @@
 - Mer annimasjoner på mascot figurene
 - Når et spill opprettes og startes burde man ikke kunne legge til spørsmål i dette spillet lenger, kanskje se på mulighet for å bytte host om man faller ut
 
+- Fikse laggy next spm
+
 ## Steder appstore opplastning kan ha feilet
 
 - Expo doctor (npx)
