@@ -9,7 +9,12 @@ import BigButton from "../../components/BigButton/BigButton";
 import MediumButton from "../../components/MediumButton/MediumButton";
 import BigInput from "../../components/BigInput/BigInput";
 
-import { createGame, Game } from "../../util/GameApiManager";
+import {
+  createGame,
+  Game,
+  gameExists,
+  haveGameStarted,
+} from "../../util/GameApiManager";
 
 interface HostProps {
   setView: Dispatch<SetStateAction<string>>;
@@ -24,29 +29,25 @@ export default function GameOptions({
   gameId,
   setGameId,
 }: HostProps) {
-  const [value, setValue] = useState("");
-
   const handleClick = async () => {
-    if (!validateInput(value)) {
+    if (!validateInput(gameId)) {
       Alert.alert(
         "Invalid Input",
         "Some characters are not allowed, try again"
       );
-      setValue("");
+      setGameId("");
       return;
     }
 
-    if (value.length > 9) {
+    if (gameId.length > 9) {
       Alert.alert("Invalid Input", "Game ID can is too long(9), try again");
-      setValue("");
+      setGameId("");
       return;
     }
-
-    setGameId(value);
 
     if (view === "HOST") {
       const game: Game = {
-        gameId: value,
+        gameId: gameId,
         gameStarted: false,
         publicGame: false,
         iconImage: "none",
@@ -54,8 +55,34 @@ export default function GameOptions({
         voters: [],
       };
 
-      await createGame(game);
+      const response = await createGame(game);
+      if (response === "GAME_EXISTS") {
+        Alert.alert(
+          "Invalid Game ID",
+          `Game with ID ${gameId}, already exists!`
+        );
+        setGameId("");
+        return;
+      }
     }
+
+    const gameStarted = await haveGameStarted(gameId);
+    if (view === "JOIN" && gameStarted) {
+      Alert.alert(
+        "Invalid Game ID",
+        `Game with ID ${gameId}, already started!`
+      );
+      setGameId("");
+      return;
+    }
+
+    const gameExist = await gameExists(gameId);
+    if (view === "JOIN" && !gameExist) {
+      Alert.alert("Invalid Game ID", `Game with ID ${gameId}, does not exist!`);
+      setGameId("");
+      return;
+    }
+
     setView(view === "HOST" ? "HOST_LOBBY" : "LOBBY");
   };
 
@@ -66,9 +93,9 @@ export default function GameOptions({
 
       <View style={styles.buttonContainer}>
         <BigInput
-          value={value}
+          value={gameId}
           placeholder="Game ID"
-          handleChange={(text) => setValue(text.toUpperCase())}
+          handleChange={(text) => setGameId(text.toUpperCase())}
         />
         <BigButton
           text={view === "HOST" ? "Host" : "Join"}

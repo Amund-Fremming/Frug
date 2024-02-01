@@ -25,6 +25,12 @@ export const createGame = async (game: Game) => {
       body: JSON.stringify(game),
     });
 
+    console.log(response.status);
+
+    if (response.status === 400) {
+      return "GAME_EXISTS";
+    }
+
     if (!response.ok) {
       throw new Error(`(createGame): ${response.status}`);
     }
@@ -102,5 +108,45 @@ export const voteOnGame = async (voter: Voter) => {
     }
   } catch (error) {
     console.error(`PUT not working (voteOnGame): ${error}`);
+  }
+};
+
+export const haveGameStarted = async (gameId: string) => {
+  try {
+    const response = await fetch(
+      `${DEV_URL_BASE}/gamestarted/?gameId=${encodeURIComponent(gameId)}`,
+      {
+        method: "GET",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`(isGamePublic): ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`GET not working (isGamePublic): ${error}`);
+  }
+};
+
+export const gameExists = async (gameId: string) => {
+  try {
+    const response = await fetch(
+      `${DEV_URL_BASE}/gameexists/?gameId=${encodeURIComponent(gameId)}`,
+      {
+        method: "GET",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`(gameExists): ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`GET not working (gameExists): ${error}`);
   }
 };

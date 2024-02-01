@@ -4,6 +4,7 @@ import { styles } from "./LobbyStyles";
 
 import { Question, addQuestionToGame } from "../../util/QuestionApiManager";
 import { validateInput } from "../../util/InputValidator";
+import { startGame } from "../../util/GameApiManager";
 
 import BigButton from "../../components/BigButton/BigButton";
 import MediumButton from "../../components/MediumButton/MediumButton";
@@ -70,7 +71,8 @@ export default function Lobby({
     await addQuestionToGame(newQuestion);
   };
 
-  const handleStart = () => {
+  const handleStart = async () => {
+    await startGame(gameId);
     setView("GAME");
   };
 
