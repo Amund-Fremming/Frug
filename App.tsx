@@ -53,6 +53,7 @@ export default function App() {
               <GameOptions
                 view={view}
                 setView={setView}
+                gameId={gameId}
                 setGameId={setGameId}
               />
             ) : view === "LOBBY" || view == "HOST_LOBBY" ? (

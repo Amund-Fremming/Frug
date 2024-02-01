@@ -9,16 +9,24 @@ import BigButton from "../../components/BigButton/BigButton";
 import MediumButton from "../../components/MediumButton/MediumButton";
 import BigInput from "../../components/BigInput/BigInput";
 
+import { createGame, Game } from "../../util/GameApiManager";
+
 interface HostProps {
   setView: Dispatch<SetStateAction<string>>;
   view: string;
+  gameId: string;
   setGameId: Dispatch<SetStateAction<string>>;
 }
 
-export default function GameOptions({ view, setView, setGameId }: HostProps) {
+export default function GameOptions({
+  view,
+  setView,
+  gameId,
+  setGameId,
+}: HostProps) {
   const [value, setValue] = useState("");
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (!validateInput(value)) {
       Alert.alert(
         "Invalid Input",
@@ -35,6 +43,18 @@ export default function GameOptions({ view, setView, setGameId }: HostProps) {
     }
 
     setGameId(value);
+
+    if (view === "HOST") {
+      const game: Game = {
+        gameId: gameId,
+        gameStarted: false,
+        publicGame: false,
+        iconImage: "none",
+        numberOfQuestions: 0,
+        voters: [],
+      };
+      await createGame(game);
+    }
     setView(view === "HOST" ? "HOST_LOBBY" : "LOBBY");
   };
 

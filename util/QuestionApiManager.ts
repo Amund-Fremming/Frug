@@ -1,15 +1,14 @@
-const PROD_URL_BASE = "https://trike.azurewebsites.net/spike";
-const DEV_URL_BASE = "http://localhost:5088/spike";
+const QUESTION_URL_BASE = "http://localhost:5088/spike/questions";
 
-interface Question {
+export interface Question {
   gameId: string;
   questionStr: string;
 }
 
-const fetchQuestionsForGame = async (gameId: string) => {
+export const fetchQuestionsForGame = async (gameId: string) => {
   try {
     const response = await fetch(
-      `${PROD_URL_BASE}?gameId=${encodeURIComponent(gameId)}`,
+      `${QUESTION_URL_BASE}?gameId=${encodeURIComponent(gameId)}`,
       {
         method: "GET",
       }
@@ -25,9 +24,9 @@ const fetchQuestionsForGame = async (gameId: string) => {
   }
 };
 
-const postQuestionToGame = async (question: Question) => {
+export const addQuestionToGame = async (question: Question) => {
   try {
-    const response = await fetch(PROD_URL_BASE, {
+    const response = await fetch(QUESTION_URL_BASE, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,5 +44,3 @@ const postQuestionToGame = async (question: Question) => {
     console.error(`POST not working: ${error}`);
   }
 };
-
-export { Question, fetchQuestionsForGame, postQuestionToGame };

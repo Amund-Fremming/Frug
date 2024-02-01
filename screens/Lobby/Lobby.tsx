@@ -2,7 +2,7 @@ import React, { useState, Dispatch, SetStateAction, useEffect } from "react";
 import { Text, View, Alert } from "react-native";
 import { styles } from "./LobbyStyles";
 
-import { Question, postQuestionToGame } from "../../util/ApiManager";
+import { Question, addQuestionToGame } from "../../util/QuestionApiManager";
 import { validateInput } from "../../util/InputValidator";
 
 import BigButton from "../../components/BigButton/BigButton";
@@ -64,7 +64,7 @@ export default function Lobby({
     };
 
     setQuestion("");
-    await postQuestionToGame(newQuestion);
+    await addQuestionToGame(newQuestion);
   };
 
   const handleStart = () => {

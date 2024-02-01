@@ -2,8 +2,8 @@ import { Text, View, Image, ViewStyle } from "react-native";
 import { styles, imageStyle } from "./GameStyles";
 import { useState, useEffect, SetStateAction, Dispatch } from "react";
 
-import { fetchQuestionsForGame } from "../../util/ApiManager";
-import { Question } from "../../util/ApiManager";
+import { fetchQuestionsForGame } from "../../util/QuestionApiManager";
+import { Question } from "../../util/QuestionApiManager";
 
 import BigButton from "../../components/BigButton/BigButton";
 
