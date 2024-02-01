@@ -26,7 +26,7 @@ export const createGame = async (game: Game) => {
     });
 
     if (!response.ok) {
-      throw new Error(`(createGame):  ${response.status}`);
+      throw new Error(`(createGame): ${response.status}`);
     }
   } catch (error) {
     console.error(`POST not working (createGame): ${error}`);

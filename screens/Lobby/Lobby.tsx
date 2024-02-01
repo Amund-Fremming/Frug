@@ -37,9 +37,12 @@ export default function Lobby({
 
     startConnection(connection);
 
-    connection.on("ReceiveQuestionCount", (gameId: string, count: number) => {
-      setNumQuestions(count);
-    });
+    connection.on(
+      "ReceiveQuestionCount",
+      (gameIdParam: string, count: number) => {
+        if (gameId === gameIdParam) setNumQuestions(count);
+      }
+    );
 
     return () => stopConnection(connection);
   }, []);

@@ -46,13 +46,14 @@ export default function GameOptions({
 
     if (view === "HOST") {
       const game: Game = {
-        gameId: gameId,
+        gameId: value,
         gameStarted: false,
         publicGame: false,
         iconImage: "none",
         numberOfQuestions: 0,
         voters: [],
       };
+
       await createGame(game);
     }
     setView(view === "HOST" ? "HOST_LOBBY" : "LOBBY");

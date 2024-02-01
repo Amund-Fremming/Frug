@@ -1,11 +1,11 @@
 import * as signalR from "@microsoft/signalr";
 
-const PROD_URL_BASE = "https://trike.azurewebsites.net";
-const DEV_URL_BASE = "http://localhost:5088";
+// const PROD_URL_BASE = "https://trike.azurewebsites.net";
+const URL_BASE = "http://localhost:5088";
 
 export const createConnection = () => {
   return new signalR.HubConnectionBuilder()
-    .withUrl(`${PROD_URL_BASE}/gamehub`)
+    .withUrl(`${URL_BASE}/gamehub`)
     .configureLogging(signalR.LogLevel.Information)
     .build();
 };
