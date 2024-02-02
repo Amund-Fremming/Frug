@@ -3,15 +3,17 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: "#18181B",
-    width: "90%",
+    width: "100%",
     borderRadius: 20,
     padding: 20,
     flexDirection: "row",
+    marginTop: 15,
+    marginBottom: 15,
   },
 
   textSplit: {
     width: "70%",
-    gap: 20,
+    gap: 10,
     justifyContent: "center",
   },
 

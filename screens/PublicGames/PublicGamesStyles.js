@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "#0E0E10",
     alignItems: "center",
-    gap: 30,
   },
 
   searchBarContainer: {

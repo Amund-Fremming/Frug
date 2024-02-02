@@ -2,12 +2,12 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { View, Text, Image, Pressable } from "react-native";
 
 import { styles, imageStyle } from "./PublicGameCarsStyles";
-import { Game } from "../../util/GameApiManager";
+import { IGame } from "../../util/GameApiManager";
 
 import { Voter, voteOnGame } from "../../util/GameApiManager";
 
 interface PublicGameCardProps {
-  game: Game;
+  game: IGame;
   setGameId: Dispatch<SetStateAction<string>>;
   setView: Dispatch<SetStateAction<string>>;
 }

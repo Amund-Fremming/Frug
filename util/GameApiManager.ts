@@ -6,7 +6,7 @@ export interface Voter {
   vote: boolean;
 }
 
-export interface Game {
+export interface IGame {
   gameId: string;
   gameStarted: boolean;
   publicGame: boolean;
@@ -25,14 +25,14 @@ export const getGamesSorted = async () => {
       throw new Error(`(getGamesSorted): ${response.status}`);
     }
 
-    const data: Game[] = await response.json();
+    const data: IGame[] = await response.json();
     return data;
   } catch (error) {
     console.log(`GET not working (getGamesSorted): ${error}`);
   }
 };
 
-export const createGame = async (game: Game) => {
+export const createGame = async (game: IGame) => {
   try {
     const response = await fetch(DEV_URL_BASE, {
       method: "POST",

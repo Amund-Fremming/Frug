@@ -1,34 +1,34 @@
 import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
-import { View, TextInput, Image, Pressable, Text } from "react-native";
+import {
+  View,
+  TextInput,
+  Image,
+  Pressable,
+  FlatList,
+  ScrollView,
+} from "react-native";
 import { styles, imageStyle } from "./PublicGamesStyles";
 
-import { Game, getGamesSorted } from "../../util/GameApiManager";
+import { IGame } from "../../util/GameApiManager";
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 
 interface PremadeProps {
   setGameId: Dispatch<SetStateAction<string>>;
   setView: Dispatch<SetStateAction<string>>;
+  games: IGame[];
 }
 
-export default function Premade({ setGameId, setView }: PremadeProps) {
+export default function Premade({ setGameId, setView, games }: PremadeProps) {
   const [searchString, setSearchString] = useState("");
-  const [games, setGames] = useState<Game[]>([]);
 
   const searchIcon = require("../../assets/images/icons/searchIcon.png");
   const backIcon = require("../../assets/images/icons/backArrowIcon.png");
 
   useEffect(() => {
-    fetchGames();
-
     // TODO
     // Get the device id
     // set the device id
   }, []);
-
-  const fetchGames = async () => {
-    const fetchedGames: Game[] | undefined = await getGamesSorted();
-    if (fetchedGames) setGames(fetchedGames);
-  };
 
   // TODO - implement a back button
   const handleLeave = () => {
@@ -67,14 +67,25 @@ export default function Premade({ setGameId, setView }: PremadeProps) {
           </View>
         </View>
 
-        {games.map((game: Game) => (
-          <PublicGameCard
-            key={game.gameId}
-            game={game}
-            setView={setView}
-            setGameId={setGameId}
-          />
-        ))}
+        <FlatList
+          style={{ width: "100%" }}
+          contentContainerStyle={{
+            paddingHorizontal: "5%",
+            flexGrow: 1,
+            justifyContent: "center",
+            marginTop: 15,
+          }}
+          data={games}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.gameId}
+          renderItem={({ item }) => (
+            <PublicGameCard
+              game={item}
+              setView={setView}
+              setGameId={setGameId}
+            />
+          )}
+        />
       </View>
     </>
   );

@@ -11,10 +11,13 @@ import * as Font from "expo-font";
 import Game from "./screens/Game/Game";
 import PublicGames from "./screens/PublicGames/PublicGames";
 
+import { IGame, getGamesSorted } from "./util/GameApiManager";
+
 export default function App() {
   const [view, setView] = useState("HOME");
   const [gameId, setGameId] = useState("");
   const [fontLoaded, setFontsLoaded] = useState(false);
+  const [games, setGames] = useState<IGame[]>([]);
 
   const star = require("./assets/images/star.png");
 
@@ -30,6 +33,15 @@ export default function App() {
     loadFonts();
   }, []);
 
+  useEffect(() => {
+    fetchGames();
+  }, [gameId]);
+
+  const fetchGames = async () => {
+    const fetchedGames: IGame[] | undefined = await getGamesSorted();
+    if (fetchedGames) setGames(fetchedGames);
+  };
+
   if (!fontLoaded) {
     return (
       <Image
@@ -40,7 +52,9 @@ export default function App() {
   }
 
   if (view === "PUBLIC_GAMES") {
-    return <PublicGames setView={setView} setGameId={setGameId} />;
+    return (
+      <PublicGames games={games} setView={setView} setGameId={setGameId} />
+    );
   }
 
   return (

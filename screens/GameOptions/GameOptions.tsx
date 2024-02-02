@@ -11,7 +11,7 @@ import BigInput from "../../components/BigInput/BigInput";
 
 import {
   createGame,
-  Game,
+  IGame,
   gameExists,
   haveGameStarted,
 } from "../../util/GameApiManager";
@@ -46,7 +46,7 @@ export default function GameOptions({
     }
 
     if (view === "HOST") {
-      const game: Game = {
+      const game: IGame = {
         gameId: gameId,
         gameStarted: false,
         publicGame: false,
