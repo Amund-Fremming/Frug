@@ -9,7 +9,7 @@ import Lobby from "./screens/Lobby/Lobby";
 
 import * as Font from "expo-font";
 import Game from "./screens/Game/Game";
-import Premade from "./screens/Premade/Premade";
+import PublicGames from "./screens/PublicGames/PublicGames";
 
 export default function App() {
   const [view, setView] = useState("HOME");
@@ -17,9 +17,6 @@ export default function App() {
   const [fontLoaded, setFontsLoaded] = useState(false);
 
   const star = require("./assets/images/star.png");
-  const blobOne = require("./assets/images/blobs/blob1.png");
-  const blobTwo = require("./assets/images/blobs/blob2.png");
-  const blobThree = require("./assets/images/blobs/blob3.png");
 
   const loadFonts = async () => {
     await Font.loadAsync({
@@ -42,83 +39,73 @@ export default function App() {
     );
   }
 
+  if (view === "PUBLIC_GAMES") {
+    return <PublicGames setView={setView} setGameId={setGameId} />;
+  }
+
   return (
-    <View style={styles.container}>
-      <View style={styles.layerOneCircle}>
-        <View style={styles.layerTwoCircle}>
-          <View style={styles.layerThreeCircle}>
-            {view === "HOME" ? (
-              <HomeOptions setView={setView} />
-            ) : view === "HOST" || view === "JOIN" ? (
-              <GameOptions
-                view={view}
-                setView={setView}
-                gameId={gameId}
-                setGameId={setGameId}
-              />
-            ) : view === "LOBBY" || view == "HOST_LOBBY" ? (
-              <Lobby
-                setGameId={setGameId}
-                view={view}
-                setView={setView}
-                gameId={gameId}
-              />
-            ) : view === "GAME" ? (
-              <Game
-                gameId={gameId}
-                setGameId={setGameId}
-                view={view}
-                setView={setView}
-              />
-            ) : view === "PREMADE" ? (
-              <Premade setGameId={setGameId} setView={setView} />
-            ) : (
-              <></>
-            )}
+    <>
+      <View style={styles.container}>
+        <View style={styles.layerOneCircle}>
+          <View style={styles.layerTwoCircle}>
+            <View style={styles.layerThreeCircle}>
+              {view === "HOME" ? (
+                <HomeOptions setView={setView} />
+              ) : view === "HOST" || view === "JOIN" ? (
+                <GameOptions
+                  view={view}
+                  setView={setView}
+                  gameId={gameId}
+                  setGameId={setGameId}
+                />
+              ) : view === "LOBBY" || view == "HOST_LOBBY" ? (
+                <Lobby
+                  setGameId={setGameId}
+                  view={view}
+                  setView={setView}
+                  gameId={gameId}
+                />
+              ) : view === "GAME" ? (
+                <Game
+                  gameId={gameId}
+                  setGameId={setGameId}
+                  view={view}
+                  setView={setView}
+                />
+              ) : (
+                <></>
+              )}
+            </View>
           </View>
         </View>
+
+        {/* Absolute stars */}
+        <View style={styles.stars}>
+          <Image source={star} style={imageStyle.starOne} />
+          <Image source={star} style={imageStyle.starTwo} />
+          <Image source={star} style={imageStyle.starThree} />
+
+          <Image source={star} style={imageStyle.starFour} />
+          <Image source={star} style={imageStyle.starFive} />
+          <Image source={star} style={imageStyle.starSix} />
+
+          <Image source={star} style={imageStyle.starSeven} />
+          <Image source={star} style={imageStyle.starEight} />
+          <Image source={star} style={imageStyle.starNine} />
+
+          <Image source={star} style={imageStyle.starTen} />
+          <Image source={star} style={imageStyle.starEleven} />
+          <Image source={star} style={imageStyle.starTwelve} />
+
+          <Image source={star} style={imageStyle.starThirteen} />
+          <Image source={star} style={imageStyle.starFourteen} />
+          <Image source={star} style={imageStyle.starFifteen} />
+
+          <Image source={star} style={imageStyle.starSixteen} />
+          <Image source={star} style={imageStyle.starSeventeen} />
+          <Image source={star} style={imageStyle.starEighteen} />
+        </View>
       </View>
-
-      {/* Absolute stars */}
-      <View style={styles.stars}>
-        <Image source={star} style={imageStyle.starOne} />
-        <Image source={star} style={imageStyle.starTwo} />
-        <Image source={star} style={imageStyle.starThree} />
-
-        <Image source={star} style={imageStyle.starFour} />
-        <Image source={star} style={imageStyle.starFive} />
-        <Image source={star} style={imageStyle.starSix} />
-
-        <Image source={star} style={imageStyle.starSeven} />
-        <Image source={star} style={imageStyle.starEight} />
-        <Image source={star} style={imageStyle.starNine} />
-
-        <Image source={star} style={imageStyle.starTen} />
-        <Image source={star} style={imageStyle.starEleven} />
-        <Image source={star} style={imageStyle.starTwelve} />
-
-        <Image source={star} style={imageStyle.starThirteen} />
-        <Image source={star} style={imageStyle.starFourteen} />
-        <Image source={star} style={imageStyle.starFifteen} />
-
-        <Image source={star} style={imageStyle.starSixteen} />
-        <Image source={star} style={imageStyle.starSeventeen} />
-        <Image source={star} style={imageStyle.starEighteen} />
-      </View>
-
-      {/*
-      {view !== "GAME" && (
-        <>
-          <View style={imageStyle.dotOne} />
-          <View style={imageStyle.dotTwo} />
-          <View style={imageStyle.dotThree} />
-        </>
-      )}
-      
-      <Image source={blobOne} style={imageStyle.blobOne} />
-      <Image source={blobTwo} style={imageStyle.blobTwo} />
-      <Image source={blobThree} style={imageStyle.blobThree} />
-    */}
-    </View>
+    </>
   );
 }
