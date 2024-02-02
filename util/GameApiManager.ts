@@ -15,6 +15,23 @@ export interface Game {
   voters: Voter[];
 }
 
+export const getGamesSorted = async () => {
+  try {
+    const response = await fetch(`${DEV_URL_BASE}/gamesbyrating`, {
+      method: "GET",
+    });
+
+    if (!response.ok) {
+      throw new Error(`(getGamesSorted): ${response.status}`);
+    }
+
+    const data: Game[] = await response.json();
+    return data;
+  } catch (error) {
+    console.log(`GET not working (getGamesSorted): ${error}`);
+  }
+};
+
 export const createGame = async (game: Game) => {
   try {
     const response = await fetch(DEV_URL_BASE, {

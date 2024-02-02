@@ -1,11 +1,9 @@
 import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
-import { View, TextInput, Image, Pressable } from "react-native";
+import { View, TextInput, Image, Pressable, Text } from "react-native";
 import { styles, imageStyle } from "./PublicGamesStyles";
 
-import BigButton from "../../components/BigButton/BigButton";
-import MediumButton from "../../components/MediumButton/MediumButton";
-
-import { Voter, voteOnGame } from "../../util/GameApiManager";
+import { Game, getGamesSorted } from "../../util/GameApiManager";
+import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 
 interface PremadeProps {
   setGameId: Dispatch<SetStateAction<string>>;
@@ -13,37 +11,33 @@ interface PremadeProps {
 }
 
 export default function Premade({ setGameId, setView }: PremadeProps) {
-  const [deviceId, setDeviceId] = useState(0);
   const [searchString, setSearchString] = useState("");
+  const [games, setGames] = useState<Game[]>([]);
 
-  const searchIcon = require("../../assets/images/searchIcon.png");
+  const searchIcon = require("../../assets/images/icons/searchIcon.png");
+  const backIcon = require("../../assets/images/icons/backArrowIcon.png");
 
   useEffect(() => {
+    fetchGames();
+
+    // TODO
     // Get the device id
     // set the device id
   }, []);
 
-  const handleSetGame = (gameId: string) => {
-    setGameId(gameId);
-    setView("GAME");
+  const fetchGames = async () => {
+    const fetchedGames: Game[] | undefined = await getGamesSorted();
+    if (fetchedGames) setGames(fetchedGames);
   };
 
+  // TODO - implement a back button
   const handleLeave = () => {
     setGameId("");
     setView("HOME");
   };
 
-  const handleVote = async (gameId: string, vote: boolean) => {
-    const voter: Voter = {
-      userDeviceId: deviceId,
-      gameId: gameId,
-      vote: vote,
-    };
-
-    await voteOnGame(voter);
-  };
-
   const handleSearch = () => {
+    // TODO
     // Get searchstring
     // use Api manager to send request
     // set the games result to games state
@@ -56,6 +50,9 @@ export default function Premade({ setGameId, setView }: PremadeProps) {
       <View style={styles.viewContainer}>
         <View style={styles.searchBarContainer}>
           <View style={styles.searchBarWrapper}>
+            <Pressable onPress={handleLeave}>
+              <Image style={imageStyle.backIcon} source={backIcon} />
+            </Pressable>
             <TextInput
               value={searchString}
               placeholder="Search Games"
@@ -69,6 +66,15 @@ export default function Premade({ setGameId, setView }: PremadeProps) {
             </Pressable>
           </View>
         </View>
+
+        {games.map((game: Game) => (
+          <PublicGameCard
+            key={game.gameId}
+            game={game}
+            setView={setView}
+            setGameId={setGameId}
+          />
+        ))}
       </View>
     </>
   );

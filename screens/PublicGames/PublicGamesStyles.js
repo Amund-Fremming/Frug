@@ -7,10 +7,11 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "#0E0E10",
     alignItems: "center",
+    gap: 30,
   },
 
   searchBarContainer: {
-    backgroundColor: "#451093",
+    backgroundColor: "#604395",
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
@@ -29,12 +30,11 @@ const styles = StyleSheet.create({
   searchBarWrapper: {
     width: "100%",
     marginTop: 70,
-    justifyContent: "flex-end",
+    justifyContent: "space-around",
     alignItems: "center",
     marginBottom: 25,
     display: "flex",
     flexDirection: "row",
-    marginRight: 50,
   },
 });
 
@@ -42,7 +42,11 @@ const imageStyle = StyleSheet.create({
   searchIcon: {
     width: 40,
     height: 40,
-    marginLeft: 40,
+  },
+
+  backIcon: {
+    width: 40,
+    height: 40,
   },
 });
 

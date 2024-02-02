@@ -103,7 +103,7 @@ export default function Lobby({
         <Text style={styles.gameIdDisplay}>{gameId}</Text>
         <BigInput
           value={question}
-          placeholder="Legg til spørsmål ..."
+          placeholder="Add questions ..."
           handleChange={(text: string) => setQuestion(text)}
         />
         <BigButton text="Add" handlePress={handleAddQuestion} />

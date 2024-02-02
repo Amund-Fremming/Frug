@@ -50,7 +50,7 @@ export default function GameOptions({
         gameId: gameId,
         gameStarted: false,
         publicGame: false,
-        iconImage: "none",
+        iconImage: "NICE",
         numberOfQuestions: 0,
         voters: [],
       };
