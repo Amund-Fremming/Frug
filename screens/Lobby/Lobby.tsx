@@ -4,7 +4,7 @@ import { styles } from "./LobbyStyles";
 
 import { Question, addQuestionToGame } from "../../util/QuestionApiManager";
 import { validateInput } from "../../util/InputValidator";
-import { startGame } from "../../util/GameApiManager";
+import { publishGame, startGame } from "../../util/GameApiManager";
 
 import BigButton from "../../components/BigButton/BigButton";
 import MediumButton from "../../components/MediumButton/MediumButton";
@@ -72,8 +72,27 @@ export default function Lobby({
   };
 
   const handleStart = async () => {
-    await startGame(gameId);
-    setView("GAME");
+    Alert.alert(
+      "Public Game",
+      "Do you want to publish your game so other people can play it?",
+      [
+        {
+          text: "No",
+          onPress: async () => {
+            await startGame(gameId);
+            setView("GAME");
+          },
+        },
+        {
+          text: "Yes",
+          onPress: async () => {
+            await publishGame(gameId);
+            await startGame(gameId);
+            setView("GAME");
+          },
+        },
+      ]
+    );
   };
 
   return (

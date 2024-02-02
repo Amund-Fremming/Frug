@@ -28,15 +28,7 @@
 - Bruke mer tid i planleggingen og få fastslått noen flere generiske komponenter
 - Lære å burke Figma mer effektivt og riktig
 
-### Ting som skal legges til
+### Ting bør legges til
 
-- Mulighet for å lagre spill, slik at man har en feed med spill fra community. Her skal man kunne stemme opp eller ned på et spill, der de med høyest vurderingen ligger på toppen
 - Flere bevegende elementer i bakgrunn som et romskip eller en meteor som flyr i bakgrunn av planeten
 - Mer annimasjoner på mascot figurene
-- Når et spill opprettes og startes burde man ikke kunne legge til spørsmål i dette spillet lenger, kanskje se på mulighet for å bytte host om man faller ut
-
-- Fikse laggy next spm
-
-## Steder appstore opplastning kan ha feilet
-
-- Expo doctor (npx)

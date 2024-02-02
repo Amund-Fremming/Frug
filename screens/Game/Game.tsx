@@ -26,6 +26,8 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
   const [dotThree, setDotThree] = useState(false);
   const [textbox, setTextbox] = useState(false);
 
+  const [nextClickable, setNextClickable] = useState(true);
+
   const mascot = require("../../assets/images/raptorrune.png");
 
   useEffect(() => {
@@ -72,6 +74,9 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
   });
 
   const handleNextQuestion = () => {
+    if (!nextClickable) return;
+
+    setNextClickable(false);
     setNextButtonText("Next");
 
     setTextbox(false);
@@ -87,6 +92,7 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
     }, 600);
     setTimeout(() => {
       setTextbox(true);
+      setNextClickable(true);
     }, 900);
 
     const randomIndex = Math.random() * questions.length;
