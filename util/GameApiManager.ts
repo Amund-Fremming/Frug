@@ -1,7 +1,7 @@
-const DEV_URL_BASE = "http://localhost:5088/spike/games";
+const GAME_URL_BASE = "http://localhost:5088/spike/games";
 
 export interface Voter {
-  userDeviceId: number;
+  userDeviceId: string;
   gameId: string;
   vote: boolean;
 }
@@ -17,7 +17,7 @@ export interface IGame {
 
 export const getGamesSorted = async () => {
   try {
-    const response = await fetch(`${DEV_URL_BASE}/gamesbyrating`, {
+    const response = await fetch(`${GAME_URL_BASE}/gamesbyrating`, {
       method: "GET",
     });
 
@@ -34,7 +34,7 @@ export const getGamesSorted = async () => {
 
 export const createGame = async (game: IGame) => {
   try {
-    const response = await fetch(DEV_URL_BASE, {
+    const response = await fetch(GAME_URL_BASE, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export const createGame = async (game: IGame) => {
 
 export const deleteGame = async (gameId: string) => {
   try {
-    const response = await fetch(DEV_URL_BASE, {
+    const response = await fetch(GAME_URL_BASE, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -76,7 +76,7 @@ export const deleteGame = async (gameId: string) => {
 
 export const startGame = async (gameId: string) => {
   try {
-    const response = await fetch(`${DEV_URL_BASE}/startgame`, {
+    const response = await fetch(`${GAME_URL_BASE}/startgame`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -92,15 +92,18 @@ export const startGame = async (gameId: string) => {
   }
 };
 
-export const publishGame = async (gameId: string) => {
+export const publishGame = async (gameId: string, icon: string) => {
   try {
-    const response = await fetch(`${DEV_URL_BASE}/publishgame`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(gameId),
-    });
+    const response = await fetch(
+      `${GAME_URL_BASE}/publishgame/?gameId=${encodeURIComponent(gameId)}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(icon),
+      }
+    );
 
     if (!response.ok) {
       throw new Error(`(publishGame): ${response.status}`);
@@ -112,7 +115,7 @@ export const publishGame = async (gameId: string) => {
 
 export const voteOnGame = async (voter: Voter) => {
   try {
-    const response = await fetch(`${DEV_URL_BASE}/vote`, {
+    const response = await fetch(`${GAME_URL_BASE}/vote`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -131,7 +134,7 @@ export const voteOnGame = async (voter: Voter) => {
 export const haveGameStarted = async (gameId: string) => {
   try {
     const response = await fetch(
-      `${DEV_URL_BASE}/gamestarted/?gameId=${encodeURIComponent(gameId)}`,
+      `${GAME_URL_BASE}/gamestarted/?gameId=${encodeURIComponent(gameId)}`,
       {
         method: "GET",
       }
@@ -151,7 +154,7 @@ export const haveGameStarted = async (gameId: string) => {
 export const gameExists = async (gameId: string) => {
   try {
     const response = await fetch(
-      `${DEV_URL_BASE}/gameexists/?gameId=${encodeURIComponent(gameId)}`,
+      `${GAME_URL_BASE}/gameexists/?gameId=${encodeURIComponent(gameId)}`,
       {
         method: "GET",
       }
@@ -171,7 +174,7 @@ export const gameExists = async (gameId: string) => {
 export const searchForGames = async (searchString: string) => {
   try {
     const response = await fetch(
-      `${DEV_URL_BASE}/searchgames/?searchString=${encodeURIComponent(
+      `${GAME_URL_BASE}/searchgames/?searchString=${encodeURIComponent(
         searchString
       )}`,
       {

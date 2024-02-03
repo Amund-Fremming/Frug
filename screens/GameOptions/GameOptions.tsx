@@ -3,8 +3,6 @@ import { View, Alert } from "react-native";
 import { styles } from "./GameOptionsStyles";
 import { validateInput } from "../../util/InputValidator";
 
-import Mascot from "../../components/Mascot/Mascot";
-import Planets from "../../components/Planets/Planets";
 import BigButton from "../../components/BigButton/BigButton";
 import MediumButton from "../../components/MediumButton/MediumButton";
 import BigInput from "../../components/BigInput/BigInput";
@@ -50,7 +48,7 @@ export default function GameOptions({
         gameId: gameId,
         gameStarted: false,
         publicGame: false,
-        iconImage: "NICE",
+        iconImage: "NICE", // DENNE MÅ HENTES DYNAMISK!!!!!!
         numberOfQuestions: 0,
         voters: [],
       };

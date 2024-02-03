@@ -8,16 +8,17 @@ import { Voter, voteOnGame } from "../../util/GameApiManager";
 import Feather from "react-native-vector-icons/Feather";
 
 interface PublicGameCardProps {
-  game: IGame;
   setGameId: Dispatch<SetStateAction<string>>;
   setView: Dispatch<SetStateAction<string>>;
+  game: IGame;
   deviceId: string;
 }
 
 export function PublicGameCard({
-  game,
   setGameId,
   setView,
+  game,
+  deviceId,
 }: PublicGameCardProps) {
   const [upvoteColor, setUpvoteColor] = useState("gray");
   const [downvoteColor, setDownvoteColor] = useState("gray");
@@ -25,10 +26,10 @@ export function PublicGameCard({
 
   const icon =
     game.iconImage === "DIRTY"
-      ? require("../../assets/images/icons/goodIcon.png")
+      ? require("../../assets/images/icons/dirtyIcon.webp")
       : game.iconImage === "EDGY"
-        ? require("../../assets/images/icons/goodIcon.png")
-        : require("../../assets/images/icons/goodIcon.png");
+        ? require("../../assets/images/icons/edgyIcon.webp")
+        : require("../../assets/images/icons/niceIcon.webp");
 
   const handleClick = () => {
     setGameId(game.gameId);
@@ -45,14 +46,14 @@ export function PublicGameCard({
       setDownvoteColor("red");
       setUpvoteColor("gray");
     }
-    /*
+
     const voter: Voter = {
       userDeviceId: deviceId,
       gameId: game.gameId,
       vote: vote,
     };
 
-    await voteOnGame(voter);*/
+    await voteOnGame(voter);
   };
 
   return (

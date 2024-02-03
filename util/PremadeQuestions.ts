@@ -1,4 +1,4 @@
-import { Question } from "./ApiManager";
+import { Question } from "./QuestionApiManager";
 
 const _pmd_001: Question[] = [
   { gameId: "_pmd_001", questionStr: "Hvem er morsomst?" },

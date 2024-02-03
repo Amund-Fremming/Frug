@@ -7,8 +7,6 @@ import { Question } from "../../util/QuestionApiManager";
 
 import BigButton from "../../components/BigButton/BigButton";
 
-import { _pmd_001, _pmd_002, _pmd_003 } from "../../util/PremadeQuestions";
-
 interface GameProps {
   gameId: string;
   setGameId: Dispatch<SetStateAction<string>>;
@@ -31,20 +29,6 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
   const mascot = require("../../assets/images/raptorrune.png");
 
   useEffect(() => {
-    if (gameId === "_pmd_001") {
-      setQuestions(_pmd_001);
-    }
-
-    if (gameId === "_pmd_002") {
-      setQuestions(_pmd_002);
-      return;
-    }
-
-    if (gameId === "_pmd_003") {
-      setQuestions(_pmd_003);
-      return;
-    }
-
     fetchQuestions();
   }, []);
 
@@ -86,14 +70,14 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
     setDotOne(true);
     setTimeout(() => {
       setDotTwo(true);
-    }, 300);
+    }, 150);
     setTimeout(() => {
       setDotThree(true);
-    }, 600);
+    }, 300);
     setTimeout(() => {
       setTextbox(true);
       setNextClickable(true);
-    }, 900);
+    }, 450);
 
     const randomIndex = Math.random() * questions.length;
     const randomQuestion = questions.at(randomIndex);

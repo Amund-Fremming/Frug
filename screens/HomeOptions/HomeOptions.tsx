@@ -2,8 +2,6 @@ import React, { Dispatch, SetStateAction } from "react";
 import { View } from "react-native";
 import { styles } from "./HomeOptionsStyles";
 
-import Mascot from "../../components/Mascot/Mascot";
-import Planets from "../../components/Planets/Planets";
 import BigButton from "../../components/BigButton/BigButton";
 import MediumButton from "../../components/MediumButton/MediumButton";
 

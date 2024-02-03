@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { View, TextInput, Image, Pressable, FlatList } from "react-native";
 import { styles, imageStyle } from "./PublicGamesStyles";
 
@@ -25,13 +25,6 @@ export default function Premade({
   const searchIcon = require("../../assets/images/icons/searchIcon.png");
   const backIcon = require("../../assets/images/icons/backArrowIcon.png");
 
-  useEffect(() => {
-    // TODO
-    // Get the device id
-    // set the device id
-  }, []);
-
-  // TODO - implement a back button
   const handleLeave = () => {
     setGameId("");
     setView("HOME");

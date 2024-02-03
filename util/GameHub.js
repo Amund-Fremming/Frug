@@ -1,6 +1,5 @@
 import * as signalR from "@microsoft/signalr";
 
-// const PROD_URL_BASE = "https://trike.azurewebsites.net";
 const URL_BASE = "http://localhost:5088";
 
 export const createConnection = () => {
