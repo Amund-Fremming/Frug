@@ -1,12 +1,5 @@
 import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
-import {
-  View,
-  TextInput,
-  Image,
-  Pressable,
-  FlatList,
-  ScrollView,
-} from "react-native";
+import { View, TextInput, Image, Pressable, FlatList } from "react-native";
 import { styles, imageStyle } from "./PublicGamesStyles";
 
 import { IGame } from "../../util/GameApiManager";
@@ -72,7 +65,6 @@ export default function Premade({ setGameId, setView, games }: PremadeProps) {
           contentContainerStyle={{
             paddingHorizontal: "5%",
             flexGrow: 1,
-            justifyContent: "center",
             marginTop: 15,
           }}
           data={games}

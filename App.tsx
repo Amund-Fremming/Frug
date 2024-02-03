@@ -12,12 +12,16 @@ import Game from "./screens/Game/Game";
 import PublicGames from "./screens/PublicGames/PublicGames";
 
 import { IGame, getGamesSorted } from "./util/GameApiManager";
+import { setDeviceIdentifier } from "./util/DeviceIdentifierUtil";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
   const [view, setView] = useState("HOME");
   const [gameId, setGameId] = useState("");
   const [fontLoaded, setFontsLoaded] = useState(false);
   const [games, setGames] = useState<IGame[]>([]);
+  const [deviceId, setDeviceId] = useState("");
 
   const star = require("./assets/images/star.png");
 
@@ -31,6 +35,7 @@ export default function App() {
 
   useEffect(() => {
     loadFonts();
+    setDeviceIdentifier(setDeviceId);
   }, []);
 
   useEffect(() => {
