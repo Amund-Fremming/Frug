@@ -88,9 +88,6 @@ export default function GameOptions({
 
   return (
     <>
-      <Mascot />
-      <Planets />
-
       <View style={styles.buttonContainer}>
         <BigInput
           value={gameId}

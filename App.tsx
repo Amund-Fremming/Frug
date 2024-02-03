@@ -13,8 +13,8 @@ import PublicGames from "./screens/PublicGames/PublicGames";
 
 import { IGame, getGamesSorted } from "./util/GameApiManager";
 import { setDeviceIdentifier } from "./util/DeviceIdentifierUtil";
-
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import Mascot from "./components/Mascot/Mascot";
+import Planets from "./components/Planets/Planets";
 
 export default function App() {
   const [view, setView] = useState("HOME");
@@ -58,7 +58,13 @@ export default function App() {
 
   if (view === "PUBLIC_GAMES") {
     return (
-      <PublicGames games={games} setView={setView} setGameId={setGameId} />
+      <PublicGames
+        setView={setView}
+        setGameId={setGameId}
+        setGames={setGames}
+        games={games}
+        deviceId={deviceId}
+      />
     );
   }
 
@@ -98,7 +104,15 @@ export default function App() {
           </View>
         </View>
 
-        {/* Absolute stars */}
+        {/* Absolute Planets and Mascot */}
+        {["HOST", "JOIN", "HOME"].includes(view) && (
+          <>
+            <Mascot />
+            <Planets />
+          </>
+        )}
+
+        {/* Absolute Stars */}
         <View style={styles.stars}>
           <Image source={star} style={imageStyle.starOne} />
           <Image source={star} style={imageStyle.starTwo} />

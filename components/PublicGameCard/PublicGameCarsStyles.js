@@ -11,9 +11,15 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
 
+  voteContainer: {
+    flexDirection: "row",
+    gap: 20,
+    alignItems: "center",
+  },
+
   textSplit: {
     width: "70%",
-    gap: 10,
+    gap: 13,
     justifyContent: "center",
   },
 
@@ -32,7 +38,14 @@ const styles = StyleSheet.create({
   subHeaderText: {
     fontFamily: "PressStart2P",
     fontSize: 16,
-    color: "#59B199",
+    color: "#C4A58A",
+  },
+
+  procentileText: {
+    fontFamily: "PressStart2P",
+    fontSize: 20,
+    color: "#05F4C9",
+    marginLeft: 40,
   },
 });
 

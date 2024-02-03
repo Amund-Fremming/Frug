@@ -2,16 +2,24 @@ import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
 import { View, TextInput, Image, Pressable, FlatList } from "react-native";
 import { styles, imageStyle } from "./PublicGamesStyles";
 
-import { IGame } from "../../util/GameApiManager";
+import { IGame, searchForGames } from "../../util/GameApiManager";
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 
 interface PremadeProps {
   setGameId: Dispatch<SetStateAction<string>>;
   setView: Dispatch<SetStateAction<string>>;
+  setGames: Dispatch<SetStateAction<IGame[]>>;
   games: IGame[];
+  deviceId: string;
 }
 
-export default function Premade({ setGameId, setView, games }: PremadeProps) {
+export default function Premade({
+  setGameId,
+  setView,
+  setGames,
+  games,
+  deviceId,
+}: PremadeProps) {
   const [searchString, setSearchString] = useState("");
 
   const searchIcon = require("../../assets/images/icons/searchIcon.png");
@@ -29,11 +37,9 @@ export default function Premade({ setGameId, setView, games }: PremadeProps) {
     setView("HOME");
   };
 
-  const handleSearch = () => {
-    // TODO
-    // Get searchstring
-    // use Api manager to send request
-    // set the games result to games state
+  const handleSearch = async () => {
+    const searchResult = await searchForGames(searchString);
+    setGames(searchResult);
 
     setSearchString("");
   };
@@ -75,6 +81,7 @@ export default function Premade({ setGameId, setView, games }: PremadeProps) {
               game={item}
               setView={setView}
               setGameId={setGameId}
+              deviceId={deviceId}
             />
           )}
         />

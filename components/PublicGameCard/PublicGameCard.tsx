@@ -3,13 +3,15 @@ import { View, Text, Image, Pressable } from "react-native";
 
 import { styles, imageStyle } from "./PublicGameCarsStyles";
 import { IGame } from "../../util/GameApiManager";
-
 import { Voter, voteOnGame } from "../../util/GameApiManager";
+
+import Feather from "react-native-vector-icons/Feather";
 
 interface PublicGameCardProps {
   game: IGame;
   setGameId: Dispatch<SetStateAction<string>>;
   setView: Dispatch<SetStateAction<string>>;
+  deviceId: string;
 }
 
 export function PublicGameCard({
@@ -17,7 +19,9 @@ export function PublicGameCard({
   setGameId,
   setView,
 }: PublicGameCardProps) {
-  const [deviceId, setDeviceId] = useState(0);
+  const [upvoteColor, setUpvoteColor] = useState("gray");
+  const [downvoteColor, setDownvoteColor] = useState("gray");
+  const [gameRating, setGameRating] = useState(86);
 
   const icon =
     game.iconImage === "DIRTY"
@@ -31,14 +35,24 @@ export function PublicGameCard({
     setView("GAME");
   };
 
-  const handleVote = async (gameId: string, vote: boolean) => {
+  const handleVote = async (vote: boolean) => {
+    if (vote) {
+      setDownvoteColor("gray");
+      setUpvoteColor("green");
+    }
+
+    if (!vote) {
+      setDownvoteColor("red");
+      setUpvoteColor("gray");
+    }
+    /*
     const voter: Voter = {
       userDeviceId: deviceId,
-      gameId: gameId,
+      gameId: game.gameId,
       vote: vote,
     };
 
-    await voteOnGame(voter);
+    await voteOnGame(voter);*/
   };
 
   return (
@@ -49,6 +63,15 @@ export function PublicGameCard({
           <Text style={styles.subHeaderText}>
             Questions: {game.numberOfQuestions}
           </Text>
+          <View style={styles.voteContainer}>
+            <Pressable onPress={() => handleVote(true)}>
+              <Feather name="thumbs-up" size={26} color={upvoteColor} />
+            </Pressable>
+            <Pressable onPress={() => handleVote(false)}>
+              <Feather name="thumbs-down" size={26} color={downvoteColor} />
+            </Pressable>
+            <Text style={styles.procentileText}>{gameRating}%</Text>
+          </View>
         </View>
         <View style={styles.iconSplit}>
           <Image style={imageStyle.niceIcon} source={icon} />

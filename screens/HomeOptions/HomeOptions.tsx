@@ -14,9 +14,6 @@ interface HomeProps {
 export default function HomeOptions({ setView }: HomeProps) {
   return (
     <>
-      <Planets />
-      <Mascot />
-
       <View style={styles.buttonContainer}>
         <BigButton text="Host" handlePress={() => setView("HOST")} />
         <BigButton text="Join" handlePress={() => setView("JOIN")} />

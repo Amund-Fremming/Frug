@@ -167,3 +167,25 @@ export const gameExists = async (gameId: string) => {
     console.error(`GET not working (gameExists): ${error}`);
   }
 };
+
+export const searchForGames = async (searchString: string) => {
+  try {
+    const response = await fetch(
+      `${DEV_URL_BASE}/searchgames/?searchString=${encodeURIComponent(
+        searchString
+      )}`,
+      {
+        method: "GET",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`(gameExists): ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`GET not working (gameExists): ${error}`);
+  }
+};

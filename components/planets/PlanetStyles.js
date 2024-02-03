@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   planetContainer: {
     position: "absolute",
-    top: -340,
-    width: "50%",
+    top: 100,
+    width: "100%",
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
