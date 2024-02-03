@@ -3,7 +3,7 @@ import { View, Text, Image, Pressable } from "react-native";
 
 import { styles, imageStyle } from "./PublicGameCarsStyles";
 import { IGame } from "../../util/GameApiManager";
-import { Voter, voteOnGame } from "../../util/GameApiManager";
+import { Voter, voteOnGame } from "../../util/VoteApiManager";
 
 import Feather from "react-native-vector-icons/Feather";
 

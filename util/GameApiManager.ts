@@ -1,10 +1,6 @@
-const GAME_URL_BASE = "http://localhost:5088/spike/games";
+import { Voter } from "./VoteApiManager";
 
-export interface Voter {
-  userDeviceId: string;
-  gameId: string;
-  vote: boolean;
-}
+const GAME_URL_BASE = "http://localhost:5088/spike/games";
 
 export interface IGame {
   gameId: string;
@@ -110,24 +106,6 @@ export const publishGame = async (gameId: string, icon: string) => {
     }
   } catch (error) {
     console.error(`PUT not working (publishGame): ${error}`);
-  }
-};
-
-export const voteOnGame = async (voter: Voter) => {
-  try {
-    const response = await fetch(`${GAME_URL_BASE}/vote`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(voter),
-    });
-
-    if (!response.ok) {
-      throw new Error(`(voteOnGame): ${response.status}`);
-    }
-  } catch (error) {
-    console.error(`PUT not working (voteOnGame): ${error}`);
   }
 };
 
