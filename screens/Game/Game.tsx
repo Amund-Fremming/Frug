@@ -10,11 +10,10 @@ import BigButton from "../../components/BigButton/BigButton";
 interface GameProps {
   gameId: string;
   setGameId: Dispatch<SetStateAction<string>>;
-  view: string;
   setView: Dispatch<SetStateAction<string>>;
 }
 
-export default function Game({ setGameId, setView, gameId, view }: GameProps) {
+export default function Game({ setGameId, setView, gameId }: GameProps) {
   const [nextButtonText, setNextButtonText] = useState("Start Game");
   const [questions, setQuestions] = useState<Question[]>([]);
   const [question, setQuestion] = useState("");

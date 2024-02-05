@@ -18,26 +18,26 @@ const styles = StyleSheet.create({
   },
 
   textSplit: {
-    width: "70%",
+    width: "80%",
     gap: 13,
     justifyContent: "center",
   },
 
   iconSplit: {
-    width: "30%",
+    width: "20%",
     justifyContent: "center",
     alignItems: "center",
   },
 
   headerText: {
     fontFamily: "PressStart2P",
-    fontSize: 20,
+    fontSize: 18,
     color: "#C4A58A",
   },
 
   subHeaderText: {
     fontFamily: "PressStart2P",
-    fontSize: 16,
+    fontSize: 14,
     color: "#C4A58A",
   },
 

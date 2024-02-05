@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { View, Alert } from "react-native";
+import { View, Alert, ActivityIndicator } from "react-native";
 import { styles } from "./GameOptionsStyles";
 import { validateInput } from "../../util/InputValidator";
 
@@ -27,19 +27,32 @@ export default function GameOptions({
   gameId,
   setGameId,
 }: HostProps) {
+  const [clickedAndIsLoading, setClickedAndIsLoading] = useState(false);
+  const [hostText, setHostText] = useState("Host");
+  const [joinText, setJoinText] = useState("Join");
+
   const handleClick = async () => {
+    if (clickedAndIsLoading) return; // Stops the api from being spammed
+    setClickedAndIsLoading(true);
+
+    view === "HOST" ? setHostText("Hosting ...") : setJoinText("Joining ...");
+
     if (!validateInput(gameId)) {
       Alert.alert(
         "Invalid Input",
         "Some characters are not allowed, try again"
       );
+      setClickedAndIsLoading(false);
       setGameId("");
+      view === "HOST" ? setHostText("Host") : setJoinText("Join");
       return;
     }
 
     if (gameId.length > 10) {
       Alert.alert("Invalid Input", "Game ID is too long (<10), try again");
+      setClickedAndIsLoading(false);
       setGameId("");
+      view === "HOST" ? setHostText("Host") : setJoinText("Join");
       return;
     }
 
@@ -60,7 +73,9 @@ export default function GameOptions({
           "Invalid Game ID",
           `Game with ID ${gameId}, already exists!`
         );
+        setClickedAndIsLoading(false);
         setGameId("");
+        setHostText("Host");
         return;
       }
     }
@@ -71,17 +86,22 @@ export default function GameOptions({
         "Invalid Game ID",
         `Game with ID ${gameId}, already started!`
       );
+      setClickedAndIsLoading(false);
       setGameId("");
+      setJoinText("Join");
       return;
     }
 
     const gameExist = await gameExists(gameId);
     if (view === "JOIN" && !gameExist) {
       Alert.alert("Invalid Game ID", `Game with ID ${gameId}, does not exist!`);
+      setClickedAndIsLoading(false);
       setGameId("");
+      setHostText("");
       return;
     }
 
+    setClickedAndIsLoading(false);
     setView(view === "HOST" ? "HOST_LOBBY" : "LOBBY");
   };
 
@@ -94,7 +114,7 @@ export default function GameOptions({
           handleChange={(text) => setGameId(text.toUpperCase())}
         />
         <BigButton
-          text={view === "HOST" ? "Host" : "Join"}
+          text={view === "HOST" ? hostText : joinText}
           handlePress={handleClick}
         />
         <MediumButton text="Back" handlePress={() => setView("HOME")} />

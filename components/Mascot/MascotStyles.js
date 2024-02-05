@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   mascotContainer: {
     position: "absolute",
-    top: 240,
+    top: 180,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",

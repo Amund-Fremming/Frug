@@ -153,14 +153,21 @@ export const gameExists = async (gameId: string) => {
   }
 };
 
-export const searchForGames = async (searchString: string) => {
+export const searchForGames = async (
+  searchString: string,
+  deviceId: string
+) => {
   try {
     const response = await fetch(
       `${GAME_URL_BASE}/searchgames/?searchString=${encodeURIComponent(
         searchString
       )}`,
       {
-        method: "GET",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(deviceId),
       }
     );
 

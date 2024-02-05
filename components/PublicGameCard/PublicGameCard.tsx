@@ -76,7 +76,7 @@ export function PublicGameCard({
         <View style={styles.textSplit}>
           <Text style={styles.headerText}>{game.gameId}</Text>
           <Text style={styles.subHeaderText}>
-            Questions: {game.numberOfQuestions}
+            Questions:{game.numberOfQuestions}
           </Text>
           <View style={styles.voteContainer}>
             <Pressable onPress={() => handleVote(1)}>

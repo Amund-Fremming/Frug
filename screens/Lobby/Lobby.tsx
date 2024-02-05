@@ -72,43 +72,39 @@ export default function Lobby({
   };
 
   const handleStart = async () => {
-    Alert.alert(
-      "Public Game",
-      "Do you want to publish your game so other people can play it, if so, choose a category:",
-      [
-        {
-          text: "Nice",
-          onPress: async () => {
-            await publishGame(gameId, "NICE");
-            await startGame(gameId);
-            setView("GAME");
-          },
+    Alert.alert("Public Game", "Publish your game? Select a category:", [
+      {
+        text: "Nice",
+        onPress: async () => {
+          await publishGame(gameId, "NICE");
+          await startGame(gameId);
+          setView("GAME");
         },
-        {
-          text: "Edgy",
-          onPress: async () => {
-            await publishGame(gameId, "EDGY");
-            await startGame(gameId);
-            setView("GAME");
-          },
+      },
+      {
+        text: "Edgy",
+        onPress: async () => {
+          await publishGame(gameId, "EDGY");
+          await startGame(gameId);
+          setView("GAME");
         },
-        {
-          text: "Dirty",
-          onPress: async () => {
-            await publishGame(gameId, "DIRTY");
-            await startGame(gameId);
-            setView("GAME");
-          },
+      },
+      {
+        text: "Dirty",
+        onPress: async () => {
+          await publishGame(gameId, "DIRTY");
+          await startGame(gameId);
+          setView("GAME");
         },
-        {
-          text: "No",
-          onPress: async () => {
-            await startGame(gameId);
-            setView("GAME");
-          },
+      },
+      {
+        text: "No",
+        onPress: async () => {
+          await startGame(gameId);
+          setView("GAME");
         },
-      ]
-    );
+      },
+    ]);
   };
 
   return (

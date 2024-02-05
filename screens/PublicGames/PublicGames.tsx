@@ -1,9 +1,21 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
-import { View, TextInput, Image, Pressable, FlatList } from "react-native";
-import { styles, imageStyle } from "./PublicGamesStyles";
+import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
+import {
+  View,
+  TextInput,
+  Image,
+  Pressable,
+  FlatList,
+  ActivityIndicator,
+} from "react-native";
+import { styles } from "./PublicGamesStyles";
 
-import { IGame, searchForGames } from "../../util/GameApiManager";
+import {
+  IGame,
+  searchForGames,
+  getGamesSorted,
+} from "../../util/GameApiManager";
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
+import { SearchBar } from "../../components/SearchBar/SearchBar";
 
 interface PremadeProps {
   setGameId: Dispatch<SetStateAction<string>>;
@@ -16,14 +28,23 @@ interface PremadeProps {
 export default function Premade({
   setGameId,
   setView,
-  setGames,
-  games,
+
   deviceId,
 }: PremadeProps) {
+  const [games, setGames] = useState<IGame[]>([]);
+  const [spinner, setSpinner] = useState(false);
   const [searchString, setSearchString] = useState("");
 
-  const searchIcon = require("../../assets/images/icons/searchIcon.png");
-  const backIcon = require("../../assets/images/icons/backArrowIcon.png");
+  useEffect(() => {
+    setSpinner(true);
+    fetchGames();
+  }, []);
+
+  const fetchGames = async () => {
+    const fetchedGames: IGame[] | undefined = await getGamesSorted(deviceId);
+    if (fetchedGames) setGames(fetchedGames);
+    setSpinner(false);
+  };
 
   const handleLeave = () => {
     setGameId("");
@@ -31,34 +52,39 @@ export default function Premade({
   };
 
   const handleSearch = async () => {
-    const searchResult = await searchForGames(searchString);
-    setGames(searchResult);
-
+    setSpinner(true);
     setSearchString("");
+
+    const searchResult = await searchForGames(searchString, deviceId);
+    setGames(searchResult);
+    setSpinner(false);
   };
+
+  if (spinner) {
+    return (
+      <>
+        <SearchBar
+          handleLeave={handleLeave}
+          handleSearch={handleSearch}
+          searchString={searchString}
+          setSearchString={setSearchString}
+        />
+        <View style={styles.spinnerStyles}>
+          <ActivityIndicator size="large" color="#604395" />
+        </View>
+      </>
+    );
+  }
 
   return (
     <>
       <View style={styles.viewContainer}>
-        <View style={styles.searchBarContainer}>
-          <View style={styles.searchBarWrapper}>
-            <Pressable onPress={handleLeave}>
-              <Image style={imageStyle.backIcon} source={backIcon} />
-            </Pressable>
-            <TextInput
-              value={searchString}
-              placeholder="Search Games"
-              onChangeText={(text: string) =>
-                setSearchString(text.toUpperCase())
-              }
-              style={styles.input}
-            />
-            <Pressable onPress={handleSearch}>
-              <Image style={imageStyle.searchIcon} source={searchIcon} />
-            </Pressable>
-          </View>
-        </View>
-
+        <SearchBar
+          handleLeave={handleLeave}
+          handleSearch={handleSearch}
+          searchString={searchString}
+          setSearchString={setSearchString}
+        />
         <FlatList
           style={{ width: "100%" }}
           contentContainerStyle={{
