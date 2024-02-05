@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, Image } from "react-native";
+import { View, Image, Alert } from "react-native";
 import { styles, imageStyle } from "./AppStyles.js";
 import "react-native-url-polyfill/auto";
+
+import NetInfo from "@react-native-community/netinfo";
 
 import HomeOptions from "./screens/HomeOptions/HomeOptions";
 import GameOptions from "./screens/GameOptions/GameOptions";
@@ -36,6 +38,17 @@ export default function App() {
   useEffect(() => {
     loadFonts();
     setDeviceIdentifier(setDeviceId);
+
+    const unsubscribe = NetInfo.addEventListener((state) => {
+      if (state.type !== "wifi") {
+        Alert.alert(
+          "No WiFi Connection",
+          "You are not connected to WiFi. Some features may not work as expected."
+        );
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
