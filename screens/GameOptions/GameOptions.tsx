@@ -37,8 +37,8 @@ export default function GameOptions({
       return;
     }
 
-    if (gameId.length > 9) {
-      Alert.alert("Invalid Input", "Game ID can is too long(9), try again");
+    if (gameId.length > 10) {
+      Alert.alert("Invalid Input", "Game ID is too long (<10), try again");
       setGameId("");
       return;
     }
@@ -48,9 +48,10 @@ export default function GameOptions({
         gameId: gameId,
         gameStarted: false,
         publicGame: false,
-        iconImage: "NICE", // DENNE MÅ HENTES DYNAMISK!!!!!!
+        iconImage: "NICE",
         numberOfQuestions: 0,
-        voters: [],
+        percentageUpvotes: 0,
+        usersVote: 2,
       };
 
       const response = await createGame(game);

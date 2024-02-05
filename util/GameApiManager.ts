@@ -1,6 +1,5 @@
-import { Voter } from "./VoteApiManager";
-
-const GAME_URL_BASE = "http://localhost:5088/spike/games";
+// const GAME_URL_BASE = "http://localhost:5088/spike/games";
+const GAME_URL_BASE = "https://trike.azurewebsites.net/spike/games";
 
 export interface IGame {
   gameId: string;
@@ -8,13 +7,18 @@ export interface IGame {
   publicGame: boolean;
   iconImage: string;
   numberOfQuestions: number;
-  voters: Voter[];
+  percentageUpvotes: number;
+  usersVote: number;
 }
 
-export const getGamesSorted = async () => {
+export const getGamesSorted = async (deviceId: string) => {
   try {
     const response = await fetch(`${GAME_URL_BASE}/gamesbyrating`, {
-      method: "GET",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(deviceId),
     });
 
     if (!response.ok) {
@@ -24,7 +28,7 @@ export const getGamesSorted = async () => {
     const data: IGame[] = await response.json();
     return data;
   } catch (error) {
-    console.log(`GET not working (getGamesSorted): ${error}`);
+    console.log(`POST not working (getGamesSorted): ${error}`);
   }
 };
 

@@ -1,4 +1,5 @@
-const GAME_URL_BASE = "http://localhost:5088/spike/games";
+// const GAME_URL_BASE = "http://localhost:5088/spike/games";
+const GAME_URL_BASE = "https://trike.azurewebsites.net/spike/games";
 
 export const addDevice = async (deviceId: string) => {
   try {

@@ -1,14 +1,15 @@
-const VOTE_URL_BASE = "http://localhost:5088/spike/votes";
+// const VOTE_URL_BASE = "http://localhost:5088/spike/votes";
+const VOTE_URL_BASE = "https://trike.azurewebsites.net/spike/votes";
 
 export interface Voter {
   userDeviceId: string;
   gameId: string;
-  vote: boolean;
+  vote: number;
 }
 
 export const voteOnGame = async (voter: Voter) => {
   try {
-    const response = await fetch(`${VOTE_URL_BASE}/vote`, {
+    const response = await fetch(`${VOTE_URL_BASE}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

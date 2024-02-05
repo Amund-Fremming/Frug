@@ -24,7 +24,7 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
   const [dotThree, setDotThree] = useState(false);
   const [textbox, setTextbox] = useState(false);
 
-  const [nextClickable, setNextClickable] = useState(true);
+  const [nextClickable, setNextClickable] = useState(false);
 
   const mascot = require("../../assets/images/raptorrune.png");
 
@@ -35,6 +35,7 @@ export default function Game({ setGameId, setView, gameId, view }: GameProps) {
   const fetchQuestions = async () => {
     const fetchedQuestions: Question[] = await fetchQuestionsForGame(gameId);
     setQuestions(fetchedQuestions);
+    setNextClickable(true);
   };
 
   const toggleDotThree = (activated: boolean): ViewStyle => ({

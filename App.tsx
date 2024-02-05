@@ -40,10 +40,10 @@ export default function App() {
 
   useEffect(() => {
     fetchGames();
-  }, [gameId]);
+  }, [view]);
 
   const fetchGames = async () => {
-    const fetchedGames: IGame[] | undefined = await getGamesSorted();
+    const fetchedGames: IGame[] | undefined = await getGamesSorted(deviceId);
     if (fetchedGames) setGames(fetchedGames);
   };
 

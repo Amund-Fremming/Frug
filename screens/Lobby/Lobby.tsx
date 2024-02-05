@@ -54,7 +54,7 @@ export default function Lobby({
   };
 
   const handleAddQuestion = async () => {
-    if (!validateInput(question)) {
+    if (!validateInput(question) || question.length > 40) {
       Alert.alert(
         "Invalid Input",
         "Some characters are not allowed, try again"

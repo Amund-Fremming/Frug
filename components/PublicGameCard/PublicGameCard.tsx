@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { View, Text, Image, Pressable } from "react-native";
 
 import { styles, imageStyle } from "./PublicGameCarsStyles";
@@ -22,7 +22,12 @@ export function PublicGameCard({
 }: PublicGameCardProps) {
   const [upvoteColor, setUpvoteColor] = useState("gray");
   const [downvoteColor, setDownvoteColor] = useState("gray");
-  const [gameRating, setGameRating] = useState(86);
+  const [gameRating, setGameRating] = useState(0);
+
+  useEffect(() => {
+    setGameRating(game.percentageUpvotes);
+    updateVoteColor(game.usersVote);
+  }, [game]);
 
   const icon =
     game.iconImage === "DIRTY"
@@ -36,16 +41,25 @@ export function PublicGameCard({
     setView("GAME");
   };
 
-  const handleVote = async (vote: boolean) => {
-    if (vote) {
+  const updateVoteColor = (vote: number) => {
+    if (vote === 1) {
       setDownvoteColor("gray");
       setUpvoteColor("green");
     }
 
-    if (!vote) {
+    if (vote === 0) {
       setDownvoteColor("red");
       setUpvoteColor("gray");
     }
+
+    if (vote === 3) {
+      setDownvoteColor("gray");
+      setUpvoteColor("gray");
+    }
+  };
+
+  const handleVote = async (vote: number) => {
+    updateVoteColor(vote);
 
     const voter: Voter = {
       userDeviceId: deviceId,
@@ -65,10 +79,10 @@ export function PublicGameCard({
             Questions: {game.numberOfQuestions}
           </Text>
           <View style={styles.voteContainer}>
-            <Pressable onPress={() => handleVote(true)}>
+            <Pressable onPress={() => handleVote(1)}>
               <Feather name="thumbs-up" size={26} color={upvoteColor} />
             </Pressable>
-            <Pressable onPress={() => handleVote(false)}>
+            <Pressable onPress={() => handleVote(0)}>
               <Feather name="thumbs-down" size={26} color={downvoteColor} />
             </Pressable>
             <Text style={styles.procentileText}>{gameRating}%</Text>

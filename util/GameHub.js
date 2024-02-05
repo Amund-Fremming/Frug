@@ -1,6 +1,7 @@
 import * as signalR from "@microsoft/signalr";
 
-const URL_BASE = "http://localhost:5088";
+// const URL_BASE = "http://localhost:5088";
+const URL_BASE = "https://trike.azurewebsites.net";
 
 export const createConnection = () => {
   return new signalR.HubConnectionBuilder()
