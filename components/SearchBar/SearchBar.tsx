@@ -29,6 +29,7 @@ export function SearchBar({
           placeholder="Search Games"
           onChangeText={(text: string) => setSearchString(text.toUpperCase())}
           style={styles.input}
+          onSubmitEditing={handleSearch}
         />
         <Pressable onPress={handleSearch}>
           <Image style={imageStyle.searchIcon} source={searchIcon} />

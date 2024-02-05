@@ -17,6 +17,7 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
   const [nextButtonText, setNextButtonText] = useState("Start Game");
   const [questions, setQuestions] = useState<Question[]>([]);
   const [question, setQuestion] = useState("");
+  const [finishedGame, setFinishedGame] = useState(false);
 
   const [dotOne, setDotOne] = useState(false);
   const [dotTwo, setDotTwo] = useState(false);
@@ -82,11 +83,15 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
     const randomIndex = Math.random() * questions.length;
     const randomQuestion = questions.at(randomIndex);
 
-    setQuestion(
-      randomQuestion === undefined
-        ? "Game Finished!"
-        : randomQuestion.questionStr
-    );
+    if (randomQuestion === undefined) {
+      setFinishedGame(true);
+    } else {
+      if (questions.length == 1) {
+        setFinishedGame(true);
+      }
+
+      setQuestion(randomQuestion.questionStr);
+    }
 
     setQuestions(questions.filter((q) => q !== randomQuestion));
   };
@@ -100,8 +105,17 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
     <>
       <View style={styles.gameContainer}>
         <View style={styles.buttonContainer}>
-          <BigButton text={nextButtonText} handlePress={handleNextQuestion} />
-          <BigButton text="Leave" handlePress={handleLeave} />
+          {!finishedGame && (
+            <>
+              <BigButton
+                text={nextButtonText}
+                handlePress={handleNextQuestion}
+              />
+              <BigButton text="Leave" handlePress={handleLeave} />
+            </>
+          )}
+
+          {finishedGame && <BigButton text="Done" handlePress={handleLeave} />}
         </View>
       </View>
 
