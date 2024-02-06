@@ -1,18 +1,18 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { View, Alert, ActivityIndicator } from "react-native";
 import { styles } from "./GameOptionsStyles";
-import { validateInput } from "../../util/InputValidator";
+import { validateInput } from "../../../../util/InputValidator";
 
-import BigButton from "../../components/BigButton/BigButton";
-import MediumButton from "../../components/MediumButton/MediumButton";
-import BigInput from "../../components/BigInput/BigInput";
+import BigButton from "../../../../components/BigButton/BigButton";
+import MediumButton from "../../../../components/MediumButton/MediumButton";
+import BigInput from "../../../../components/BigInput/BigInput";
 
 import {
   createGame,
   IGame,
   gameExists,
   haveGameStarted,
-} from "../../util/GameApiManager";
+} from "../../../../util/GameApiManager";
 
 interface HostProps {
   setView: Dispatch<SetStateAction<string>>;

@@ -2,20 +2,23 @@ import React, { useState, Dispatch, SetStateAction, useEffect } from "react";
 import { Text, View, Alert } from "react-native";
 import { styles } from "./LobbyStyles";
 
-import { Question, addQuestionToGame } from "../../util/QuestionApiManager";
-import { validateInput } from "../../util/InputValidator";
-import { publishGame, startGame } from "../../util/GameApiManager";
+import {
+  Question,
+  addQuestionToGame,
+} from "../../../../util/QuestionApiManager";
+import { validateInput } from "../../../../util/InputValidator";
+import { publishGame, startGame } from "../../../../util/GameApiManager";
 
-import BigButton from "../../components/BigButton/BigButton";
-import MediumButton from "../../components/MediumButton/MediumButton";
-import SmallButton from "../../components/SmallButton/SmallButton";
-import BigInput from "../../components/BigInput/BigInput";
+import BigButton from "../../../../components/BigButton/BigButton";
+import MediumButton from "../../../../components/MediumButton/MediumButton";
+import SmallButton from "../../../../components/SmallButton/SmallButton";
+import BigInput from "../../../../components/BigInput/BigInput";
 
 import {
   startConnection,
   createConnection,
   stopConnection,
-} from "../../util/GameHub";
+} from "../../../../util/GameHub";
 
 interface LobbyProps {
   setGameId: Dispatch<SetStateAction<string>>;

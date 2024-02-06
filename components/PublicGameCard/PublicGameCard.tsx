@@ -7,6 +7,16 @@ import { Voter, voteOnGame } from "../../util/VoteApiManager";
 
 import Feather from "react-native-vector-icons/Feather";
 
+// For setting up navigation with ts
+import { useNavigation } from "@react-navigation/native";
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { RootStackParamList } from "../../navigators/NavigationTypes";
+
+type GamePlayNavigationProp = BottomTabNavigationProp<
+  RootStackParamList,
+  "Game"
+>;
+
 interface PublicGameCardProps {
   setGameId: Dispatch<SetStateAction<string>>;
   setView: Dispatch<SetStateAction<string>>;
@@ -20,6 +30,8 @@ export function PublicGameCard({
   game,
   deviceId,
 }: PublicGameCardProps) {
+  const navigation = useNavigation<GamePlayNavigationProp>();
+
   const [upvoteColor, setUpvoteColor] = useState("gray");
   const [downvoteColor, setDownvoteColor] = useState("gray");
   const [gameRating, setGameRating] = useState(0);
@@ -39,6 +51,8 @@ export function PublicGameCard({
   const handleClick = () => {
     setGameId(game.gameId);
     setView("GAME");
+
+    navigation.navigate("Game");
   };
 
   const updateVoteColor = (vote: number) => {

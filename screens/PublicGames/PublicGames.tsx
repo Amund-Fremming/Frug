@@ -1,12 +1,5 @@
-import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
-import {
-  View,
-  TextInput,
-  Image,
-  Pressable,
-  FlatList,
-  ActivityIndicator,
-} from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, FlatList, ActivityIndicator } from "react-native";
 import { styles } from "./PublicGamesStyles";
 
 import {
@@ -17,20 +10,12 @@ import {
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 
-interface PremadeProps {
-  setGameId: Dispatch<SetStateAction<string>>;
-  setView: Dispatch<SetStateAction<string>>;
-  setGames: Dispatch<SetStateAction<IGame[]>>;
-  games: IGame[];
-  deviceId: string;
-}
+import { useGamePlayProvider } from "../../providers/GamePlayProvider";
 
-export default function Premade({
-  setGameId,
-  setView,
+export default function PublicGames() {
+  const { view, setView, gameId, setGameId, deviceId, setDeviceId } =
+    useGamePlayProvider();
 
-  deviceId,
-}: PremadeProps) {
   const [games, setGames] = useState<IGame[]>([]);
   const [spinner, setSpinner] = useState(false);
   const [searchString, setSearchString] = useState("");
@@ -46,9 +31,11 @@ export default function Premade({
     setSpinner(false);
   };
 
-  const handleLeave = () => {
-    setGameId("");
-    setView("HOME");
+  const handleLeave = async () => {
+    setSpinner(true);
+    const searchResult = await getGamesSorted(deviceId);
+    setGames(searchResult);
+    setSpinner(false);
   };
 
   const handleSearch = async () => {
@@ -91,6 +78,7 @@ export default function Premade({
             paddingHorizontal: "5%",
             flexGrow: 1,
             marginTop: 15,
+            paddingBottom: 90,
           }}
           data={games}
           showsHorizontalScrollIndicator={false}

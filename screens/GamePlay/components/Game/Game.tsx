@@ -2,10 +2,10 @@ import { Text, View, Image, ViewStyle } from "react-native";
 import { styles, imageStyle } from "./GameStyles";
 import { useState, useEffect, SetStateAction, Dispatch } from "react";
 
-import { fetchQuestionsForGame } from "../../util/QuestionApiManager";
-import { Question } from "../../util/QuestionApiManager";
+import { fetchQuestionsForGame } from "../../../../util/QuestionApiManager";
+import { Question } from "../../../../util/QuestionApiManager";
 
-import BigButton from "../../components/BigButton/BigButton";
+import BigButton from "../../../../components/BigButton/BigButton";
 
 interface GameProps {
   gameId: string;
@@ -26,7 +26,7 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
 
   const [nextClickable, setNextClickable] = useState(false);
 
-  const mascot = require("../../assets/images/raptorrune.png");
+  const mascot = require("../../../../assets/images/raptorrune.png");
 
   useEffect(() => {
     fetchQuestions();
