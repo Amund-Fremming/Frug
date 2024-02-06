@@ -1,30 +1,33 @@
 import { StyleSheet } from "react-native";
+import {
+  horizontalScale,
+  verticalScale,
+  moderateScale,
+} from "../../screens/styles/Dimensions";
 
 const styles = StyleSheet.create({
   button: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: 130,
-    height: 70,
+    width: horizontalScale(130),
+    height: verticalScale(70),
     backgroundColor: "#C4A58A",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000000",
     shadowOffset: {
-      width: 7,
-      height: 8,
+      width: horizontalScale(7),
+      height: verticalScale(8),
     },
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    borderRadius: 10,
-    borderWidth: 3,
+    shadowOpacity: moderateScale(1),
+    shadowRadius: moderateScale(0),
+    borderRadius: moderateScale(10),
+    borderWidth: horizontalScale(3),
   },
 
   text: {
-    fontSize: 18,
+    fontSize: moderateScale(18),
     fontWeight: "bold",
-    color: /*"#07BF7B"*/ "black",
+    color: "black",
     fontFamily: "PressStart2P",
   },
 });

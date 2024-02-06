@@ -115,22 +115,26 @@ export default function Lobby({
       <Text style={styles.numberOfQuestionsDisplay}>{numQuestions}</Text>
 
       <View style={styles.buttonContainer}>
-        <Text style={styles.gameIdDisplay}>{gameId}</Text>
-        <BigInput
-          value={question}
-          placeholder="Add questions ..."
-          handleChange={(text: string) => setQuestion(text)}
-        />
-        <BigButton text="Add" handlePress={handleAddQuestion} />
+        <View style={styles.buttonWrapper}>
+          <Text style={styles.gameIdDisplay}>{gameId}</Text>
+          <BigInput
+            value={question}
+            placeholder="Add questions ..."
+            handleChange={(text: string) => setQuestion(text)}
+          />
+          <BigButton text="Add" handlePress={handleAddQuestion} />
 
-        {view === "HOST_LOBBY" ? (
-          <View style={styles.hostLobbyContainer}>
-            <SmallButton text="Back" handlePress={handleLeave} />
-            <SmallButton text="Start" handlePress={handleStart} />
-          </View>
-        ) : (
-          <MediumButton text="Back" handlePress={handleLeave} />
-        )}
+          {view === "HOST_LOBBY" && (
+            <View style={styles.hostLobbyContainer}>
+              <SmallButton text="Back" handlePress={handleLeave} />
+              <SmallButton text="Start" handlePress={handleStart} />
+            </View>
+          )}
+
+          {view === "LOBBY" && (
+            <MediumButton text="Back" handlePress={handleLeave} />
+          )}
+        </View>
       </View>
     </>
   );

@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { View, Alert, ActivityIndicator } from "react-native";
+import { View, Alert } from "react-native";
 import { styles } from "./GameOptionsStyles";
 import { validateInput } from "../../../../util/InputValidator";
 
@@ -108,16 +108,18 @@ export default function GameOptions({
   return (
     <>
       <View style={styles.buttonContainer}>
-        <BigInput
-          value={gameId}
-          placeholder="Game ID"
-          handleChange={(text) => setGameId(text.toUpperCase())}
-        />
-        <BigButton
-          text={view === "HOST" ? hostText : joinText}
-          handlePress={handleClick}
-        />
-        <MediumButton text="Back" handlePress={() => setView("HOME")} />
+        <View style={styles.buttonWrapper}>
+          <BigInput
+            value={gameId}
+            placeholder="Game ID"
+            handleChange={(text) => setGameId(text.toUpperCase())}
+          />
+          <BigButton
+            text={view === "HOST" ? hostText : joinText}
+            handlePress={handleClick}
+          />
+          <MediumButton text="Back" handlePress={() => setView("HOME")} />
+        </View>
       </View>
     </>
   );

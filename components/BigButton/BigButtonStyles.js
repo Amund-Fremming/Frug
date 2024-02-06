@@ -7,7 +7,7 @@ import {
 
 const styles = StyleSheet.create({
   button: {
-    width: horizontalScale(280),
+    width: horizontalScale(300),
     height: verticalScale(70),
     backgroundColor: "#C4A58A",
     display: "flex",

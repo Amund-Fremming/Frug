@@ -7,7 +7,7 @@ import {
 
 const styles = StyleSheet.create({
   input: {
-    width: horizontalScale(280),
+    width: horizontalScale(300),
     height: verticalScale(70),
     backgroundColor: "#ffffff",
     display: "flex",

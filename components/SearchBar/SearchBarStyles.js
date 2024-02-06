@@ -1,4 +1,9 @@
 import { StyleSheet } from "react-native";
+import {
+  horizontalScale,
+  verticalScale,
+  moderateScale,
+} from "../../screens/styles/Dimensions";
 
 const styles = StyleSheet.create({
   searchBarContainer: {
@@ -10,7 +15,7 @@ const styles = StyleSheet.create({
 
   searchBarWrapper: {
     width: "100%",
-    marginTop: 70,
+    marginTop: verticalScale(70),
     justifyContent: "space-around",
     alignItems: "center",
     marginBottom: 25,
@@ -19,27 +24,27 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    width: 270,
-    height: 50,
+    width: horizontalScale(270),
+    height: verticalScale(50),
     backgroundColor: "white",
-    borderRadius: 8,
-    paddingLeft: 20,
-    fontSize: 16,
+    borderRadius: moderateScale(8),
+    paddingLeft: verticalScale(20),
+    fontSize: moderateScale(16),
     fontFamily: "PressStart2P",
   },
 });
 
 const imageStyle = StyleSheet.create({
   searchIcon: {
-    width: 40,
-    height: 40,
-    marginLeft: 2,
-    marginRight: 4,
+    width: horizontalScale(35),
+    height: verticalScale(35),
+    marginLeft: horizontalScale(2),
+    marginRight: horizontalScale(4),
   },
 
   backIcon: {
-    width: 45,
-    height: 45,
+    width: horizontalScale(35),
+    height: verticalScale(35),
   },
 });
 
