@@ -1,28 +1,33 @@
 import { StyleSheet } from "react-native";
+import {
+  horizontalScale,
+  verticalScale,
+  moderateScale,
+} from "../../screens/styles/Dimensions";
 
 const styles = StyleSheet.create({
   input: {
-    width: "35%",
-    height: 70,
+    width: horizontalScale(280),
+    height: verticalScale(70),
     backgroundColor: "#ffffff",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000000",
     shadowOffset: {
-      width: 7,
-      height: 8,
+      width: horizontalScale(7),
+      height: verticalScale(8),
     },
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    borderRadius: 10,
-    borderWidth: 3,
-    padding: 15,
-    fontSize: 22,
+    shadowOpacity: moderateScale(1),
+    shadowRadius: moderateScale(0),
+    borderRadius: moderateScale(10),
+    borderWidth: moderateScale(3),
+    padding: moderateScale(15),
+    fontSize: moderateScale(22),
   },
 
   text: {
-    fontSize: 23,
+    fontSize: moderateScale(23),
     fontWeight: "bold",
     color: /*"#07BF7B"*/ "white",
     fontFamily: "PressStart2P",

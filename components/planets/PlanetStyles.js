@@ -1,9 +1,14 @@
 import { StyleSheet } from "react-native";
+import {
+  horizontalScale,
+  verticalScale,
+  moderateScale,
+} from "../../screens/styles/Dimensions";
 
 const styles = StyleSheet.create({
   planetContainer: {
     position: "absolute",
-    top: 70,
+    top: verticalScale(70),
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-evenly",
@@ -11,34 +16,34 @@ const styles = StyleSheet.create({
   },
 
   planetWrapperContainer: {
-    height: 150,
-    width: 150,
+    height: verticalScale(150),
+    width: horizontalScale(150),
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
-      width: 6,
-      height: 4,
+      width: moderateScale(6),
+      height: moderateScale(4),
     },
-    shadowOpacity: 0.8,
-    shadowRadius: 4.65,
+    shadowOpacity: moderateScale(0.8),
+    shadowRadius: moderateScale(4.65),
   },
 });
 
 const imageStyle = StyleSheet.create({
   planetOne: {
-    width: 120,
-    height: 120,
+    width: horizontalScale(120),
+    height: verticalScale(120),
   },
 
   planetTwo: {
-    width: 100,
-    height: 100,
+    width: horizontalScale(100),
+    height: verticalScale(100),
   },
 
   planetThree: {
-    width: 80,
-    height: 80,
+    width: horizontalScale(80),
+    height: verticalScale(80),
   },
 });
 

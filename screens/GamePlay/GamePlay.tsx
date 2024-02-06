@@ -17,6 +17,7 @@ import Mascot from "../../components/Mascot/Mascot";
 import Planets from "../../components/Planets/Planets";
 
 import { useGamePlayProvider } from "../../providers/GamePlayProvider";
+import PlanetBackground from "../../components/PlanetBackground/PlanetBackground";
 
 export default function GamePlay() {
   const { view, setView, gameId, setGameId, deviceId, setDeviceId } =
@@ -25,7 +26,6 @@ export default function GamePlay() {
   const [fontLoaded, setFontsLoaded] = useState(false);
 
   const star = require("../../assets/images/star.png");
-  //const star = require("../../assets/images/star.png");
 
   const loadFonts = async () => {
     await Font.loadAsync({
@@ -51,6 +51,7 @@ export default function GamePlay() {
     return () => unsubscribe();
   }, []);
 
+  // If the font is not loaded
   if (!fontLoaded) {
     return (
       <Image
@@ -60,71 +61,35 @@ export default function GamePlay() {
     );
   }
 
+  // Router for different game states
   return (
     <>
-      <View style={styles.container}>
-        <View style={styles.layerOneCircle}>
-          <View style={styles.layerTwoCircle}>
-            <View style={styles.layerThreeCircle}>
-              {view === "HOME" ? (
-                <HomeOptions setView={setView} />
-              ) : view === "HOST" || view === "JOIN" ? (
-                <GameOptions
-                  view={view}
-                  setView={setView}
-                  gameId={gameId}
-                  setGameId={setGameId}
-                />
-              ) : view === "LOBBY" || view == "HOST_LOBBY" ? (
-                <Lobby
-                  setGameId={setGameId}
-                  view={view}
-                  setView={setView}
-                  gameId={gameId}
-                />
-              ) : view === "GAME" ? (
-                <Game gameId={gameId} setGameId={setGameId} setView={setView} />
-              ) : (
-                <></>
-              )}
-            </View>
-          </View>
-        </View>
+      <PlanetBackground />
 
-        {/* Absolute Planets and Mascot */}
-        {["HOST", "JOIN", "HOME"].includes(view) && (
-          <>
-            <Mascot />
-            <Planets />
-          </>
+      <View style={styles.container}>
+        {view === "HOME" && <HomeOptions setView={setView} />}
+
+        {["HOST", "JOIN"].includes(view) && (
+          <GameOptions
+            view={view}
+            setView={setView}
+            gameId={gameId}
+            setGameId={setGameId}
+          />
         )}
 
-        {/* Absolute Stars */}
-        <View style={styles.stars}>
-          <Image source={star} style={imageStyle.starOne} />
-          <Image source={star} style={imageStyle.starTwo} />
-          <Image source={star} style={imageStyle.starThree} />
+        {["LOBBY", "HOST_LOBBY"].includes(view) && (
+          <Lobby
+            setGameId={setGameId}
+            view={view}
+            setView={setView}
+            gameId={gameId}
+          />
+        )}
 
-          <Image source={star} style={imageStyle.starFour} />
-          <Image source={star} style={imageStyle.starFive} />
-          <Image source={star} style={imageStyle.starSix} />
-
-          <Image source={star} style={imageStyle.starSeven} />
-          <Image source={star} style={imageStyle.starEight} />
-          <Image source={star} style={imageStyle.starNine} />
-
-          <Image source={star} style={imageStyle.starTen} />
-          <Image source={star} style={imageStyle.starEleven} />
-          <Image source={star} style={imageStyle.starTwelve} />
-
-          <Image source={star} style={imageStyle.starThirteen} />
-          <Image source={star} style={imageStyle.starFourteen} />
-          <Image source={star} style={imageStyle.starFifteen} />
-
-          <Image source={star} style={imageStyle.starSixteen} />
-          <Image source={star} style={imageStyle.starSeventeen} />
-          <Image source={star} style={imageStyle.starEighteen} />
-        </View>
+        {view === "GAME" && (
+          <Game gameId={gameId} setGameId={setGameId} setView={setView} />
+        )}
       </View>
     </>
   );
