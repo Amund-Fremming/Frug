@@ -112,9 +112,8 @@ export default function Lobby({
 
   return (
     <>
-      <Text style={styles.numberOfQuestionsDisplay}>{numQuestions}</Text>
-
       <View style={styles.buttonContainer}>
+        <Text style={styles.numberOfQuestionsDisplay}>{numQuestions}</Text>
         <View style={styles.buttonWrapper}>
           <Text style={styles.gameIdDisplay}>{gameId}</Text>
           <BigInput

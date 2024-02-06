@@ -1,19 +1,11 @@
 import { StyleSheet } from "react-native";
+import { moderateScale } from "../styles/Dimensions";
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: "100%",
-    borderColor: "red",
-    borderWidth: 2,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
   text: {
-    fontSize: 26,
+    fontSize: moderateScale(26),
     fontWeight: "bold",
-    color: /*"#07BF7B"*/ "white",
+    color: "white",
   },
 });
 

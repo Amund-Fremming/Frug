@@ -1,17 +1,22 @@
 import { StyleSheet } from "react-native";
+import {
+  horizontalScale,
+  verticalScale,
+  moderateScale,
+} from "../../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   hostLobbyContainer: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    gap: 30,
+    gap: moderateScale(30),
   },
 
   numberOfQuestionsDisplay: {
-    fontSize: 130,
+    fontSize: moderateScale(130),
     fontWeight: "600",
-    opacity: 0.4,
+    opacity: moderateScale(0.4),
     fontFamily: "PressStart2P",
   },
 
@@ -25,22 +30,22 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     justifyContent: "center",
     alignItems: "center",
-    gap: 30,
+    gap: moderateScale(30),
   },
 
   text: {
-    fontSize: 23,
+    fontSize: moderateScale(23),
     fontWeight: "bold",
     color: "white",
     fontFamily: "PressStart2P",
   },
 
   gameIdDisplay: {
-    width: 220,
-    height: 60,
-    top: 30,
-    fontSize: 25,
-    lineHeight: 27,
+    width: verticalScale(220),
+    height: horizontalScale(60),
+    top: moderateScale(30),
+    fontSize: moderateScale(25),
+    lineHeight: verticalScale(27),
     fontWeight: "bold",
     color: "white",
     fontFamily: "PressStart2P",

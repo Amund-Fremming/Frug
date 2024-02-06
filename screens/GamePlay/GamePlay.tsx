@@ -13,9 +13,6 @@ import * as Font from "expo-font";
 import Game from "./components/Game/Game";
 
 import { setDeviceIdentifier } from "../../util/DeviceIdentifierUtil";
-import Mascot from "../../components/Mascot/Mascot";
-import Planets from "../../components/Planets/Planets";
-
 import { useGamePlayProvider } from "../../providers/GamePlayProvider";
 import PlanetBackground from "../../components/PlanetBackground/PlanetBackground";
 
@@ -65,32 +62,29 @@ export default function GamePlay() {
   return (
     <>
       <PlanetBackground />
+      {view === "HOME" && <HomeOptions setView={setView} />}
 
-      <View style={styles.container}>
-        {view === "HOME" && <HomeOptions setView={setView} />}
+      {["HOST", "JOIN"].includes(view) && (
+        <GameOptions
+          view={view}
+          setView={setView}
+          gameId={gameId}
+          setGameId={setGameId}
+        />
+      )}
 
-        {["HOST", "JOIN"].includes(view) && (
-          <GameOptions
-            view={view}
-            setView={setView}
-            gameId={gameId}
-            setGameId={setGameId}
-          />
-        )}
+      {["LOBBY", "HOST_LOBBY"].includes(view) && (
+        <Lobby
+          setGameId={setGameId}
+          view={view}
+          setView={setView}
+          gameId={gameId}
+        />
+      )}
 
-        {["LOBBY", "HOST_LOBBY"].includes(view) && (
-          <Lobby
-            setGameId={setGameId}
-            view={view}
-            setView={setView}
-            gameId={gameId}
-          />
-        )}
-
-        {view === "GAME" && (
-          <Game gameId={gameId} setGameId={setGameId} setView={setView} />
-        )}
-      </View>
+      {view === "GAME" && (
+        <Game gameId={gameId} setGameId={setGameId} setView={setView} />
+      )}
     </>
   );
 }

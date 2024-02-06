@@ -1,14 +1,13 @@
 import { View, Text } from "react-native";
-
+import { styles } from "./HomeScreenStyles";
 import PlanetBackground from "../../components/PlanetBackground/PlanetBackground";
-import Mascot from "../../components/Mascot/Mascot";
 
 export function HomeScreen() {
   return (
     <>
-      <PlanetBackground view="HOME" />
+      <PlanetBackground />
 
-      <View>
+      <View style={styles.container}>
         <Text>HomeScreen</Text>
       </View>
     </>
