@@ -1,7 +1,13 @@
 import { View, Image } from "react-native";
 import { styles, imageStyle } from "./PlanetBackgroundStyles";
+import Planets from "../Planets/Planets";
+import Mascot from "../Mascot/Mascot";
 
-export default function PlanetBackground() {
+interface Props {
+  view: string;
+}
+
+export default function PlanetBackground({ view }: Props) {
   const star = require("../../assets/images/star.png");
 
   return (
@@ -39,6 +45,8 @@ export default function PlanetBackground() {
         <Image source={star} style={imageStyle.starSeventeen} />
         <Image source={star} style={imageStyle.starEighteen} />
       </View>
+
+      {["HOME", "HOST", "JOIN"].includes(view) && <Planets />}
     </>
   );
 }

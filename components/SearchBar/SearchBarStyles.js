@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
 
   searchBarWrapper: {
     width: "100%",
-    marginTop: verticalScale(70),
+    marginTop: verticalScale(60),
     justifyContent: "space-around",
     alignItems: "center",
-    marginBottom: 25,
+    marginBottom: verticalScale(20),
     display: "flex",
     flexDirection: "row",
   },

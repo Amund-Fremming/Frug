@@ -4,12 +4,8 @@ import PlanetBackground from "../../components/PlanetBackground/PlanetBackground
 
 export function HomeScreen() {
   return (
-    <>
-      <PlanetBackground />
-
-      <View style={styles.container}>
-        <Text>HomeScreen</Text>
-      </View>
-    </>
+    <View style={styles.container}>
+      <Text>HomeScreen</Text>
+    </View>
   );
 }

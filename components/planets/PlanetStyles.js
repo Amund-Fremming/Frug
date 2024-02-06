@@ -8,7 +8,7 @@ import {
 const styles = StyleSheet.create({
   planetContainer: {
     position: "absolute",
-    top: verticalScale(70),
+    top: verticalScale(60),
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-evenly",

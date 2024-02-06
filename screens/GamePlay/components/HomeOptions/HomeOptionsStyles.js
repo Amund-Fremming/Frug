@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
-import { moderateScale, verticalScale } from "../../../styles/Dimensions";
+import { verticalScale } from "../../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   buttonContainer: {
+    paddingBottom: verticalScale(40),
     height: "100%",
     width: "100%",
     flexDirection: "column",

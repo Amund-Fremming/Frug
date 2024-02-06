@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   },
 
   numberOfQuestionsDisplay: {
+    marginBottom: verticalScale(50),
     fontSize: moderateScale(130),
     fontWeight: "600",
     opacity: moderateScale(0.4),
@@ -21,6 +22,7 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
+    marginTop: verticalScale(60),
     width: "100%",
     height: "100%",
     justifyContent: "center",

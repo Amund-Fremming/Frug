@@ -3,6 +3,7 @@ import { View, Alert } from "react-native";
 import { styles } from "./GameOptionsStyles";
 import { validateInput } from "../../../../util/InputValidator";
 
+import Mascot from "../../../../components/Mascot/Mascot";
 import BigButton from "../../../../components/BigButton/BigButton";
 import MediumButton from "../../../../components/MediumButton/MediumButton";
 import BigInput from "../../../../components/BigInput/BigInput";
@@ -106,21 +107,20 @@ export default function GameOptions({
   };
 
   return (
-    <>
-      <View style={styles.buttonContainer}>
-        <View style={styles.buttonWrapper}>
-          <BigInput
-            value={gameId}
-            placeholder="Game ID"
-            handleChange={(text) => setGameId(text.toUpperCase())}
-          />
-          <BigButton
-            text={view === "HOST" ? hostText : joinText}
-            handlePress={handleClick}
-          />
-          <MediumButton text="Back" handlePress={() => setView("HOME")} />
-        </View>
+    <View style={styles.buttonContainer}>
+      <Mascot />
+      <View style={styles.buttonWrapper}>
+        <BigInput
+          value={gameId}
+          placeholder="Game ID"
+          handleChange={(text) => setGameId(text.toUpperCase())}
+        />
+        <BigButton
+          text={view === "HOST" ? hostText : joinText}
+          handlePress={handleClick}
+        />
+        <MediumButton text="Back" handlePress={() => setView("HOME")} />
       </View>
-    </>
+    </View>
   );
 }

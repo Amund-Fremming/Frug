@@ -14,13 +14,11 @@ export default function BigInput({
   handleChange,
 }: BigInputProps) {
   return (
-    <>
-      <TextInput
-        placeholder={placeholder}
-        value={value}
-        onChangeText={(text: string) => handleChange(text)}
-        style={styles.input}
-      />
-    </>
+    <TextInput
+      placeholder={placeholder}
+      value={value}
+      onChangeText={(text: string) => handleChange(text)}
+      style={styles.input}
+    />
   );
 }

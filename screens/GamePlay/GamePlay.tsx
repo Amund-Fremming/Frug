@@ -22,8 +22,6 @@ export default function GamePlay() {
 
   const [fontLoaded, setFontsLoaded] = useState(false);
 
-  const star = require("../../assets/images/star.png");
-
   const loadFonts = async () => {
     await Font.loadAsync({
       PressStart2P: require("../../assets/fonts/PressStart2P-Regular.ttf"),
@@ -61,7 +59,7 @@ export default function GamePlay() {
   // Router for different game states
   return (
     <>
-      <PlanetBackground />
+      <PlanetBackground view={view} />
       {view === "HOME" && <HomeOptions setView={setView} />}
 
       {["HOST", "JOIN"].includes(view) && (

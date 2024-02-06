@@ -2,18 +2,7 @@ import { StyleSheet } from "react-native";
 import {
   horizontalScale,
   verticalScale,
-  moderateScale,
 } from "../../screens/styles/Dimensions";
-
-const styles = StyleSheet.create({
-  mascotContainer: {
-    position: "absolute",
-    top: moderateScale(180),
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 const imageStyle = StyleSheet.create({
   mascot: {
@@ -22,4 +11,4 @@ const imageStyle = StyleSheet.create({
   },
 });
 
-export { styles, imageStyle };
+export { imageStyle };

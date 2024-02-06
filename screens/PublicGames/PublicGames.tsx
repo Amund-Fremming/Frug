@@ -73,12 +73,12 @@ export default function PublicGames() {
           setSearchString={setSearchString}
         />
         <FlatList
-          style={{ width: "100%" }}
+          style={{ width: "100%", marginBottom: 70 }}
           contentContainerStyle={{
             paddingHorizontal: "5%",
             flexGrow: 1,
             marginTop: 15,
-            paddingBottom: 90,
+            paddingBottom: 30,
           }}
           data={games}
           showsHorizontalScrollIndicator={false}

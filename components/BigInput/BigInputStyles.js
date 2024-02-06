@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     width: horizontalScale(300),
     height: verticalScale(70),
     backgroundColor: "#ffffff",
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000000",
@@ -29,7 +28,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: moderateScale(23),
     fontWeight: "bold",
-    color: /*"#07BF7B"*/ "white",
+    color: "white",
     fontFamily: "PressStart2P",
   },
 });
