@@ -16,6 +16,8 @@ export function HomeScreen() {
     useState<string>("#FF6347");
   const [likedBorderColor, setLikedBorderColor] =
     useState<string>("transparent");
+  const [createdTextColor, setCreatedTextColor] = useState<string>("white");
+  const [likedTextColor, setLikedTextColor] = useState<string>("gray");
 
   useEffect(() => {
     // fetchGames();
@@ -29,21 +31,26 @@ export function HomeScreen() {
     setMyLikedGames(likedResponse);
   };
 
-  const getCreatedTabStyles = () => ({
-    ...styles.tabCreated,
-    borderBottomColor: createdBorderColor,
-  });
+  const getTabStyles = (createdTab: boolean) => {
+    if (createdTab)
+      return { ...styles.tab, borderBottomColor: createdBorderColor };
+    else return { ...styles.tab, borderBottomColor: likedBorderColor };
+  };
 
-  const getLikedTabStyles = () => ({
-    ...styles.tabLiked,
-    borderBottomColor: likedBorderColor,
-  });
+  const getTabTextStyles = (createdTab: boolean) => {
+    if (createdTab) return { ...styles.tabText, color: createdTextColor };
+    else return { ...styles.tabText, color: likedTextColor };
+  };
 
   const handleTabPressed = (createdTab: boolean) => {
     if (createdTab) {
+      setLikedTextColor("gray");
+      setCreatedTextColor("white");
       setLikedBorderColor("transparent");
       setCreatedBorderColor("#FF6347");
     } else {
+      setLikedTextColor("white");
+      setCreatedTextColor("gray");
       setLikedBorderColor("#FF6347");
       setCreatedBorderColor("transparent");
     }
@@ -54,19 +61,18 @@ export function HomeScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.banner}>
-        <Text style={styles.headerText}>My Games</Text>
         <View style={styles.tabsContainer}>
           <Pressable
             onPress={() => handleTabPressed(true)}
-            style={getCreatedTabStyles}
+            style={getTabStyles(true)}
           >
-            <Text style={styles.tabText}>Created</Text>
+            <Text style={getTabTextStyles(true)}>Created</Text>
           </Pressable>
           <Pressable
             onPress={() => handleTabPressed(false)}
-            style={getLikedTabStyles}
+            style={getTabStyles(false)}
           >
-            <Text style={styles.tabText}>Liked</Text>
+            <Text style={getTabTextStyles(false)}>Liked</Text>
           </Pressable>
         </View>
       </View>

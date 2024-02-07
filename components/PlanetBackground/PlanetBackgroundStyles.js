@@ -6,7 +6,6 @@ import {
 } from "../../styles/Dimensions";
 
 const styles = StyleSheet.create({
-  // Containers
   container: {
     zIndex: 0,
     width: "100%",
@@ -17,7 +16,6 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
 
-  // Background Circles
   layerOneCircle: {
     width: horizontalScale(850),
     height: verticalScale(800),

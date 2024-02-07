@@ -16,21 +16,14 @@ const styles = StyleSheet.create({
   },
 
   tabText: {
-    fontSize: moderateScale(14),
+    fontSize: moderateScale(18),
     marginBottom: verticalScale(8),
     fontWeight: "bold",
-    color: "gray",
     fontFamily: "PressStart2P",
   },
 
-  tabCreated: {
-    justifyContent: "center",
-    alignItems: "center",
-    borderBottomWidth: moderateScale(4),
-    width: "50%",
-  },
-
-  tabLiked: {
+  tab: {
+    paddingBottom: moderateScale(6),
     justifyContent: "center",
     alignItems: "center",
     borderBottomWidth: moderateScale(4),
@@ -40,19 +33,11 @@ const styles = StyleSheet.create({
   banner: {
     width: "100%",
     height: "100%",
-    height: verticalScale(125),
+    height: verticalScale(115),
     backgroundColor: "#604395",
     justifyContent: "flex-end",
     paddingTop: verticalScale(60),
     alignItems: "center",
-  },
-
-  headerText: {
-    fontSize: moderateScale(23),
-    marginBottom: verticalScale(20),
-    fontWeight: "bold",
-    color: "white",
-    fontFamily: "PressStart2P",
   },
 });
 

@@ -27,10 +27,3 @@
 
 - Bruke mer tid i planleggingen og få fastslått noen flere generiske komponenter
 - Lære å burke Figma mer effektivt og riktig
-
-### Ting bør legges til
-
-- Flere bevegende elementer i bakgrunn som et romskip eller en meteor som flyr i bakgrunn av planeten
-- Mer annimasjoner på mascot figurene
-- Mulighet for å lagre likte spill
-- Mulighet for å lagre egne spill
