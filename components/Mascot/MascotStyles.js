@@ -3,8 +3,8 @@ import { horizontalScale, verticalScale } from "../../styles/Dimensions";
 
 const imageStyle = StyleSheet.create({
   mascot: {
-    width: horizontalScale(330),
-    height: verticalScale(330),
+    width: horizontalScale(300),
+    height: verticalScale(300),
   },
 });
 

@@ -3,7 +3,7 @@ import { verticalScale } from "../../../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    paddingTop: verticalScale(40),
+    paddingTop: verticalScale(60),
     height: "100%",
     width: "100%",
     flexDirection: "column",

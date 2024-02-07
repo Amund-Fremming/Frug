@@ -1,9 +1,5 @@
 ## FIKSE
 
-- NumQ høyere opp
-- Fikse Game container lavere, og text boksen lavere
-- mer padding på innsiden av text bosken?
-
 - Preloade games for public games
 - Preload games for my games and liked games
 

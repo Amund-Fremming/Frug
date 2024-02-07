@@ -7,6 +7,7 @@ import {
 
 const styles = StyleSheet.create({
   gameContainer: {
+    marginTop: verticalScale(60),
     width: "100%",
     height: "100%",
     justifyContent: "center",
@@ -40,21 +41,21 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: horizontalScale(340),
     minHeight: verticalScale(90),
-    top: verticalScale(60),
+    top: verticalScale(90),
     borderRadius: "30%",
     borderColor: "#000000",
     borderWidth: moderateScale(4),
     backgroundColor: "#ffffff",
     alignItems: "center",
     justifyContent: "center",
-    padding: moderateScale(10),
+    padding: moderateScale(20),
     zIndex: 10,
   },
 
   questionAnimationDotOne: {
     position: "absolute",
-    left: "56%",
-    top: verticalScale(160),
+    right: verticalScale(110),
+    top: verticalScale(205),
     width: horizontalScale(20),
     height: verticalScale(20),
     borderRadius: 425,
@@ -65,8 +66,8 @@ const styles = StyleSheet.create({
 
   questionAnimationDotTwo: {
     position: "absolute",
-    top: verticalScale(200),
-    left: "52%",
+    top: verticalScale(240),
+    right: verticalScale(150),
     width: horizontalScale(18),
     height: verticalScale(18),
     borderRadius: 425,
@@ -77,7 +78,8 @@ const styles = StyleSheet.create({
 
   questionAnimationDotThree: {
     position: "absolute",
-    top: verticalScale(235),
+    top: verticalScale(275),
+    right: verticalScale(190),
     width: horizontalScale(15),
     height: verticalScale(15),
     borderRadius: 425,
