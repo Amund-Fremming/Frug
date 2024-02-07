@@ -1,8 +1,5 @@
 import { StyleSheet } from "react-native";
-import {
-  horizontalScale,
-  verticalScale,
-} from "../../screens/styles/Dimensions";
+import { horizontalScale, verticalScale } from "../../styles/Dimensions";
 
 const imageStyle = StyleSheet.create({
   mascot: {

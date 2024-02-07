@@ -3,7 +3,7 @@ import {
   horizontalScale,
   moderateScale,
   verticalScale,
-} from "../../screens/styles/Dimensions";
+} from "../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   // Containers

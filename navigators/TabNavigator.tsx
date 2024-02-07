@@ -4,7 +4,7 @@ import GamePlay from "../screens/GamePlay/GamePlay";
 import PublicGames from "../screens/PublicGames/PublicGames";
 import { HomeScreen } from "../screens/HomeScreen/HomeScreen";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { moderateScale } from "../screens/styles/Dimensions";
+import { moderateScale } from "../styles/Dimensions";
 import { RootStackParamList } from "./NavigationTypes";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();

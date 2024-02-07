@@ -1,7 +1,6 @@
 import { View, Image } from "react-native";
 import { styles, imageStyle } from "./PlanetBackgroundStyles";
 import Planets from "../Planets/Planets";
-import Mascot from "../Mascot/Mascot";
 
 interface Props {
   view: string;

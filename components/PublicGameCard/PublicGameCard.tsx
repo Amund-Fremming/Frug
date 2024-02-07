@@ -74,6 +74,7 @@ export function PublicGameCard({
 
   const handleVote = async (vote: number) => {
     updateVoteColor(vote);
+    setView("HOME"); // For triggering updated fetch when updating data.
 
     const voter: Voter = {
       userDeviceId: deviceId,

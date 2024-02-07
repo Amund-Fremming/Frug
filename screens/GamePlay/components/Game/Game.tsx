@@ -121,13 +121,7 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
         </View>
       </View>
 
-      {/*
-      Game Animation 
-            - Denne må fikses
-            - Absolute for å sveve fritt
-            - Eller bruk av flexbox?
-
-            <View style={styles.questionAnimationContainer}>
+      <View style={styles.questionAnimationContainer}>
         <View style={toggleTextbox(textbox)}>
           <Text style={styles.text}>{question}</Text>
         </View>
@@ -135,7 +129,6 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
         <View style={toggleDotTwo(dotTwo)}></View>
         <View style={toggleDotThree(dotThree)}></View>
       </View>
-      */}
     </>
   );
 }

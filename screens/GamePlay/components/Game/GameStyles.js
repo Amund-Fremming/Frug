@@ -3,7 +3,7 @@ import {
   horizontalScale,
   verticalScale,
   moderateScale,
-} from "../../../styles/Dimensions";
+} from "../../../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   gameContainer: {
@@ -29,10 +29,18 @@ const styles = StyleSheet.create({
     gap: horizontalScale(20),
   },
 
+  text: {
+    fontSize: moderateScale(16),
+    color: "black",
+    fontFamily: "PressStart2P",
+    lineHeight: verticalScale(20),
+  },
+
   questionAnimationTextbox: {
     position: "absolute",
     width: horizontalScale(340),
     minHeight: verticalScale(90),
+    top: verticalScale(60),
     borderRadius: "30%",
     borderColor: "#000000",
     borderWidth: moderateScale(4),
@@ -43,17 +51,10 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
 
-  text: {
-    fontSize: moderateScale(16),
-    color: "black",
-    fontFamily: "PressStart2P",
-    lineHeight: verticalScale(20),
-  },
-
   questionAnimationDotOne: {
     position: "absolute",
     left: "56%",
-    top: 160,
+    top: verticalScale(160),
     width: horizontalScale(20),
     height: verticalScale(20),
     borderRadius: 425,
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
 
   questionAnimationDotTwo: {
     position: "absolute",
-    top: 200,
+    top: verticalScale(200),
     left: "52%",
     width: horizontalScale(18),
     height: verticalScale(18),
@@ -76,21 +77,22 @@ const styles = StyleSheet.create({
 
   questionAnimationDotThree: {
     position: "absolute",
-    top: 235,
-    width: 15,
-    height: 15,
+    top: verticalScale(235),
+    width: horizontalScale(15),
+    height: verticalScale(15),
     borderRadius: 425,
     backgroundColor: "#ffffff",
     borderColor: "#000000",
-    borderWidth: 2.2,
+    borderWidth: moderateScale(2.2),
     zIndex: 0,
   },
 });
 
 const imageStyle = StyleSheet.create({
   mascot: {
-    width: horizontalScale(330),
-    height: verticalScale(330),
+    width: horizontalScale(300),
+    height: verticalScale(300),
+    marginRight: horizontalScale(120),
   },
 });
 

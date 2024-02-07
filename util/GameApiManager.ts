@@ -181,3 +181,47 @@ export const searchForGames = async (
     console.error(`GET not working (gameExists): ${error}`);
   }
 };
+
+export const usersGames = async (deviceId: string) => {
+  try {
+    const response = await fetch(
+      `${GAME_URL_BASE}/usersgames/?searchString=${encodeURIComponent(
+        deviceId
+      )}`,
+      {
+        method: "GET",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`(gameExists): ${response.status}`);
+    }
+
+    const data: IGame[] | undefined = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`GET not working (gameExists): ${error}`);
+  }
+};
+
+export const likedGames = async (deviceId: string) => {
+  try {
+    const response = await fetch(
+      `${GAME_URL_BASE}/likedgames/?searchString=${encodeURIComponent(
+        deviceId
+      )}`,
+      {
+        method: "GET",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`(gameExists): ${response.status}`);
+    }
+
+    const data: IGame[] | undefined = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`GET not working (gameExists): ${error}`);
+  }
+};

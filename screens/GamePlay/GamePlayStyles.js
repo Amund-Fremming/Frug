@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { moderateScale } from "../styles/Dimensions";
+import { moderateScale } from "../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   text: {

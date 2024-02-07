@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { verticalScale } from "../styles/Dimensions";
+import { verticalScale } from "../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   viewContainer: {

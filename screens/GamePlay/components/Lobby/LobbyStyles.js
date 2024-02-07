@@ -3,7 +3,7 @@ import {
   horizontalScale,
   verticalScale,
   moderateScale,
-} from "../../../styles/Dimensions";
+} from "../../../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   hostLobbyContainer: {
