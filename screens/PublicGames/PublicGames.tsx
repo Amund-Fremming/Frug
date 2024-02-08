@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, FlatList, ActivityIndicator } from "react-native";
 import { styles } from "./PublicGamesStyles";
+import { useIsFocused } from "@react-navigation/native";
 
 import {
   IGame,
@@ -9,20 +10,22 @@ import {
 } from "../../util/GameApiManager";
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
-
 import { useGamePlayProvider } from "../../providers/GamePlayProvider";
 
 export default function PublicGames() {
   const { setView, setGameId, deviceId } = useGamePlayProvider();
+  const isFocused = useIsFocused();
 
   const [games, setGames] = useState<IGame[]>([]);
   const [spinner, setSpinner] = useState(false);
   const [searchString, setSearchString] = useState("");
 
   useEffect(() => {
-    setSpinner(true);
-    fetchGames();
-  }, []);
+    if (isFocused) {
+      setSpinner(true);
+      fetchGames();
+    }
+  }, [isFocused]);
 
   const fetchGames = async () => {
     const fetchedGames: IGame[] | undefined = await getGamesSorted(deviceId);

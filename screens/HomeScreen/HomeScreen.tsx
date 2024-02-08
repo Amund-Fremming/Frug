@@ -32,7 +32,10 @@ export function HomeScreen() {
   });
 
   useEffect(() => {
-    if (isFocused) fetchCreatedGames();
+    if (isFocused) {
+      fetchCreatedGames();
+      fetchLikedGames();
+    }
   }, [isFocused]);
 
   const fetchLikedGames = async () => {
