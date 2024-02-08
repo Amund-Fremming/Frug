@@ -1,4 +1,4 @@
-import { View, FlatList, ActivityIndicator } from "react-native";
+import { View, FlatList, ActivityIndicator, Text } from "react-native";
 import { styles } from "./HomeScreenStyles";
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 import { useGamePlayProvider } from "../../providers/GamePlayProvider";
@@ -79,6 +79,27 @@ export function HomeScreen() {
   return (
     <View style={styles.container}>
       <TabsBanner tabStyles={tabStyles} handleTabPressed={handleTabPressed} />
+
+      {tabStyles.createdView && myCreatedGames?.length === 0 && (
+        <>
+          <View style={styles.noContentContainer}>
+            <Text style={styles.noContentText}>
+              Your created games will show here
+            </Text>
+          </View>
+        </>
+      )}
+
+      {!tabStyles.createdView && myLikedGames?.length === 0 && (
+        <>
+          <View style={styles.noContentContainer}>
+            <Text style={styles.noContentText}>
+              Your liked games will show here
+            </Text>
+          </View>
+        </>
+      )}
+
       <FlatList
         style={{
           width: "100%",

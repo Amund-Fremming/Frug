@@ -27,3 +27,7 @@
 
 - Bruke mer tid i planleggingen og få fastslått noen flere generiske komponenter
 - Lære å burke Figma mer effektivt og riktig
+
+## **ADD**
+
+- Når created eller liked er tomme, vis en prompt som sier at de må like eller lage spille for å få opp her!

@@ -9,6 +9,22 @@ const styles = StyleSheet.create({
     backgroundColor: "#0E0E10",
   },
 
+  noContentContainer: {
+    width: "100%",
+    height: "70%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  noContentText: {
+    fontSize: moderateScale(23),
+    lineHeight: moderateScale(35),
+    textAlign: "center",
+    fontWeight: "bold",
+    color: /*"#07BF7B"*/ "white",
+    fontFamily: "PressStart2P",
+  },
+
   tabsContainer: {
     width: "100%",
     justifyContent: "space-around",
