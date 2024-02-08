@@ -1,25 +1,11 @@
 import { StyleSheet } from "react-native";
-import { verticalScale, moderateScale } from "../../styles/Dimensions";
+import { moderateScale, verticalScale } from "../../styles/Dimensions";
 
 const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    width: "100%",
-    justifyContent: "center",
-    backgroundColor: "#0E0E10",
-  },
-
   tabsContainer: {
     width: "100%",
     justifyContent: "space-around",
     flexDirection: "row",
-  },
-
-  tabText: {
-    fontSize: moderateScale(18),
-    marginBottom: verticalScale(8),
-    fontWeight: "bold",
-    fontFamily: "PressStart2P",
   },
 
   tab: {
@@ -40,13 +26,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  spinnerStyles: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: "100%",
-    paddingBottom: verticalScale(250),
-    backgroundColor: "#0E0E10",
+  tabText: {
+    fontSize: moderateScale(18),
+    marginBottom: verticalScale(8),
+    fontWeight: "bold",
+    fontFamily: "PressStart2P",
   },
 });
 

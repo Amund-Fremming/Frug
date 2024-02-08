@@ -111,30 +111,28 @@ export default function Lobby({
   };
 
   return (
-    <>
-      <View style={styles.buttonContainer}>
-        <Text style={styles.numberOfQuestionsDisplay}>{numQuestions}</Text>
-        <View style={styles.buttonWrapper}>
-          <Text style={styles.gameIdDisplay}>{gameId}</Text>
-          <BigInput
-            value={question}
-            placeholder="Add questions ..."
-            handleChange={(text: string) => setQuestion(text)}
-          />
-          <BigButton text="Add" handlePress={handleAddQuestion} />
+    <View style={styles.buttonContainer}>
+      <Text style={styles.numberOfQuestionsDisplay}>{numQuestions}</Text>
+      <View style={styles.buttonWrapper}>
+        <Text style={styles.gameIdDisplay}>{gameId}</Text>
+        <BigInput
+          value={question}
+          placeholder="Add questions ..."
+          handleChange={(text: string) => setQuestion(text)}
+        />
+        <BigButton text="Add" handlePress={handleAddQuestion} />
 
-          {view === "HOST_LOBBY" && (
-            <View style={styles.hostLobbyContainer}>
-              <SmallButton text="Back" handlePress={handleLeave} />
-              <SmallButton text="Start" handlePress={handleStart} />
-            </View>
-          )}
+        {view === "HOST_LOBBY" && (
+          <View style={styles.hostLobbyContainer}>
+            <SmallButton text="Back" handlePress={handleLeave} />
+            <SmallButton text="Start" handlePress={handleStart} />
+          </View>
+        )}
 
-          {view === "LOBBY" && (
-            <MediumButton text="Back" handlePress={handleLeave} />
-          )}
-        </View>
+        {view === "LOBBY" && (
+          <MediumButton text="Back" handlePress={handleLeave} />
+        )}
       </View>
-    </>
+    </View>
   );
 }

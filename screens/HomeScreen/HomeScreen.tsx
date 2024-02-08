@@ -1,87 +1,81 @@
-import { View, Text, FlatList, Pressable } from "react-native";
+import { View, FlatList, ActivityIndicator } from "react-native";
 import { styles } from "./HomeScreenStyles";
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 import { useGamePlayProvider } from "../../providers/GamePlayProvider";
 import { useEffect, useState } from "react";
 import { IGame } from "../../util/GameApiManager";
 import { usersGames, likedGames } from "../../util/GameApiManager";
+import { TabsBanner } from "../../components/TabsBanner/TabsBanner";
+import { useIsFocused } from "@react-navigation/native";
+
+export interface ITabsStyles {
+  createdView: boolean;
+  createdBorderColor: string;
+  likedBorderColor: string;
+  createdTextColor: string;
+  likedTextColor: string;
+}
 
 export function HomeScreen() {
   const { deviceId, setView, view, setGameId } = useGamePlayProvider();
+  const isFocused = useIsFocused();
 
+  const [spinner, setSpinner] = useState(false);
   const [myCreatedGames, setMyCreatedGames] = useState<IGame[] | undefined>([]);
   const [myLikedGames, setMyLikedGames] = useState<IGame[] | undefined>([]);
-  const [createdView, setCreatedView] = useState<boolean>(true);
-  const [createdBorderColor, setCreatedBorderColor] =
-    useState<string>("#FF6347");
-  const [likedBorderColor, setLikedBorderColor] =
-    useState<string>("transparent");
-  const [createdTextColor, setCreatedTextColor] = useState<string>("white");
-  const [likedTextColor, setLikedTextColor] = useState<string>("gray");
+  const [tabStyles, setTabStyles] = useState<ITabsStyles>({
+    createdView: true,
+    createdBorderColor: "#FF6347",
+    likedBorderColor: "transparent",
+    createdTextColor: "white",
+    likedTextColor: "gray",
+  });
 
   useEffect(() => {
-    fetchGames();
-  }, []);
+    if (isFocused) fetchCreatedGames();
+  }, [isFocused]);
 
-  const fetchGames = async () => {
-    const createResponse = await usersGames(deviceId);
+  const fetchLikedGames = async () => {
+    setSpinner(true);
     const likedResponse = await likedGames(deviceId);
-
-    console.log(createResponse);
-    console.log(likedResponse);
-
-    setMyCreatedGames(createResponse);
     setMyLikedGames(likedResponse);
+    setSpinner(false);
   };
 
-  const getTabStyles = (createdTab: boolean) => {
-    if (createdTab)
-      return { ...styles.tab, borderBottomColor: createdBorderColor };
-    else return { ...styles.tab, borderBottomColor: likedBorderColor };
-  };
-
-  const getTabTextStyles = (createdTab: boolean) => {
-    if (createdTab) return { ...styles.tabText, color: createdTextColor };
-    else return { ...styles.tabText, color: likedTextColor };
+  const fetchCreatedGames = async () => {
+    setSpinner(true);
+    const createResponse = await usersGames(deviceId);
+    setMyCreatedGames(createResponse);
+    setSpinner(false);
   };
 
   const handleTabPressed = (createdTab: boolean) => {
-    if (createdTab) {
-      setCreatedView(true);
-      setLikedTextColor("gray");
-      setCreatedTextColor("white");
-      setLikedBorderColor("transparent");
-      setCreatedBorderColor("#FF6347");
-    } else {
-      setCreatedView(false);
-      setLikedTextColor("white");
-      setCreatedTextColor("gray");
-      setLikedBorderColor("#FF6347");
-      setCreatedBorderColor("transparent");
-    }
+    setTabStyles({
+      ...tabStyles,
+      createdView: createdTab,
+      createdTextColor: createdTab ? "white" : "gray",
+      likedTextColor: createdTab ? "gray" : "white",
+      createdBorderColor: createdTab ? "#FF6347" : "transparent",
+      likedBorderColor: createdTab ? "transparent" : "#FF6347",
+    });
 
-    // Change games to the tab says!
+    createdTab ? fetchCreatedGames() : fetchLikedGames();
   };
+
+  if (spinner) {
+    return (
+      <>
+        <TabsBanner tabStyles={tabStyles} handleTabPressed={handleTabPressed} />
+        <View style={styles.spinnerStyles}>
+          <ActivityIndicator size="large" color="#604395" />
+        </View>
+      </>
+    );
+  }
 
   return (
     <View style={styles.container}>
-      <View style={styles.banner}>
-        <View style={styles.tabsContainer}>
-          <Pressable
-            onPress={() => handleTabPressed(true)}
-            style={getTabStyles(true)}
-          >
-            <Text style={getTabTextStyles(true)}>Created</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => handleTabPressed(false)}
-            style={getTabStyles(false)}
-          >
-            <Text style={getTabTextStyles(false)}>Liked</Text>
-          </Pressable>
-        </View>
-      </View>
-
+      <TabsBanner tabStyles={tabStyles} handleTabPressed={handleTabPressed} />
       <FlatList
         style={{
           width: "100%",
@@ -93,7 +87,7 @@ export function HomeScreen() {
           marginTop: 15,
           paddingBottom: 30,
         }}
-        data={createdView ? myCreatedGames : myLikedGames}
+        data={tabStyles.createdView ? myCreatedGames : myLikedGames}
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.gameId}
         renderItem={({ item }) => (

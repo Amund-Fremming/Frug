@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
   },
 
   gameIdDisplay: {
-    width: verticalScale(220),
-    height: horizontalScale(60),
+    width: verticalScale(280),
+    height: horizontalScale(40),
     top: moderateScale(30),
     fontSize: moderateScale(25),
     lineHeight: verticalScale(27),
