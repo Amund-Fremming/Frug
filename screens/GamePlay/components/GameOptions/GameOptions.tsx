@@ -20,6 +20,7 @@ interface HostProps {
   view: string;
   gameId: string;
   setGameId: Dispatch<SetStateAction<string>>;
+  deviceId: string;
 }
 
 export default function GameOptions({
@@ -27,6 +28,7 @@ export default function GameOptions({
   setView,
   gameId,
   setGameId,
+  deviceId,
 }: HostProps) {
   const [clickedAndIsLoading, setClickedAndIsLoading] = useState(false);
   const [hostText, setHostText] = useState("Host");
@@ -59,6 +61,7 @@ export default function GameOptions({
 
     if (view === "HOST") {
       const game: IGame = {
+        creatorId: deviceId,
         gameId: gameId,
         gameStarted: false,
         publicGame: false,

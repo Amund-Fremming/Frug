@@ -30,9 +30,13 @@ export default function GamePlay() {
     setFontsLoaded(true);
   };
 
+  const setDeviceIdentifierAsync = async () => {
+    await setDeviceIdentifier(setDeviceId);
+  };
+
   useEffect(() => {
+    setDeviceIdentifierAsync();
     loadFonts();
-    setDeviceIdentifier(setDeviceId);
 
     const unsubscribe = NetInfo.addEventListener((state) => {
       if (state.type !== "wifi") {
@@ -68,6 +72,7 @@ export default function GamePlay() {
           setView={setView}
           gameId={gameId}
           setGameId={setGameId}
+          deviceId={deviceId}
         />
       )}
 

@@ -1,5 +1,5 @@
-// const GAME_URL_BASE = "http://localhost:5088/spike/games";
-const GAME_URL_BASE = "https://trike.azurewebsites.net/spike/games";
+const GAME_URL_BASE = "http://localhost:5088/spike/games";
+// const GAME_URL_BASE = "https://trike.azurewebsites.net/spike/games";
 
 export interface IGame {
   gameId: string;
@@ -7,6 +7,7 @@ export interface IGame {
   publicGame: boolean;
   iconImage: string;
   numberOfQuestions: number;
+  creatorId: string;
   percentageUpvotes: number;
   usersVote: number;
 }
@@ -172,56 +173,52 @@ export const searchForGames = async (
     );
 
     if (!response.ok) {
-      throw new Error(`(gameExists): ${response.status}`);
+      throw new Error(`(searchForGames): ${response.status}`);
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(`GET not working (gameExists): ${error}`);
+    console.error(`GET not working (searchForGames): ${error}`);
   }
 };
 
 export const usersGames = async (deviceId: string) => {
   try {
     const response = await fetch(
-      `${GAME_URL_BASE}/usersgames/?searchString=${encodeURIComponent(
-        deviceId
-      )}`,
+      `${GAME_URL_BASE}/usersgames/?deviceId=${encodeURIComponent(deviceId)}`,
       {
         method: "GET",
       }
     );
 
     if (!response.ok) {
-      throw new Error(`(gameExists): ${response.status}`);
+      throw new Error(`(usersGames): ${response.status}`);
     }
 
     const data: IGame[] | undefined = await response.json();
     return data;
   } catch (error) {
-    console.error(`GET not working (gameExists): ${error}`);
+    console.error(`GET not working (usersGames): ${error}`);
   }
 };
 
 export const likedGames = async (deviceId: string) => {
   try {
     const response = await fetch(
-      `${GAME_URL_BASE}/likedgames/?searchString=${encodeURIComponent(
-        deviceId
-      )}`,
+      `${GAME_URL_BASE}/likedgames/?deviceId=${encodeURIComponent(deviceId)}`,
       {
         method: "GET",
       }
     );
 
     if (!response.ok) {
-      throw new Error(`(gameExists): ${response.status}`);
+      throw new Error(`(likedGames): ${response.status}`);
     }
 
     const data: IGame[] | undefined = await response.json();
     return data;
   } catch (error) {
-    console.error(`GET not working (gameExists): ${error}`);
+    console.error(`GET not working (likedGames): ${error}`);
   }
 };

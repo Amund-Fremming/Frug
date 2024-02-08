@@ -20,12 +20,15 @@ export function HomeScreen() {
   const [likedTextColor, setLikedTextColor] = useState<string>("gray");
 
   useEffect(() => {
-    // fetchGames();
-  }, [view]);
+    fetchGames();
+  }, []);
 
   const fetchGames = async () => {
     const createResponse = await usersGames(deviceId);
     const likedResponse = await likedGames(deviceId);
+
+    console.log(createResponse);
+    console.log(likedResponse);
 
     setMyCreatedGames(createResponse);
     setMyLikedGames(likedResponse);
@@ -44,11 +47,13 @@ export function HomeScreen() {
 
   const handleTabPressed = (createdTab: boolean) => {
     if (createdTab) {
+      setCreatedView(true);
       setLikedTextColor("gray");
       setCreatedTextColor("white");
       setLikedBorderColor("transparent");
       setCreatedBorderColor("#FF6347");
     } else {
+      setCreatedView(false);
       setLikedTextColor("white");
       setCreatedTextColor("gray");
       setLikedBorderColor("#FF6347");
