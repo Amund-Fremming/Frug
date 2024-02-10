@@ -1,12 +1,8 @@
-import { View, Image } from "react-native";
-import { styles, imageStyle } from "./MascotStyles";
+import { Image } from "react-native";
+import { imageStyle } from "./MascotStyles";
 
 export default function Mascot() {
   const mascot = require("../../assets/images/mascot.webp");
 
-  return (
-    <View style={styles.mascotContainer}>
-      <Image source={mascot} style={imageStyle.mascot} />
-    </View>
-  );
+  return <Image source={mascot} style={imageStyle.mascot} />;
 }

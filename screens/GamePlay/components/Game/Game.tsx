@@ -104,6 +104,8 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
   return (
     <>
       <View style={styles.gameContainer}>
+        <Image source={mascot} style={imageStyle.mascot} />
+
         <View style={styles.buttonContainer}>
           {!finishedGame && (
             <>
@@ -119,7 +121,6 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
         </View>
       </View>
 
-      {/* Game Animation */}
       <View style={styles.questionAnimationContainer}>
         <View style={toggleTextbox(textbox)}>
           <Text style={styles.text}>{question}</Text>
@@ -127,11 +128,6 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
         <View style={toggleDotOne(dotOne)}></View>
         <View style={toggleDotTwo(dotTwo)}></View>
         <View style={toggleDotThree(dotThree)}></View>
-      </View>
-
-      {/* Absolute Mascot*/}
-      <View style={styles.mascotContainer}>
-        <Image source={mascot} style={imageStyle.mascot} />
       </View>
     </>
   );

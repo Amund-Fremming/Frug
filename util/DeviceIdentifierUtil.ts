@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { addDevice } from "./DeviceIdApiManager";
+import { addDevice, doesDeviceExist } from "./DeviceIdApiManager";
 
 export const setDeviceIdentifier = async (
   setDeviceId: Dispatch<SetStateAction<string>>
@@ -10,6 +10,9 @@ export const setDeviceIdentifier = async (
 
     if (jsonRaw != null) {
       const parsedData = JSON.parse(jsonRaw);
+      const existInDatabase: boolean = await doesDeviceExist(parsedData);
+      if (!existInDatabase) await addDevice(parsedData);
+
       setDeviceId(parsedData);
       return;
     }

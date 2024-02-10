@@ -111,10 +111,9 @@ export default function Lobby({
   };
 
   return (
-    <>
+    <View style={styles.buttonContainer}>
       <Text style={styles.numberOfQuestionsDisplay}>{numQuestions}</Text>
-
-      <View style={styles.buttonContainer}>
+      <View style={styles.buttonWrapper}>
         <Text style={styles.gameIdDisplay}>{gameId}</Text>
         <BigInput
           value={question}
@@ -123,15 +122,17 @@ export default function Lobby({
         />
         <BigButton text="Add" handlePress={handleAddQuestion} />
 
-        {view === "HOST_LOBBY" ? (
+        {view === "HOST_LOBBY" && (
           <View style={styles.hostLobbyContainer}>
             <SmallButton text="Back" handlePress={handleLeave} />
             <SmallButton text="Start" handlePress={handleStart} />
           </View>
-        ) : (
+        )}
+
+        {view === "LOBBY" && (
           <MediumButton text="Back" handlePress={handleLeave} />
         )}
       </View>
-    </>
+    </View>
   );
 }

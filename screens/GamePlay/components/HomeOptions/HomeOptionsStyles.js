@@ -1,13 +1,18 @@
 import { StyleSheet } from "react-native";
+import { verticalScale } from "../../../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   buttonContainer: {
+    paddingTop: verticalScale(60),
+    height: "100%",
     width: "100%",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    gap: 30,
-    top: 20,
+  },
+
+  buttonWrapper: {
+    gap: verticalScale(30),
   },
 });
 

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Spike drikkelek",
-    "slug": "Spike-drikkelek",
+    "name": "Spike",
+    "slug": "Spikedrikkelek",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,11 +16,11 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.Spike.drikkelek"
+      "bundleIdentifier": "com.Spike.drikkelek.version1"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#05002B"
       }
     },
@@ -29,8 +29,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "a42c48e4-acf0-45e9-a93f-7804c82dcd97"
+        "projectId": "41953803-1b92-4154-919b-9e05c6746831"
       }
-    }
+    },
+    "owner": "amundfremming"
   }
 }

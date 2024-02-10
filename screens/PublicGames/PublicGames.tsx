@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, FlatList, ActivityIndicator } from "react-native";
 import { styles } from "./PublicGamesStyles";
+import { useIsFocused } from "@react-navigation/native";
 
 import {
   IGame,
@@ -9,21 +10,22 @@ import {
 } from "../../util/GameApiManager";
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
-
 import { useGamePlayProvider } from "../../providers/GamePlayProvider";
 
 export default function PublicGames() {
-  const { view, setView, gameId, setGameId, deviceId, setDeviceId } =
-    useGamePlayProvider();
+  const { setView, setGameId, deviceId } = useGamePlayProvider();
+  const isFocused = useIsFocused();
 
   const [games, setGames] = useState<IGame[]>([]);
   const [spinner, setSpinner] = useState(false);
   const [searchString, setSearchString] = useState("");
 
   useEffect(() => {
-    setSpinner(true);
-    fetchGames();
-  }, []);
+    if (isFocused) {
+      setSpinner(true);
+      fetchGames();
+    }
+  }, [isFocused]);
 
   const fetchGames = async () => {
     const fetchedGames: IGame[] | undefined = await getGamesSorted(deviceId);
@@ -64,35 +66,33 @@ export default function PublicGames() {
   }
 
   return (
-    <>
-      <View style={styles.viewContainer}>
-        <SearchBar
-          handleLeave={handleLeave}
-          handleSearch={handleSearch}
-          searchString={searchString}
-          setSearchString={setSearchString}
-        />
-        <FlatList
-          style={{ width: "100%" }}
-          contentContainerStyle={{
-            paddingHorizontal: "5%",
-            flexGrow: 1,
-            marginTop: 15,
-            paddingBottom: 90,
-          }}
-          data={games}
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.gameId}
-          renderItem={({ item }) => (
-            <PublicGameCard
-              game={item}
-              setView={setView}
-              setGameId={setGameId}
-              deviceId={deviceId}
-            />
-          )}
-        />
-      </View>
-    </>
+    <View style={styles.viewContainer}>
+      <SearchBar
+        handleLeave={handleLeave}
+        handleSearch={handleSearch}
+        searchString={searchString}
+        setSearchString={setSearchString}
+      />
+      <FlatList
+        style={{ width: "100%", marginBottom: 70 }}
+        contentContainerStyle={{
+          paddingHorizontal: "5%",
+          flexGrow: 1,
+          marginTop: 15,
+          paddingBottom: 30,
+        }}
+        data={games}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.gameId}
+        renderItem={({ item }) => (
+          <PublicGameCard
+            game={item}
+            setView={setView}
+            setGameId={setGameId}
+            deviceId={deviceId}
+          />
+        )}
+      />
+    </View>
   );
 }

@@ -1,8 +1,9 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { View, Alert, ActivityIndicator } from "react-native";
+import { View, Alert } from "react-native";
 import { styles } from "./GameOptionsStyles";
 import { validateInput } from "../../../../util/InputValidator";
 
+import Mascot from "../../../../components/Mascot/Mascot";
 import BigButton from "../../../../components/BigButton/BigButton";
 import MediumButton from "../../../../components/MediumButton/MediumButton";
 import BigInput from "../../../../components/BigInput/BigInput";
@@ -19,6 +20,7 @@ interface HostProps {
   view: string;
   gameId: string;
   setGameId: Dispatch<SetStateAction<string>>;
+  deviceId: string;
 }
 
 export default function GameOptions({
@@ -26,6 +28,7 @@ export default function GameOptions({
   setView,
   gameId,
   setGameId,
+  deviceId,
 }: HostProps) {
   const [clickedAndIsLoading, setClickedAndIsLoading] = useState(false);
   const [hostText, setHostText] = useState("Host");
@@ -58,6 +61,7 @@ export default function GameOptions({
 
     if (view === "HOST") {
       const game: IGame = {
+        creatorId: deviceId,
         gameId: gameId,
         gameStarted: false,
         publicGame: false,
@@ -106,8 +110,9 @@ export default function GameOptions({
   };
 
   return (
-    <>
-      <View style={styles.buttonContainer}>
+    <View style={styles.buttonContainer}>
+      <Mascot />
+      <View style={styles.buttonWrapper}>
         <BigInput
           value={gameId}
           placeholder="Game ID"
@@ -119,6 +124,6 @@ export default function GameOptions({
         />
         <MediumButton text="Back" handlePress={() => setView("HOME")} />
       </View>
-    </>
+    </View>
   );
 }

@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { verticalScale } from "../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   viewContainer: {
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     height: "100%",
-    paddingBottom: 250,
+    paddingBottom: verticalScale(250),
     backgroundColor: "#0E0E10",
   },
 });

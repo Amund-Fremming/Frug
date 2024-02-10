@@ -1,104 +1,100 @@
 import { StyleSheet } from "react-native";
+import {
+  horizontalScale,
+  verticalScale,
+  moderateScale,
+} from "../../../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   gameContainer: {
-    top: 20,
+    marginTop: verticalScale(60),
     width: "100%",
-    gap: 30,
-  },
-
-  mascotContainer: {
-    position: "absolute",
-    top: -160,
-    left: 170,
-    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   buttonContainer: {
-    width: "100%",
-    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    gap: 30,
-    top: 40,
+    gap: horizontalScale(30),
   },
 
   questionAnimationContainer: {
     position: "absolute",
-    height: 300,
+    height: horizontalScale(300),
     width: "100%",
-    top: -320,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    gap: 20,
+    gap: horizontalScale(20),
+  },
+
+  text: {
+    fontSize: moderateScale(16),
+    color: "black",
+    fontFamily: "PressStart2P",
+    lineHeight: verticalScale(20),
   },
 
   questionAnimationTextbox: {
     position: "absolute",
-    top: 20,
-    width: 340,
-    minHeight: 90,
+    width: horizontalScale(340),
+    minHeight: verticalScale(90),
+    top: verticalScale(90),
     borderRadius: "30%",
     borderColor: "#000000",
-    borderWidth: 4,
+    borderWidth: moderateScale(4),
     backgroundColor: "#ffffff",
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
+    padding: moderateScale(20),
     zIndex: 10,
-  },
-
-  text: {
-    fontSize: 16,
-    color: "black",
-    fontFamily: "PressStart2P",
-    lineHeight: 20,
   },
 
   questionAnimationDotOne: {
     position: "absolute",
-    left: "56%",
-    top: 160,
-    width: 20,
-    height: 20,
+    right: verticalScale(110),
+    top: verticalScale(205),
+    width: horizontalScale(20),
+    height: verticalScale(20),
     borderRadius: 425,
     backgroundColor: "#ffffff",
     borderColor: "#000000",
-    borderWidth: 2.4,
-    zIndex: 0,
+    borderWidth: moderateScale(2.4),
   },
 
   questionAnimationDotTwo: {
     position: "absolute",
-    top: 200,
-    left: "52%",
-    width: 18,
-    height: 18,
+    top: verticalScale(240),
+    right: verticalScale(150),
+    width: horizontalScale(18),
+    height: verticalScale(18),
     borderRadius: 425,
     backgroundColor: "#ffffff",
     borderColor: "#000000",
-    borderWidth: 2.3,
-    zIndex: 0,
+    borderWidth: horizontalScale(2.3),
   },
 
   questionAnimationDotThree: {
     position: "absolute",
-    top: 235,
-    width: 15,
-    height: 15,
+    top: verticalScale(275),
+    right: verticalScale(190),
+    width: horizontalScale(15),
+    height: verticalScale(15),
     borderRadius: 425,
     backgroundColor: "#ffffff",
     borderColor: "#000000",
-    borderWidth: 2.2,
+    borderWidth: moderateScale(2.2),
     zIndex: 0,
   },
 });
 
 const imageStyle = StyleSheet.create({
   mascot: {
-    width: 330,
-    height: 330,
+    width: horizontalScale(300),
+    height: verticalScale(300),
+    marginRight: horizontalScale(120),
   },
 });
 

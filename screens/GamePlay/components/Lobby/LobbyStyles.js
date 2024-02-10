@@ -1,49 +1,55 @@
 import { StyleSheet } from "react-native";
+import {
+  horizontalScale,
+  verticalScale,
+  moderateScale,
+} from "../../../../styles/Dimensions";
 
 const styles = StyleSheet.create({
   hostLobbyContainer: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    gap: /* KANSKJE 10!!! */ 20,
-    width: "100%",
+    gap: moderateScale(30),
   },
 
   numberOfQuestionsDisplay: {
-    position: "absolute",
-    fontSize: 130,
+    marginBottom: verticalScale(90),
+    fontSize: moderateScale(130),
     fontWeight: "600",
-    opacity: 0.4,
-    top: -230,
+    opacity: moderateScale(0.4),
     fontFamily: "PressStart2P",
   },
 
   buttonContainer: {
+    marginTop: verticalScale(30),
     width: "100%",
-    flexDirection: "column",
-    justifyContent: "flex-start",
+    height: "100%",
+    justifyContent: "center",
     alignItems: "center",
-    gap: 30,
-    bottom: 100,
+  },
+
+  buttonWrapper: {
+    justifyContent: "center",
+    alignItems: "center",
+    gap: moderateScale(30),
   },
 
   text: {
-    fontSize: 23,
+    fontSize: moderateScale(23),
     fontWeight: "bold",
-    color: /*"#07BF7B"*/ "white",
+    color: "white",
     fontFamily: "PressStart2P",
   },
 
   gameIdDisplay: {
-    width: 220,
-    height: 60,
-    margin: 0,
-    top: 30,
-    fontSize: 23,
-    lineHeight: 27,
+    width: verticalScale(280),
+    height: horizontalScale(40),
+    top: moderateScale(30),
+    fontSize: moderateScale(25),
+    lineHeight: verticalScale(27),
     fontWeight: "bold",
-    color: /*"#07BF7B"*/ "white",
+    color: "white",
     fontFamily: "PressStart2P",
     textAlign: "center",
   },
