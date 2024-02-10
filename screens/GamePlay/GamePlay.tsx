@@ -39,7 +39,7 @@ export default function GamePlay() {
     loadFonts();
 
     const unsubscribe = NetInfo.addEventListener((state) => {
-      if (state.isConnected) {
+      if (!state.isConnected) {
         Alert.alert(
           "No Internet Connection",
           "You are not connected to the internet. Some features may not work as expected."

@@ -29,7 +29,7 @@ export const getGamesSorted = async (deviceId: string) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(`POST not working (getGamesSorted): ${error}`);
+    throw new Error(`POST not working (getGamesSorted): ${error}`);
   }
 };
 

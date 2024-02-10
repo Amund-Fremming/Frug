@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { View, FlatList, ActivityIndicator } from "react-native";
 import { styles } from "./PublicGamesStyles";
 import { useIsFocused } from "@react-navigation/native";
@@ -11,26 +11,49 @@ import {
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { useGamePlayProvider } from "../../providers/GamePlayProvider";
+import { getConfigFilePaths } from "expo/config";
 
 export default function PublicGames() {
   const { setView, setGameId, deviceId } = useGamePlayProvider();
   const isFocused = useIsFocused();
 
-  const [games, setGames] = useState<IGame[]>([]);
-  const [spinner, setSpinner] = useState(false);
+  const [games, setGames] = useState<IGame[] | undefined>([]);
+  const [spinner, setSpinner] = useState(true);
   const [searchString, setSearchString] = useState("");
 
+  const successfullFetchRef = useRef(false);
+
   useEffect(() => {
+    let intervalId;
+
     if (isFocused) {
       setSpinner(true);
       fetchGames();
     }
+
+    intervalId = setInterval(() => {
+      if (!successfullFetchRef.current) {
+        setSpinner(true);
+        fetchGames();
+      }
+    }, 5000);
+
+    return () => {
+      clearInterval(intervalId);
+      setSpinner(false);
+    };
   }, [isFocused]);
 
   const fetchGames = async () => {
-    const fetchedGames: IGame[] | undefined = await getGamesSorted(deviceId);
-    if (fetchedGames) setGames(fetchedGames);
-    setSpinner(false);
+    try {
+      const fetchedGames: IGame[] | undefined = await getGamesSorted(deviceId);
+      setGames(fetchedGames);
+      setSpinner(false);
+
+      successfullFetchRef.current = true;
+    } catch (exception) {
+      successfullFetchRef.current = false;
+    }
   };
 
   const handleLeave = async () => {
