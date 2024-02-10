@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Image, Alert } from "react-native";
-import { styles, imageStyle } from "./GamePlayStyles.js";
+import { Image, Alert } from "react-native";
+import { imageStyle } from "./GamePlayStyles.js";
 import "react-native-url-polyfill/auto";
 
 import NetInfo from "@react-native-community/netinfo";
@@ -39,10 +39,10 @@ export default function GamePlay() {
     loadFonts();
 
     const unsubscribe = NetInfo.addEventListener((state) => {
-      if (state.type !== "wifi") {
+      if (state.isConnected) {
         Alert.alert(
-          "No WiFi Connection",
-          "You are not connected to WiFi. Some features may not work as expected."
+          "No Internet Connection",
+          "You are not connected to the internet. Some features may not work as expected."
         );
       }
     });
