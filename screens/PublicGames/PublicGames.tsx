@@ -36,7 +36,7 @@ export default function PublicGames() {
         setSpinner(true);
         fetchGames();
       }
-    }, 5000);
+    }, 3000);
 
     return () => {
       clearInterval(intervalId);

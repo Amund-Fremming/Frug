@@ -199,7 +199,7 @@ export const usersGames = async (deviceId: string) => {
     const data: IGame[] | undefined = await response.json();
     return data;
   } catch (error) {
-    console.error(`GET not working (usersGames): ${error}`);
+    throw new Error(`GET not working (usersGames): ${error}`);
   }
 };
 
@@ -219,6 +219,6 @@ export const likedGames = async (deviceId: string) => {
     const data: IGame[] | undefined = await response.json();
     return data;
   } catch (error) {
-    console.error(`GET not working (likedGames): ${error}`);
+    throw new Error(`GET not working (likedGames): ${error}`);
   }
 };

@@ -2,7 +2,7 @@ import { View, FlatList, ActivityIndicator, Text } from "react-native";
 import { styles } from "./HomeScreenStyles";
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 import { useGamePlayProvider } from "../../providers/GamePlayProvider";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IGame } from "../../util/GameApiManager";
 import { usersGames, likedGames } from "../../util/GameApiManager";
 import { TabsBanner } from "../../components/TabsBanner/TabsBanner";
@@ -31,25 +31,61 @@ export function HomeScreen() {
     likedTextColor: "gray",
   });
 
+  const successfullFetchRefCreate = useRef(false);
+  const successfullFetchRefLiked = useRef(false);
+
   useEffect(() => {
+    let intervalCreate;
+    let intervalLiked;
+
     if (isFocused) {
       fetchCreatedGames();
       fetchLikedGames();
     }
+
+    intervalCreate = setInterval(() => {
+      if (!successfullFetchRefCreate.current) {
+        fetchCreatedGames();
+      }
+    }, 3000);
+
+    intervalLiked = setInterval(() => {
+      if (!successfullFetchRefLiked.current) {
+        fetchLikedGames();
+      }
+    }, 3000);
+
+    return () => {
+      clearInterval(intervalCreate);
+      clearInterval(intervalLiked);
+      setSpinner(false);
+    };
   }, [isFocused]);
 
   const fetchLikedGames = async () => {
-    setSpinner(true);
-    const likedResponse = await likedGames(deviceId);
-    setMyLikedGames(likedResponse);
-    setSpinner(false);
+    try {
+      setSpinner(true);
+      const likedResponse = await likedGames(deviceId);
+      setMyLikedGames(likedResponse);
+      setSpinner(false);
+
+      successfullFetchRefLiked.current = true;
+    } catch (exception) {
+      successfullFetchRefLiked.current = false;
+    }
   };
 
   const fetchCreatedGames = async () => {
-    setSpinner(true);
-    const createResponse = await usersGames(deviceId);
-    setMyCreatedGames(createResponse);
-    setSpinner(false);
+    try {
+      setSpinner(true);
+      const createResponse = await usersGames(deviceId);
+      setMyCreatedGames(createResponse);
+      setSpinner(false);
+
+      successfullFetchRefCreate.current = true;
+    } catch (exception) {
+      successfullFetchRefCreate.current = false;
+    }
   };
 
   const handleTabPressed = (createdTab: boolean) => {
