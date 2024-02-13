@@ -33,9 +33,13 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
   }, []);
 
   const fetchQuestions = async () => {
-    const fetchedQuestions: Question[] = await fetchQuestionsForGame(gameId);
-    setQuestions(fetchedQuestions);
-    setNextClickable(true);
+    try {
+      const fetchedQuestions: Question[] = await fetchQuestionsForGame(gameId); // error
+      setQuestions(fetchedQuestions);
+      setNextClickable(true);
+    } catch (error) {
+      // handle error
+    }
   };
 
   const toggleDotThree = (activated: boolean): ViewStyle => ({

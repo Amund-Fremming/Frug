@@ -33,9 +33,7 @@
 - Lengre spørsmål og mulighet for :,.;/
 - Skjule tilbake på søk om man ikke har søkt enda
 
-- Error handling på create game
-- Error handling på join game
-- Error handling på start game
+- Error handling på fetchQuestions i Game, timeout og alert!
 
 - Mulighet for å redigere spørsmål
 - Endre fra prosent til votes

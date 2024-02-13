@@ -11,7 +11,6 @@ import {
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { useGamePlayProvider } from "../../providers/GamePlayProvider";
-import { getConfigFilePaths } from "expo/config";
 
 export default function PublicGames() {
   const { setView, setGameId, deviceId } = useGamePlayProvider();
@@ -22,30 +21,39 @@ export default function PublicGames() {
   const [searchString, setSearchString] = useState("");
 
   const successfullFetchRef = useRef(false);
+  const successfullSearchRef = useRef(true);
 
   useEffect(() => {
-    let intervalId;
+    let intervalIdFetch;
+    let intervalIdSearch;
 
     if (isFocused) {
       setSpinner(true);
       fetchGames();
     }
 
-    intervalId = setInterval(() => {
+    intervalIdFetch = setInterval(() => {
       if (!successfullFetchRef.current) {
-        setSpinner(true);
         fetchGames();
       }
     }, 3000);
 
+    intervalIdSearch = setInterval(() => {
+      if (!successfullSearchRef.current) {
+        handleSearch();
+      }
+    }, 3000);
+
     return () => {
-      clearInterval(intervalId);
+      clearInterval(intervalIdFetch);
+      clearInterval(intervalIdFetch);
       setSpinner(false);
     };
   }, [isFocused]);
 
   const fetchGames = async () => {
     try {
+      setSpinner(true);
       const fetchedGames: IGame[] | undefined = await getGamesSorted(deviceId);
       setGames(fetchedGames);
       setSpinner(false);
@@ -56,27 +64,24 @@ export default function PublicGames() {
     }
   };
 
-  const handleLeave = async () => {
-    setSpinner(true);
-    const searchResult = await getGamesSorted(deviceId);
-    setGames(searchResult);
-    setSpinner(false);
-  };
-
   const handleSearch = async () => {
-    setSpinner(true);
-    setSearchString("");
-
-    const searchResult = await searchForGames(searchString, deviceId);
-    setGames(searchResult);
-    setSpinner(false);
+    try {
+      setSpinner(true);
+      const searchResult = await searchForGames(searchString, deviceId);
+      setSearchString("");
+      setGames(searchResult);
+      setSpinner(false);
+      successfullSearchRef.current = true;
+    } catch (error) {
+      successfullSearchRef.current = false;
+    }
   };
 
   if (spinner) {
     return (
       <>
         <SearchBar
-          handleLeave={handleLeave}
+          handleLeave={fetchGames}
           handleSearch={handleSearch}
           searchString={searchString}
           setSearchString={setSearchString}
@@ -91,7 +96,7 @@ export default function PublicGames() {
   return (
     <View style={styles.viewContainer}>
       <SearchBar
-        handleLeave={handleLeave}
+        handleLeave={fetchGames}
         handleSearch={handleSearch}
         searchString={searchString}
         setSearchString={setSearchString}
