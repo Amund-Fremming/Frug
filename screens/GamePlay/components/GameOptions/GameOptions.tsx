@@ -71,7 +71,18 @@ export default function GameOptions({
         usersVote: 2,
       };
 
-      const response = await createGame(game); // Error
+      let response;
+      try {
+        response = await createGame(game);
+      } catch (error) {
+        Alert.alert(
+          "Bad connection",
+          "Please check your wifi connection and try again."
+        );
+        view === "HOST" ? setHostText("Host") : setJoinText("Join");
+        setClickedAndIsLoading(false);
+        return;
+      }
 
       if (response === "GAME_EXISTS") {
         Alert.alert(
@@ -85,7 +96,19 @@ export default function GameOptions({
       }
     }
 
-    const gameStarted = await haveGameStarted(gameId);
+    let gameStarted;
+    try {
+      gameStarted = await haveGameStarted(gameId);
+    } catch (error) {
+      Alert.alert(
+        "Bad connection",
+        "Please check your wifi connection and try again."
+      );
+      view === "HOST" ? setHostText("Host") : setJoinText("Join");
+      setClickedAndIsLoading(false);
+      return;
+    }
+
     if (view === "JOIN" && gameStarted) {
       Alert.alert(
         "Invalid Game ID",

@@ -51,7 +51,7 @@ export const createGame = async (game: IGame) => {
       throw new Error(`(createGame): ${response.status}`);
     }
   } catch (error) {
-    console.error(`POST not working (createGame): ${error}`);
+    throw new Error(`POST not working (createGame): ${error}`);
   }
 };
 
@@ -128,7 +128,7 @@ export const haveGameStarted = async (gameId: string) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(`GET not working (isGamePublic): ${error}`);
+    throw new Error(`GET not working (isGamePublic): ${error}`);
   }
 };
 
