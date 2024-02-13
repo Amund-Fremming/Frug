@@ -71,7 +71,8 @@ export default function GameOptions({
         usersVote: 2,
       };
 
-      const response = await createGame(game);
+      const response = await createGame(game); // Error
+
       if (response === "GAME_EXISTS") {
         Alert.alert(
           "Invalid Game ID",

@@ -43,8 +43,6 @@ export const createGame = async (game: IGame) => {
       body: JSON.stringify(game),
     });
 
-    console.log(response.status);
-
     if (response.status === 400) {
       return "GAME_EXISTS";
     }

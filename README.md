@@ -30,4 +30,13 @@
 
 ## **ADD**
 
-- Når created eller liked er tomme, vis en prompt som sier at de må like eller lage spille for å få opp her!
+- Lengre spørsmål og mulighet for :,.;/
+- Skjule tilbake på søk om man ikke har søkt enda
+
+- Error handling på create game
+- Error handling på join game
+- Error handling på start game
+
+- Mulighet for å redigere spørsmål
+- Endre fra prosent til votes
+- Fjern tastatured når man trykker enter
