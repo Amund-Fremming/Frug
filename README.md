@@ -22,6 +22,7 @@
 - Bruk av SignalR for live oppdateringer
 - Bruk av transactions for å håndtere race conditions
 - Lage gjenbrukbare komponenter for å minimere kode
+- Hvordan håndtere at api kall mister internett, og hjelpe bruker videre
 
 ### Hva skal jeg gjøre annerledes neste gang
 
@@ -30,6 +31,11 @@
 
 ## **ADD**
 
+- How to under startside
+- Preload public games, createdGames, og likedGames
+
 - Mulighet for å redigere spørsmål
 - Endre fra prosent til votes
+
 - Fjern tastatured når man trykker enter
+- Skjul tilbake på søk til etter man har søkt

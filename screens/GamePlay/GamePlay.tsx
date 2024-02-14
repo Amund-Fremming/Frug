@@ -15,6 +15,7 @@ import Game from "./components/Game/Game";
 import { setDeviceIdentifier } from "../../util/DeviceIdentifierUtil";
 import { useGamePlayProvider } from "../../providers/GamePlayProvider";
 import PlanetBackground from "../../components/PlanetBackground/PlanetBackground";
+import { HowTo } from "./components/HowTo/HowTo";
 
 export default function GamePlay() {
   const { view, setView, gameId, setGameId, deviceId, setDeviceId } =
@@ -88,6 +89,8 @@ export default function GamePlay() {
       {view === "GAME" && (
         <Game gameId={gameId} setGameId={setGameId} setView={setView} />
       )}
+
+      {view === "HOW_TO" && <HowTo setView={setView} />}
     </>
   );
 }

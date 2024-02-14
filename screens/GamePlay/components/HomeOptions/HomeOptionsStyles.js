@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
 
   buttonWrapper: {
     gap: verticalScale(30),
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
