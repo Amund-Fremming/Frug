@@ -1,4 +1,4 @@
-import { Text, View, Image, ViewStyle } from "react-native";
+import { Text, View, Image, ViewStyle, Alert } from "react-native";
 import { styles, imageStyle } from "./GameStyles";
 import { useState, useEffect, SetStateAction, Dispatch, useRef } from "react";
 
@@ -31,9 +31,11 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
 
   const successfullFetchRef = useRef(true);
   const isFocused = useIsFocused();
+  const alertDisplayed = useRef(false);
 
   useEffect(() => {
     fetchQuestions();
+    alertDisplayed.current = false;
 
     const fetchId = setInterval(() => {
       if (!successfullFetchRef.current) {
@@ -43,7 +45,16 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
       if (!isFocused) {
         clearInterval(fetchId);
       }
-    }, 3000);
+
+      if (!successfullFetchRef.current && !alertDisplayed.current) {
+        Alert.alert(
+          "Bad connection",
+          "Please check your wifi connection, and try again."
+        );
+      }
+
+      alertDisplayed.current = true;
+    }, 4000);
 
     return () => clearInterval(fetchId);
   }, [isFocused]);

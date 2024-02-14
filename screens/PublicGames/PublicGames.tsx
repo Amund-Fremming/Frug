@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, FlatList, ActivityIndicator } from "react-native";
+import { View, FlatList, ActivityIndicator, Alert } from "react-native";
 import { styles } from "./PublicGamesStyles";
 import { useIsFocused } from "@react-navigation/native";
 
@@ -22,10 +22,13 @@ export default function PublicGames() {
 
   const successfullFetchRef = useRef(false);
   const successfullSearchRef = useRef(true);
+  const alertShown = useRef(false);
+  const numTimeout = useRef(1);
 
   useEffect(() => {
     let intervalIdFetch;
-    let intervalIdSearch;
+    alertShown.current = false;
+    numTimeout.current = 1;
 
     if (isFocused) {
       setSpinner(true);
@@ -36,17 +39,27 @@ export default function PublicGames() {
       if (!successfullFetchRef.current) {
         fetchGames();
       }
-    }, 3000);
 
-    intervalIdSearch = setInterval(() => {
-      if (!successfullSearchRef.current) {
-        handleSearch();
+      if (
+        !alertShown.current &&
+        numTimeout.current >= 2 &&
+        !successfullFetchRef.current
+      ) {
+        Alert.alert(
+          "Bad connection",
+          "Please check your wifi connection, and try again."
+        );
+
+        alertShown.current = true;
+      }
+
+      if (!alertShown.current) {
+        numTimeout.current = numTimeout.current + 1;
       }
     }, 3000);
 
     return () => {
       clearInterval(intervalIdFetch);
-      clearInterval(intervalIdSearch);
       setSpinner(false);
     };
   }, [isFocused]);
@@ -57,13 +70,13 @@ export default function PublicGames() {
       const fetchedGames: IGame[] | undefined = await getGamesSorted(deviceId);
       setGames(fetchedGames);
       setSpinner(false);
-
       successfullFetchRef.current = true;
     } catch (exception) {
       successfullFetchRef.current = false;
     }
   };
 
+  // HANDLE TIMEOUT!
   const handleSearch = async () => {
     try {
       setSpinner(true);

@@ -30,9 +30,6 @@
 
 ## **ADD**
 
-- Skjule tilbake på søk om man ikke har søkt enda
-- Error handling på fetchQuestions i Game, timeout og alert!
-
 - Mulighet for å redigere spørsmål
 - Endre fra prosent til votes
 - Fjern tastatured når man trykker enter

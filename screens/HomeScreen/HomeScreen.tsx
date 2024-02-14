@@ -1,4 +1,4 @@
-import { View, FlatList, ActivityIndicator, Text } from "react-native";
+import { View, FlatList, ActivityIndicator, Text, Alert } from "react-native";
 import { styles } from "./HomeScreenStyles";
 import { PublicGameCard } from "../../components/PublicGameCard/PublicGameCard";
 import { useGamePlayProvider } from "../../providers/GamePlayProvider";
@@ -33,10 +33,15 @@ export function HomeScreen() {
 
   const successfullFetchRefCreate = useRef(false);
   const successfullFetchRefLiked = useRef(false);
+  const alertShown = useRef(false);
+  const numTimeout = useRef(1);
 
   useEffect(() => {
     let intervalCreate;
     let intervalLiked;
+    let alertIntervalId;
+    alertShown.current = false;
+    numTimeout.current = 1;
 
     if (isFocused) {
       fetchCreatedGames();
@@ -55,9 +60,26 @@ export function HomeScreen() {
       }
     }, 3000);
 
+    alertIntervalId = setInterval(() => {
+      if (
+        !alertShown.current &&
+        numTimeout.current >= 2 &&
+        (!successfullFetchRefCreate.current ||
+          !successfullFetchRefLiked.current)
+      ) {
+        Alert.alert(
+          "Bad connection",
+          "Please check your wifi connection, and try again."
+        );
+
+        alertShown.current = true;
+      }
+    }, 3000);
+
     return () => {
       clearInterval(intervalCreate);
       clearInterval(intervalLiked);
+      clearInterval(alertIntervalId);
       setSpinner(false);
     };
   }, [isFocused]);
