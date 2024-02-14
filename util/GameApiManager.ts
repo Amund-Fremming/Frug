@@ -51,11 +51,12 @@ export const createGame = async (game: IGame) => {
       throw new Error(`(createGame): ${response.status}`);
     }
   } catch (error) {
-    console.error(`POST not working (createGame): ${error}`);
+    throw new Error(`POST not working (createGame): ${error}`);
   }
 };
 
 export const deleteGame = async (gameId: string) => {
+  // ERROR, should throw, and be handled!
   try {
     const response = await fetch(GAME_URL_BASE, {
       method: "DELETE",
@@ -87,7 +88,7 @@ export const startGame = async (gameId: string) => {
       throw new Error(`(startGame): ${response.status}`);
     }
   } catch (error) {
-    console.error(`PUT not working (startGame): ${error}`);
+    throw new Error(`PUT not working (startGame): ${error}`);
   }
 };
 
@@ -108,7 +109,7 @@ export const publishGame = async (gameId: string, icon: string) => {
       throw new Error(`(publishGame): ${response.status}`);
     }
   } catch (error) {
-    console.error(`PUT not working (publishGame): ${error}`);
+    throw new Error(`PUT not working (publishGame): ${error}`);
   }
 };
 
@@ -128,11 +129,12 @@ export const haveGameStarted = async (gameId: string) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(`GET not working (isGamePublic): ${error}`);
+    throw new Error(`GET not working (isGamePublic): ${error}`);
   }
 };
 
 export const gameExists = async (gameId: string) => {
+  // ERROR
   try {
     const response = await fetch(
       `${GAME_URL_BASE}/gameexists/?gameId=${encodeURIComponent(gameId)}`,
@@ -177,7 +179,7 @@ export const searchForGames = async (
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(`GET not working (searchForGames): ${error}`);
+    throw new Error(`GET not working (searchForGames): ${error}`);
   }
 };
 
