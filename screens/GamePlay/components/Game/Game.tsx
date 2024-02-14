@@ -1,9 +1,10 @@
 import { Text, View, Image, ViewStyle } from "react-native";
 import { styles, imageStyle } from "./GameStyles";
-import { useState, useEffect, SetStateAction, Dispatch } from "react";
+import { useState, useEffect, SetStateAction, Dispatch, useRef } from "react";
 
 import { fetchQuestionsForGame } from "../../../../util/QuestionApiManager";
 import { Question } from "../../../../util/QuestionApiManager";
+import { useIsFocused } from "@react-navigation/native";
 
 import BigButton from "../../../../components/BigButton/BigButton";
 
@@ -28,17 +29,33 @@ export default function Game({ setGameId, setView, gameId }: GameProps) {
 
   const mascot = require("../../../../assets/images/raptorrune.png");
 
+  const successfullFetchRef = useRef(true);
+  const isFocused = useIsFocused();
+
   useEffect(() => {
     fetchQuestions();
-  }, []);
+
+    const fetchId = setInterval(() => {
+      if (!successfullFetchRef.current) {
+        fetchQuestions();
+      }
+
+      if (!isFocused) {
+        clearInterval(fetchId);
+      }
+    }, 3000);
+
+    return () => clearInterval(fetchId);
+  }, [isFocused]);
 
   const fetchQuestions = async () => {
     try {
       const fetchedQuestions: Question[] = await fetchQuestionsForGame(gameId); // error
       setQuestions(fetchedQuestions);
       setNextClickable(true);
+      successfullFetchRef.current = true;
     } catch (error) {
-      // handle error
+      successfullFetchRef.current = false;
     }
   };
 

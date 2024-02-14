@@ -30,9 +30,7 @@
 
 ## **ADD**
 
-- Lengre spørsmål og mulighet for :,.;/
 - Skjule tilbake på søk om man ikke har søkt enda
-
 - Error handling på fetchQuestions i Game, timeout og alert!
 
 - Mulighet for å redigere spørsmål

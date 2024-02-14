@@ -46,7 +46,7 @@ export default function PublicGames() {
 
     return () => {
       clearInterval(intervalIdFetch);
-      clearInterval(intervalIdFetch);
+      clearInterval(intervalIdSearch);
       setSpinner(false);
     };
   }, [isFocused]);
