@@ -57,7 +57,7 @@ export default function Lobby({
   };
 
   const handleAddQuestion = async () => {
-    if (!validateInput(question) || question.length > 40) {
+    if (!validateInput(question) || question.length > 150) {
       Alert.alert(
         "Invalid Input",
         "Some characters are not allowed, try again"
@@ -71,43 +71,60 @@ export default function Lobby({
     };
 
     setQuestion("");
-    await addQuestionToGame(newQuestion);
+    try {
+      await addQuestionToGame(newQuestion);
+    } catch (error) {
+      Alert.alert(
+        "Bad connection",
+        "Please check your wifi connection and try again."
+      );
+    }
   };
 
   const handleStart = async () => {
     Alert.alert("Public Game", "Publish your game? Select a category:", [
       {
         text: "Nice",
-        onPress: async () => {
-          await publishGame(gameId, "NICE");
-          await startGame(gameId);
-          setView("GAME");
-        },
+        onPress: () => handlePublishAndStartGame("NICE"),
       },
       {
         text: "Edgy",
-        onPress: async () => {
-          await publishGame(gameId, "EDGY");
-          await startGame(gameId);
-          setView("GAME");
-        },
+        onPress: () => handlePublishAndStartGame("EDGY"),
       },
       {
         text: "Dirty",
-        onPress: async () => {
-          await publishGame(gameId, "DIRTY");
-          await startGame(gameId);
-          setView("GAME");
-        },
+        onPress: () => handlePublishAndStartGame("DIRTY"),
       },
       {
         text: "No",
-        onPress: async () => {
-          await startGame(gameId);
-          setView("GAME");
-        },
+        onPress: () => handleStartGameOnly(),
       },
     ]);
+  };
+
+  const handlePublishAndStartGame = async (category: string) => {
+    try {
+      await publishGame(gameId, category);
+      await startGame(gameId);
+      setView("GAME");
+    } catch (error) {
+      Alert.alert(
+        "Bad connection",
+        "Please check your wifi connection and try again."
+      );
+    }
+  };
+
+  const handleStartGameOnly = async () => {
+    try {
+      await startGame(gameId);
+      setView("GAME");
+    } catch (error) {
+      Alert.alert(
+        "Bad connection",
+        "Please check your wifi connection and try again."
+      );
+    }
   };
 
   return (

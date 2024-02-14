@@ -21,7 +21,7 @@ export const fetchQuestionsForGame = async (gameId: string) => {
 
     return await response.json();
   } catch (error) {
-    console.error(`GET not working: ${error}`);
+    throw new Error(`GET not working: ${error}`);
   }
 };
 
@@ -42,6 +42,6 @@ export const addQuestionToGame = async (question: Question) => {
     const data = await response.text();
     return data;
   } catch (error) {
-    console.error(`POST not working: ${error}`);
+    throw new Error(`POST not working: ${error}`);
   }
 };
