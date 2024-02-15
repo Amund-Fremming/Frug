@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
 
   wrapper: {
-    gap: verticalScale(40),
+    gap: verticalScale(30),
     justifyContent: "center",
     alignItems: "center",
   },
@@ -23,34 +23,37 @@ const styles = StyleSheet.create({
   headerView: {
     borderBottomColor: "black",
     borderBottomWidth: verticalScale(5),
-    padding: moderateScale(5),
+    paddingBottom: moderateScale(5),
   },
 
   header: {
     color: "black",
+    fontWeight: "bold",
     fontFamily: "PressStart2P",
     fontSize: moderateScale(30),
+    width: "95%",
   },
 
   text: {
     color: "#FF6347",
     fontFamily: "PressStart2P",
-    fontSize: moderateScale(16),
+    fontSize: moderateScale(18),
   },
 
   subText: {
     color: "white",
     fontFamily: "PressStart2P",
-    fontSize: moderateScale(12),
+    fontSize: moderateScale(14),
     marginLeft: horizontalScale(30),
-    lineHeight: 15,
+    lineHeight: moderateScale(15),
   },
 
   indentedWrapper: {
     fontFamily: "PressStart2P",
     gap: verticalScale(10),
-    width: "80%",
+    width: "95%",
     marginLeft: horizontalScale(30),
+    marginBottom: verticalScale(30),
   },
 });
 
