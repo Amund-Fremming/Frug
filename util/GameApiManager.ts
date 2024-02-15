@@ -8,7 +8,7 @@ export interface IGame {
   iconImage: string;
   numberOfQuestions: number;
   creatorId: string;
-  percentageUpvotes: number;
+  upvotes: number;
   usersVote: number;
 }
 

@@ -37,7 +37,7 @@ export function PublicGameCard({
   const [gameRating, setGameRating] = useState(0);
 
   useEffect(() => {
-    setGameRating(game.percentageUpvotes);
+    setGameRating(game.upvotes);
     updateVoteColor(game.usersVote);
   }, [game]);
 
@@ -45,8 +45,8 @@ export function PublicGameCard({
     game.iconImage === "DIRTY"
       ? require("../../assets/images/icons/dirtyIcon.webp")
       : game.iconImage === "EDGY"
-        ? require("../../assets/images/icons/edgyIcon.webp")
-        : require("../../assets/images/icons/niceIcon.webp");
+      ? require("../../assets/images/icons/edgyIcon.webp")
+      : require("../../assets/images/icons/niceIcon.webp");
 
   const handleClick = () => {
     setGameId(game.gameId);
@@ -73,6 +73,14 @@ export function PublicGameCard({
   };
 
   const handleVote = async (vote: number) => {
+    if (vote === 0) {
+      setGameRating(game.upvotes - 1);
+    }
+
+    if (vote === 1) {
+      setGameRating(game.upvotes + 1);
+    }
+
     updateVoteColor(vote);
     setView("HOME"); // For triggering updated fetch when updating data.
 
@@ -100,7 +108,7 @@ export function PublicGameCard({
             <Pressable onPress={() => handleVote(0)}>
               <Feather name="thumbs-down" size={26} color={downvoteColor} />
             </Pressable>
-            <Text style={styles.procentileText}>{gameRating}%</Text>
+            <Text style={styles.procentileText}>{gameRating}</Text>
           </View>
         </View>
         <View style={styles.iconSplit}>
