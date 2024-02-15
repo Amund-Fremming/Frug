@@ -11,17 +11,17 @@ export function HowTo({ setView }: HowToProps) {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <Text style={styles.header}>How to play</Text>
+        <View style={styles.headerView}>
+          <Text style={styles.header}>How to play</Text>
+        </View>
         <View style={styles.indentedWrapper}>
           <Text style={styles.text}>1. Create a Game</Text>
-          <Text style={styles.subText}>- Select the option to Host</Text>
-          <Text style={styles.subText}>
-            - Choose a unique ID for you game, and store it for later
-          </Text>
+          <Text style={styles.subText}>- Select Host game</Text>
+          <Text style={styles.subText}>- Choose a Name for your game</Text>
           <Text style={styles.text}>2. Invite Friends</Text>
-          <Text style={styles.subText}>- Share your game ID</Text>
+          <Text style={styles.subText}>- Share your Game Name</Text>
           <Text style={styles.subText}>
-            - Tell your friends to click join, then insert your game ID
+            - Your friends click join, then insert your Game Name
           </Text>
           <Text style={styles.text}>3. Add Questions</Text>
           <Text style={styles.subText}>- Add questions about anything</Text>
@@ -32,9 +32,7 @@ export function HowTo({ setView }: HowToProps) {
           <Text style={styles.subText}>
             - When the host is ready, press start
           </Text>
-          <Text style={styles.subText}>
-            - Click start game, and the questions will be displayed one by one
-          </Text>
+          <Text style={styles.subText}>- Click start game</Text>
         </View>
         <MediumButton text="Back" handlePress={() => setView("HOME")} />
       </View>

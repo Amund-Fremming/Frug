@@ -15,15 +15,21 @@ const styles = StyleSheet.create({
   },
 
   wrapper: {
-    gap: verticalScale(20),
+    gap: verticalScale(40),
     justifyContent: "center",
     alignItems: "center",
   },
 
+  headerView: {
+    borderBottomColor: "black",
+    borderBottomWidth: verticalScale(5),
+    padding: moderateScale(5),
+  },
+
   header: {
-    color: "white",
+    color: "black",
     fontFamily: "PressStart2P",
-    fontSize: moderateScale(28),
+    fontSize: moderateScale(30),
   },
 
   text: {

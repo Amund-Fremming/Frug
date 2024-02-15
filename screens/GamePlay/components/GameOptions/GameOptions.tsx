@@ -67,7 +67,7 @@ export default function GameOptions({
         publicGame: false,
         iconImage: "NICE",
         numberOfQuestions: 0,
-        percentageUpvotes: 0,
+        upvotes: 0,
         usersVote: 2,
       };
 
@@ -86,8 +86,8 @@ export default function GameOptions({
 
       if (response === "GAME_EXISTS") {
         Alert.alert(
-          "Invalid Game ID",
-          `Game with ID ${gameId}, already exists!`
+          "Invalid Game Name",
+          `Game with Name ${gameId}, already exists!`
         );
         setClickedAndIsLoading(false);
         setGameId("");
@@ -139,7 +139,7 @@ export default function GameOptions({
       <View style={styles.buttonWrapper}>
         <BigInput
           value={gameId}
-          placeholder="Game ID"
+          placeholder="Game Name"
           handleChange={(text) => setGameId(text.toUpperCase())}
         />
         <BigButton
