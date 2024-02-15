@@ -29,9 +29,8 @@
 - Bruke mer tid i planleggingen og få fastslått noen flere generiske komponenter
 - Lære å burke Figma mer effektivt og riktig
 
-## **ADD**
+## Next update
 
-- How to under startside
 - Preload public games, createdGames, og likedGames
 
   - Putt games i app context
@@ -39,13 +38,14 @@
   - Kanskje hente ny data
 
 - Mulighet for å redigere spørsmål
-
 - Fjern tastatured når man trykker enter
 - Skjul tilbake på søk til etter man har søkt
 
-1. Start by creeating a game with a unique ID
-2. Tell your friends to join with your unique ID
-3. Start adding questions to the game
-4. When the host is ready, press start to create the game
-5. Now the host can start the game and begin reading up questions
-6. Play as you wish
+## How to update
+
+1. eas build --platform ios
+2. eas submit -p ios --latest
+3. Login to App Store Connect
+4. Add new Version under Distrobution
+5. Add Update information in the text box about the update
+6. Add for Rereview and Submit
