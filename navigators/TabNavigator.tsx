@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import GamePlay from "../screens/GamePlay/GamePlay";
+import { SpinGamePlay } from "../screens/SpinGamePlay/SpinGamePlay";
 import PublicGames from "../screens/PublicGames/PublicGames";
 import { HomeScreen } from "../screens/HomeScreen/HomeScreen";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -26,7 +27,7 @@ export function TabNavigator() {
           tabBarIcon: ({ focused, color }) => {
             let iconName;
 
-            if (route.name === "Game") {
+            if (route.name === "Game" || route.name === "Spin") {
               iconName = focused
                 ? "gamepad-variant"
                 : "gamepad-variant-outline";
@@ -52,6 +53,11 @@ export function TabNavigator() {
           options={{ headerShown: false }}
           name="Game"
           component={GamePlay}
+        />
+        <Tab.Screen
+          options={{ headerShown: false }}
+          name="Spin"
+          component={SpinGamePlay}
         />
         <Tab.Screen
           options={{ headerShown: false }}
