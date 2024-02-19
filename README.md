@@ -49,3 +49,12 @@
 4. Add new Version under Distrobution
 5. Add Update information in the text box about the update
 6. Add for Rereview and Submit
+
+## Next up
+
+- importer nye planet bilder
+- Ny maskott
+- Nye farger
+- Ny how to
+- Ny backend for Spin
+- Game logic i frotend
