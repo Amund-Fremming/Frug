@@ -30,13 +30,8 @@
 - Lære å burke Figma mer effektivt og riktig
 
 ## Next update
-
+- Ny gamemode!
 - Preload public games, createdGames, og likedGames
-
-  - Putt games i app context
-  - i componentene, ikke fetch data om games har verdier, men på søk alltid søk.
-  - Kanskje hente ny data
-
 - Mulighet for å redigere spørsmål
 - Fjern tastatured når man trykker enter
 - Skjul tilbake på søk til etter man har søkt
