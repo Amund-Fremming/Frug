@@ -1,6 +1,5 @@
 # Spike
 
-- [Figma](https://www.figma.com/file/oBgpl8HkiowbkUFe6HchFL/Untitled?node-id=0%3A1&mode=dev)
 - [Backend](https://github.com/Amund-Fremming/Spike-backend)
 
 ### Kort om appen
@@ -14,6 +13,7 @@
 
 - Få appen på Appstore
 - Håndtere race conditions
+- Oppdatere basert på brukeres tilbakemeldinger
 
 ### Hva har jeg lært
 
