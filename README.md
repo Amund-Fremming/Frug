@@ -1,6 +1,5 @@
 # Spike
 
-- [Figma](https://www.figma.com/file/oBgpl8HkiowbkUFe6HchFL/Untitled?node-id=0%3A1&mode=dev)
 - [Backend](https://github.com/Amund-Fremming/Spike-backend)
 
 ### Kort om appen
@@ -14,6 +13,7 @@
 
 - Få appen på Appstore
 - Håndtere race conditions
+- Oppdatere basert på brukeres tilbakemeldinger
 
 ### Hva har jeg lært
 
@@ -30,13 +30,8 @@
 - Lære å burke Figma mer effektivt og riktig
 
 ## Next update
-
+- Ny gamemode!
 - Preload public games, createdGames, og likedGames
-
-  - Putt games i app context
-  - i componentene, ikke fetch data om games har verdier, men på søk alltid søk.
-  - Kanskje hente ny data
-
 - Mulighet for å redigere spørsmål
 - Fjern tastatured når man trykker enter
 - Skjul tilbake på søk til etter man har søkt
