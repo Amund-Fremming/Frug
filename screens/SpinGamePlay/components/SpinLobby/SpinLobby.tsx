@@ -134,7 +134,7 @@ export default function SpinLobby({
         <Text style={styles.gameIdDisplay}>{gameId}</Text>
         <BigInput
           value={question}
-          placeholder="Add questions ..."
+          placeholder="Who´s got to ..."
           handleChange={(text: string) => setQuestion(text)}
         />
         <BigButton text="Add" handlePress={handleAddQuestion} />

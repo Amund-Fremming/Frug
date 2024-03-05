@@ -1,6 +1,6 @@
 import { View, Image } from "react-native";
 import { styles, imageStyle } from "./SpinPlanetBackgroundStyles";
-import Planets from "../Planets/Planets";
+import SpinPlanets from "../SpinPlanets/SpinPlanets";
 
 interface Props {
   view: string;
@@ -15,7 +15,9 @@ export default function SpinPlanetBackground({ view }: Props) {
       <View style={styles.container}>
         <View style={styles.layerOneCircle}>
           <View style={styles.layerTwoCircle}>
-            <View style={styles.layerThreeCircle}></View>
+            <View style={styles.layerThreeCircleBorder}>
+              <View style={styles.layerThreeCircle}></View>
+            </View>
           </View>
         </View>
 
@@ -45,7 +47,9 @@ export default function SpinPlanetBackground({ view }: Props) {
         <Image source={star} style={imageStyle.starEighteen} />
       </View>
 
-      {["SPIN_HOME", "SPIN_HOST", "SPIN_JOIN"].includes(view) && <Planets />}
+      {["SPIN_HOME", "SPIN_HOST", "SPIN_JOIN"].includes(view) && (
+        <SpinPlanets />
+      )}
     </>
   );
 }

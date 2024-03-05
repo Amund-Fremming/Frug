@@ -52,9 +52,16 @@
 
 ## Next up
 
-- importer nye planet bilder
-- Ny maskott
-- Nye farger
+**Frontend**
+
+- logikk for å håndtrere spinner state
+- Logikk for å håndtere spillflyt fra host sin side
+- Endre fra Iconer til game modes
 - Ny how to
-- Ny backend for Spin
-- Game logic i frotend
+
+**Backend**
+
+- Endre Game modellen til å ha type spill
+- Endre Game til å ha en liste med devices om folk skal joine
+- Nytt api for getDevice som har en webcosket som sender ut melding til alle som er med i spillet, og returnerer en device som er valgt ut
+- Kanskje ikke gjøre det 100% random, men større sans for å velge en som ikke har blitt valgt så mye

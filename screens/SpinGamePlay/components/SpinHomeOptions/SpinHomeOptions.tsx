@@ -4,7 +4,7 @@ import { styles } from "./SpinHomeOptionsStyles";
 
 import BigButton from "../../../../components/BigButton/BigButton";
 import MediumButton from "../../../../components/MediumButton/MediumButton";
-import Mascot from "../../../../components/Mascot/Mascot";
+import StegoMascot from "../../../../components/StegoMascot/StegoMascot";
 
 interface HomeProps {
   setView: Dispatch<SetStateAction<string>>;
@@ -13,7 +13,7 @@ interface HomeProps {
 export default function SpinHomeOptions({ setView }: HomeProps) {
   return (
     <View style={styles.buttonContainer}>
-      <Mascot />
+      <StegoMascot />
       <View style={styles.buttonWrapper}>
         <BigButton text="Host" handlePress={() => setView("SPIN_HOST")} />
         <BigButton text="Join" handlePress={() => setView("SPIN_JOIN")} />

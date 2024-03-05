@@ -3,7 +3,6 @@ import { View, Alert } from "react-native";
 import { styles } from "./SpinGameOptionsStyles";
 import { validateInput } from "../../../../util/InputValidator";
 
-import Mascot from "../../../../components/Mascot/Mascot";
 import BigButton from "../../../../components/BigButton/BigButton";
 import MediumButton from "../../../../components/MediumButton/MediumButton";
 import BigInput from "../../../../components/BigInput/BigInput";
@@ -14,6 +13,7 @@ import {
   gameExists,
   haveGameStarted,
 } from "../../../../util/GameApiManager";
+import StegoMascot from "../../../../components/StegoMascot/StegoMascot";
 
 interface HostProps {
   setView: Dispatch<SetStateAction<string>>;
@@ -137,7 +137,7 @@ export default function SpinGameOptions({
 
   return (
     <View style={styles.buttonContainer}>
-      <Mascot />
+      <StegoMascot />
       <View style={styles.buttonWrapper}>
         <BigInput
           value={gameId}
