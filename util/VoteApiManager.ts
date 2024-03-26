@@ -1,5 +1,6 @@
-// const VOTE_URL_BASE = "http://localhost:5088/spike/votes";
-const VOTE_URL_BASE = "https://trike.azurewebsites.net/spike/votes";
+import { URL_BASE } from "./URL_BASE";
+
+const VOTE_URL_BASE = `${URL_BASE}/spike/votes`;
 
 export interface Voter {
   userDeviceId: string;

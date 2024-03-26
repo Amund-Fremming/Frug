@@ -1,5 +1,6 @@
-// const QUESTION_URL_BASE = "http://localhost:5088/spike/questions";
-const QUESTION_URL_BASE = "https://trike.azurewebsites.net/spike/questions";
+import { URL_BASE } from "./URL_BASE";
+
+const QUESTION_URL_BASE = `${URL_BASE}/spike/questions`;
 
 export interface Question {
   gameId: string;

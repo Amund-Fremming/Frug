@@ -30,6 +30,7 @@
 - Lære å burke Figma mer effektivt og riktig
 
 ## Next update
+
 - Ny gamemode!
 - Preload public games, createdGames, og likedGames
 - Mulighet for å redigere spørsmål
@@ -45,18 +46,18 @@
 5. Add Update information in the text box about the update
 6. Add for Rereview and Submit
 
-## Next up
+## Hva som trengs
 
-**Frontend**
+- WebSocket som lytter til gamestate, og endrer side for hvilke state som blir satt, men HOST har ingen lytter slik at hans view styres direkte av hans handlinger
+- trykker host på en knapp endrer viewet hans, men ellers, ikke noe.
+- Komponent for alle states spillet kan være i:
+  1. waiting - venter på at en ny spin skal starte
+  2. Spinning - fasher farger, venter på å velge en spiller
+  3. PlayerChosen - spiller har blitt valgt, og vi venter på at host trykker på next question som setter state til waiting
 
-- logikk for å håndtrere spinner state
-- Logikk for å håndtere spillflyt fra host sin side
-- Endre fra Iconer til game modes
-- Ny how to
+# Hva jeg gjorde sist
 
-**Backend**
-
-- Endre Game modellen til å ha type spill
-- Endre Game til å ha en liste med devices om folk skal joine
-- Nytt api for getDevice som har en webcosket som sender ut melding til alle som er med i spillet, og returnerer en device som er valgt ut
-- Kanskje ikke gjøre det 100% random, men større sans for å velge en som ikke har blitt valgt så mye
+- La til singalR på de to metodene
+- La til Player db, denne må oppdateres og opprettes, gamle db må nok slettes?
+- La til en fil der man kan endre URL, så man slipper å endre i alle filer
+- Mangeler å bli testet

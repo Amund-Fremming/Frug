@@ -68,6 +68,7 @@ export default function SpinGameOptions({
         gameStarted: false,
         publicGame: false,
         iconImage: "NICE",
+        gameState: "LOBBY",
         numberOfQuestions: 0,
         upvotes: 0,
         usersVote: 2,

@@ -5,6 +5,7 @@ import SpinGameOptions from "./components/SpinGameOptions/SpinGameOptions";
 import SpinLobby from "./components/SpinLobby/SpinLobby";
 import SpinHowTo from "./components/SpinHowTo/SpinHowTo";
 import SpinGame from "./components/SpinGame/SpinGame";
+import { useEffect } from "react";
 
 export function SpinGamePlay() {
   const { view, setView, setGameId, deviceId, gameId } =
