@@ -223,3 +223,26 @@ export const likedGames = async (deviceId: string) => {
     throw new Error(`GET not working (likedGames): ${error}`);
   }
 };
+
+export const leaveGame = async (gameId: string) => {
+  console.log(gameId);
+
+  console.log(`${GAME_URL_BASE}/leavegame`);
+  try {
+    const response = await fetch(`${GAME_URL_BASE}/leavegame`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(gameId),
+    });
+
+    if (!response.ok) {
+      throw new Error(`(leaveGame): ${response.status}`);
+    }
+
+    return response.ok;
+  } catch (error) {
+    throw new Error(`GET not working (leaveGame): ${error}`);
+  }
+};

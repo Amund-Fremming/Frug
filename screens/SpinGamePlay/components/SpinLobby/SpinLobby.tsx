@@ -35,6 +35,7 @@ export default function SpinLobby({
 }: LobbyProps) {
   const [question, setQuestion] = useState("");
   const [numQuestions, setNumQuestions] = useState<number>(0);
+  const [lobbyState, setLobbyState] = useState<string>("LOBBY");
 
   useEffect(() => {
     const connection = createConnection();
@@ -47,6 +48,17 @@ export default function SpinLobby({
         if (gameId === gameIdParam) setNumQuestions(count);
       }
     );
+
+    connection.on("SpinGameState", (gameIdParam: string, state: string) => {
+      if (gameId === gameIdParam) {
+        if (state === "FINISHED") {
+          setView("SPIN_HOME");
+          return;
+        }
+
+        setLobbyState(state);
+      }
+    });
 
     return () => stopConnection(connection);
   }, []);
@@ -127,29 +139,43 @@ export default function SpinLobby({
     }
   };
 
-  return (
-    <View style={styles.buttonContainer}>
-      <Text style={styles.numberOfQuestionsDisplay}>{numQuestions}</Text>
-      <View style={styles.buttonWrapper}>
-        <Text style={styles.gameIdDisplay}>{gameId}</Text>
-        <BigInput
-          value={question}
-          placeholder="Who´s got to ..."
-          handleChange={(text: string) => setQuestion(text)}
-        />
-        <BigButton text="Add" handlePress={handleAddQuestion} />
-
-        {view === "SPIN_HOST_LOBBY" && (
-          <View style={styles.hostLobbyContainer}>
-            <SmallButton text="Back" handlePress={handleLeave} />
-            <SmallButton text="Start" handlePress={handleStart} />
-          </View>
-        )}
-
-        {view === "SPIN_LOBBY" && (
-          <MediumButton text="Back" handlePress={handleLeave} />
-        )}
+  if (lobbyState === "WAITING") {
+    return (
+      <View style={styles.waitingContainer}>
+        <Text style={styles.waitingText}>Waiting</Text>
+        <Text style={styles.waitingText}>for</Text>
+        <Text style={styles.waitingText}>Spin</Text>
       </View>
-    </View>
-  );
+    );
+  }
+
+  if (lobbyState === "LOBBY") {
+    return (
+      <>
+        <View style={styles.buttonContainer}>
+          <Text style={styles.numberOfQuestionsDisplay}>{numQuestions}</Text>
+          <View style={styles.buttonWrapper}>
+            <Text style={styles.gameIdDisplay}>{gameId}</Text>
+            <BigInput
+              value={question}
+              placeholder="Who´s got to ..."
+              handleChange={(text: string) => setQuestion(text)}
+            />
+            <BigButton text="Add" handlePress={handleAddQuestion} />
+
+            {view === "SPIN_HOST_LOBBY" && (
+              <View style={styles.hostLobbyContainer}>
+                <SmallButton text="Back" handlePress={handleLeave} />
+                <SmallButton text="Start" handlePress={handleStart} />
+              </View>
+            )}
+
+            {view === "SPIN_LOBBY" && (
+              <MediumButton text="Back" handlePress={handleLeave} />
+            )}
+          </View>
+        </View>
+      </>
+    );
+  }
 }

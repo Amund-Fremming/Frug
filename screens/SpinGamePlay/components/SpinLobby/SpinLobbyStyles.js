@@ -53,6 +53,23 @@ const styles = StyleSheet.create({
     fontFamily: "PressStart2P",
     textAlign: "center",
   },
+
+  waitingText: {
+    fontSize: moderateScale(35),
+    fontWeight: "bold",
+    fontFamily: "PressStart2P",
+    color: "white",
+  },
+
+  waitingContainer: {
+    gap: verticalScale(10),
+    marginTop: verticalScale(30),
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: verticalScale(50),
+  },
 });
 
 export { styles };

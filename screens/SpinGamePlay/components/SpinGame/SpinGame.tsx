@@ -7,6 +7,7 @@ import { Question } from "../../../../util/QuestionApiManager";
 import { useIsFocused } from "@react-navigation/native";
 
 import BigButton from "../../../../components/BigButton/BigButton";
+import { leaveGame } from "../../../../util/GameApiManager";
 
 interface GameProps {
   gameId: string;
@@ -128,9 +129,10 @@ export default function SpinGame({ setGameId, setView, gameId }: GameProps) {
     setQuestions(questions.filter((q) => q !== randomQuestion));
   };
 
-  const handleLeave = () => {
+  const handleLeave = async () => {
     setGameId("");
-    setView("HOME");
+    setView("SPIN_HOME");
+    await leaveGame(gameId);
   };
 
   return (
