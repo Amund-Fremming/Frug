@@ -1,6 +1,6 @@
 import { View, Image } from "react-native";
 import { styles, imageStyle } from "./PlanetBackgroundStyles";
-import Planets from "../Planets/Planets";
+import Planets from "../planets/Planets";
 
 interface Props {
   view: string;
